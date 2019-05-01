@@ -27,12 +27,12 @@
         }
         
     }else if(isset($_POST["submit_member"])){
-        $name = $_POST["custom_U3224"];
+        $name = $_POST["nama"];
         $email = $_POST["Email"];
-        $h_a = $_POST["custom_U3241"];
-        $c_p = $_POST["custom_U3228"];
-        $password = $_POST["custom_U3236"];
-        $s_i = $_POST["custom_U3251"];
+        $h_a = $_POST["h_a"];
+        $c_p = $_POST["c_p"];
+        $password = $_POST["password"];
+        $s_i = $_POST["s_i"];
 
         
         $query="
