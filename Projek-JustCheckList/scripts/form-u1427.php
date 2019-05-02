@@ -59,17 +59,8 @@ $form = array(
 				'required' => 'Field \'Home Address\' is required.'
 			)
 		),
-		'custom_U1437' => array(
-			'order' => 4,
-			'type' => 'string',
-			'label' => 'Harbor',
-			'required' => true,
-			'errors' => array(
-				'required' => 'Field \'Harbor\' is required.'
-			)
-		),
 		'custom_U1554' => array(
-			'order' => 5,
+			'order' => 4,
 			'type' => 'string',
 			'label' => 'Cell Phone',
 			'required' => true,
@@ -78,7 +69,7 @@ $form = array(
 			)
 		),
 		'custom_U1651' => array(
-			'order' => 6,
+			'order' => 5,
 			'type' => 'string',
 			'label' => 'Password',
 			'required' => true,
@@ -87,7 +78,7 @@ $form = array(
 			)
 		),
 		'custom_U1866' => array(
-			'order' => 7,
+			'order' => 6,
 			'type' => 'string',
 			'label' => 'Confirm Password',
 			'required' => true,
@@ -95,8 +86,17 @@ $form = array(
 				'required' => 'Field \'Confirm Password\' is required.'
 			)
 		),
-		'custom_U7799' => array(
+		'custom_U13307' => array(
 			'order' => 8,
+			'type' => 'string',
+			'label' => 'Harbor',
+			'required' => true,
+			'errors' => array(
+				'required' => 'Field \'Harbor\' is required.'
+			)
+		),
+		'custom_U13328' => array(
+			'order' => 7,
 			'type' => 'string',
 			'label' => 'Harbor ID',
 			'required' => true,
