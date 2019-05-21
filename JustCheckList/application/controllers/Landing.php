@@ -25,12 +25,12 @@ class Landing extends CI_Controller {
 
 	public function signupadmin()
 	{
-		$this->load->view('signup-admin');
+		$this->load->view('signup_admin');
 	}
 
 	public function signupmember()
 	{
-		$this->load->view('signup-member');
+		$this->load->view('signup_member');
 	}
 
 	public function login()
@@ -61,6 +61,11 @@ class Landing extends CI_Controller {
 	public function member()
 	{
 		$this->load->view('member');
+	}
+
+	public function memberView()
+	{
+		$this->load->view('memberView');
 	}
 
 	public function berangkat()

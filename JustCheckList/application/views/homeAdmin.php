@@ -89,7 +89,7 @@
                                 <a class="dropdown-item" href="#">
                                     Maulana Ihsan Ahmad
                                 </a>
-                                <a class="dropdown-item" href="cek-profileAdmin.html">
+                                <a class="dropdown-item" href="cek_profileAdmin.html">
                                     <i class="now-ui-icons users_single-02"></i> Check Profile
                                 </a>
                                 <a class="dropdown-item" href="landing.html">
@@ -180,11 +180,11 @@
         <script src="./assets/js/now-ui-kit.js?v=1.3.0" type="text/javascript"></script>
 
         <!-- Chart -->
-        <script src="vendor/chart.js/Chart.min.js"></script>
-        <script src="js/demo/chart-area-demo.js"></script>
-        <script src="js/demo/chart-area-demo-2.js"></script>
-        <script src="js/demo/chart-pie-demo.js"></script>
-        <script src="js/demo/chart-bar-demo.js"></script>
+        <script src="<?php echo base_url() ?>assets/vendor/chart.js/Chart.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/js/demo/chart-area-demo.js"></script>
+        <script src="<?php echo base_url() ?>assets/js/demo/chart-area-demo-2.js"></script>
+        <script src="<?php echo base_url() ?>assets/js/demo/chart-pie-demo.js"></script>
+        <script src="<?php echo base_url() ?>assets/js/demo/chart-bar-demo.js"></script>
         <script>
             $(document).ready(function () {
                 // the body of this function is in assets/js/now-ui-kit.js

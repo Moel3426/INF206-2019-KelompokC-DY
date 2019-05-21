@@ -92,7 +92,7 @@
 								<a class="dropdown-item" href="#">
 									Maulana Ihsan Ahmad
 								</a>
-								<a class="dropdown-item" href="cek-profile.html">
+								<a class="dropdown-item" href="cek_profile.html">
 									<i class="now-ui-icons users_single-02"></i> Check Profile
 								</a>
 								<a class="dropdown-item" href="landing.html">
