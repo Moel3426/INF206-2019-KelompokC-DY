@@ -28,7 +28,7 @@
     <div class="container">
 
       <div class="navbar-translate">
-        <a class="navbar-brand" href="<?php echo base_url() ?>index.php/landing/" rel="tooltip" title="Welcome" data-placement="bottom">
+        <a class="navbar-brand" href="<?php echo base_url() ?>landing/" rel="tooltip" title="Welcome" data-placement="bottom">
           JUST CHECK LIST
         </a>
       </div>
@@ -66,7 +66,7 @@
                   <input type="password" placeholder="Password..." class="form-control" />
                 </div>
                 <div class="card-footer text-center">
-                  <a href="dashboard.html" class="btn btn-primary btn-round btn-lg btn-block">Masuk</a>
+                  <a href="<?php echo base_url() ?>landing/dashboard" class="btn btn-primary btn-round btn-lg btn-block">Masuk</a>
                   <div class="pull-center">
                     <p style="text-transform:inherit; font-size:12px;">
                       Let's check your list today

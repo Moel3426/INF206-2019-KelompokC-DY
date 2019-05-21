@@ -23,12 +23,12 @@ class Landing extends CI_Controller {
 		$this->load->view('landing');
 	}
 
-	public function signupadmin()
+	public function signup_admin()
 	{
 		$this->load->view('signup_admin');
 	}
 
-	public function signupmember()
+	public function signup_member()
 	{
 		$this->load->view('signup_member');
 	}

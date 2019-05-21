@@ -34,7 +34,7 @@
         <nav class="navbar navbar-expand-lg bg-dark fixed-top navbar-dark">
             <div class="container-fluid">
                 <div class="navbar-translate">
-                    <a class="navbar-brand " href="<?php echo base_url() ?>index.php/landing/homeAdmin" rel="tooltip" title="Home" data-placement="bottom">
+                    <a class="navbar-brand " href="<?php echo base_url() ?>landing/homeAdmin" rel="tooltip" title="Home" data-placement="bottom">
                         JUST CHECK LIST
                     </a>
 
@@ -50,7 +50,7 @@
                     data-nav-image="<?php echo base_url() ?>assets/img/1.jpg">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo base_url() ?>index.php/landing/adminDashboard" onclick="scrollToDownload()">
+                            <a class="nav-link" href="<?php echo base_url() ?>landing/adminDashboard" onclick="scrollToDownload()">
                                 <i class="now-ui-icons shopping_shop"></i>
                                 <p>Dashboard</p>
                             </a>
@@ -65,14 +65,14 @@
                                 <a class="dropdown-item" href="#undangAnggota" class="undang" data-toggle="modal">
                                     <i class="now-ui-icons users_single-02"></i> Undang Anggota
                                 </a>
-                                <a class="dropdown-item" href="<?php echo base_url() ?>index.php/landing/memberAdmin">
+                                <a class="dropdown-item" href="<?php echo base_url() ?>landing/memberAdmin">
                                     <i class="now-ui-icons users_single-02"></i> Daftar Anggota
                                 </a>
                             </div>
                         </li>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo base_url() ?>index.php/landing/inbox" onclick="scrollToDownload()">
+                            <a class="nav-link" href="<?php echo base_url() ?>landing/inbox" onclick="scrollToDownload()">
                                 <i class="now-ui-icons ui-1_email-85"></i>
                                 <p>Inbox</p>
                                 <span class="badge badge-danger badge-counter">100</span>
@@ -89,10 +89,10 @@
                                 <a class="dropdown-item" href="#">
                                     Maulana Ihsan Ahmad
                                 </a>
-                                <a class="dropdown-item" href="<?php echo base_url() ?>index.php/landing/cek_profileAdmin">
+                                <a class="dropdown-item" href="<?php echo base_url() ?>landing/cek_profileAdmin">
                                     <i class="now-ui-icons users_single-02"></i> Check Profile
                                 </a>
-                                <a class="dropdown-item" href="<?php echo base_url() ?>index.php/landing/">
+                                <a class="dropdown-item" href="<?php echo base_url() ?>landing/">
                                     <i class="now-ui-icons sport_user-run"></i> Check Out
                                 </a>
                             </div>
