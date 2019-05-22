@@ -131,4 +131,89 @@ class Website extends CI_Controller
     {
         $this->load->view('website/dashboard_member');
     }
+
+    public function home()
+    {
+        $this->load->view('website/home');
+    }
+
+    public function homeAdmin()
+    {
+        $this->load->view('website/homeAdmin');
+    }
+
+    public function adminDashboard()
+    {
+        $this->load->view('website/adminDashboard');
+    }
+
+    public function member()
+    {
+        $this->load->view('website/member');
+    }
+
+    public function memberAdmin()
+    {
+        $this->load->view('website/memberAdmin');
+    }
+
+    public function memberView()
+    {
+        $this->load->view('website/memberView');
+    }
+
+    public function berangkat()
+    {
+        $this->load->view('website/berangkat');
+    }
+
+    public function cek_profile()
+    {
+        $this->load->view('website/cek_profile');
+    }
+
+    public function cek_profileAdmin()
+    {
+        $this->load->view('website/cek_profileAdmin');
+    }
+
+    public function edit_profile()
+    {
+        $this->load->view('website/edit_profile');
+    }
+
+    public function edit_profileAdmin()
+    {
+        $this->load->view('website/edit_profileAdmin');
+    }
+
+    public function history()
+    {
+        $this->load->view('website/history');
+    }
+
+    public function inbox()
+    {
+        $this->load->view('website/inbox');
+    }
+
+    public function preview()
+    {
+        $this->load->view('website/preview');
+    }
+
+    public function schedule()
+    {
+        $this->load->view('website/schedule');
+    }
+
+    public function tiba()
+    {
+        $this->load->view('website/tiba');
+    }
+
+    public function pesan()
+    {
+        $this->load->view('website/pesan');
+    }
 }
