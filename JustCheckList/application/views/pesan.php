@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url() ?>assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="<?php echo base_url() ?>assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     Preview
@@ -16,12 +16,12 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- CSS Files -->
-  <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="./assets/css/now-ui-kit.css?v=1.3.0" rel="stylesheet" />
+  <link href="<?php echo base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="<?php echo base_url() ?>assets/css/now-ui-kit.css?v=1.3.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="./assets/demo/demo.css" rel="stylesheet" />
+  <link href="<?php echo base_url() ?>assets/demo/demo.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
 
 
 </head>
@@ -32,7 +32,7 @@
     <nav class="navbar navbar-expand-lg bg-dark fixed-top navbar-dark">
       <div class="container-fluid">
         <div class="navbar-translate">
-          <a class="navbar-brand " href="homeAdmin.html" rel="tooltip" title="Home" data-placement="bottom">
+          <a class="navbar-brand " href="<?php echo base_url() ?>landing/homeAdmin" rel="tooltip" title="Home" data-placement="bottom">
             JUST CHECK LIST
           </a>
 
@@ -44,10 +44,10 @@
             <span class="navbar-toggler-bar bottom-bar"></span>
           </button>
         </div>
-        <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/1.jpg">
+        <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="<?php echo base_url() ?>assets/img/1.jpg">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="adminDashboard.html" onclick="scrollToDownload()">
+              <a class="nav-link" href="<?php echo base_url() ?>landing/adminDashboard" onclick="scrollToDownload()">
                 <i class="now-ui-icons shopping_shop"></i>
                 <p>Dashboard</p>
               </a>
@@ -61,14 +61,14 @@
                 <a class="dropdown-item" href="#undangAnggota" class="undang" data-toggle="modal">
                   <i class="now-ui-icons users_single-02"></i> Undang Anggota
                 </a>
-                <a class="dropdown-item" href="memberAdmin.html">
+                <a class="dropdown-item" href="<?php echo base_url() ?>landing/memberAdmin">
                   <i class="now-ui-icons users_single-02"></i> Daftar Anggota
                 </a>
               </div>
             </li>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="inbox.html" onclick="scrollToDownload()">
+              <a class="nav-link" href="<?php echo base_url() ?>landing/inbox" onclick="scrollToDownload()">
                 <i class="now-ui-icons ui-1_email-85"></i>
                 <p>Inbox</p>
                 <span class="badge badge-danger badge-counter">100</span>
@@ -77,17 +77,17 @@
             <li class="nav-item dropdown">
             <li class="nav-item dropdown">
               <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink1" data-toggle="dropdown">
-                <img class="rounded-circle" src="assets/img/default-avatar.png" width="30px" height="30px" alt=""
+                <img class="rounded-circle" src="<?php echo base_url() ?>assets/img/default-avatar.png" width="30px" height="30px" alt=""
                   srcset="">
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink1">
                 <a class="dropdown-item" href="#">
                   Maulana Ihsan Ahmad
                 </a>
-                <a class="dropdown-item" href="cek-profileAdmin.html">
+                <a class="dropdown-item" href="<?php echo base_url() ?>landing/cek-profileAdmin">
                   <i class="now-ui-icons users_single-02"></i> Check Profile
                 </a>
-                <a class="dropdown-item" href="landing.html">
+                <a class="dropdown-item" href="<?php echo base_url() ?>landing/">
                   <i class="now-ui-icons sport_user-run"></i> Check Out
                 </a>
               </div>
@@ -143,26 +143,26 @@
                             <tr>
                               <td>1</td>
                               <td>
-                                <img class="gambar" src="assets/img/default-avatar.png" alt="" srcset="" />
+                                <img class="gambar" src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="" srcset="" />
                               </td>
                               <td>Maulana Ihsan Ahmad</td>
                             </tr>
                             <tr>
                               <td>2</td>
-                              <td><img class="gambar" src="assets/img/default-avatar.png" alt="" srcset="" />
+                              <td><img class="gambar" src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="" srcset="" />
                               </td>
                               <td>Dominique Perrier</td>
                             </tr>
                             <tr>
                               <td>3</td>
                               <td>
-                                <img class="gambar" src="assets/img/default-avatar.png" alt="" srcset="" />
+                                <img class="gambar" src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="" srcset="" />
                               </td>
                               <td>Maulana Ihsan Ahmad</td>
                             </tr>
                             <tr>
                               <td>4</td>
-                              <td><img class="gambar" src="assets/img/default-avatar.png" alt="" srcset="" />
+                              <td><img class="gambar" src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="" srcset="" />
                               </td>
                               <td>Dominique Perrier</td>
                             </tr>
@@ -173,17 +173,17 @@
                     </div>
                     <div class="row">
                       <div class="col-md-6">
-                        <a href="inbox.html" class="btn btn-success btn-user btn-block btn-round">
+                        <a href="<?php echo base_url() ?>landing/inbox" class="btn btn-success btn-user btn-block btn-round">
                           Konfirmasi
                         </a>
                       </div>
                       <div class="col-md-6">
-                        <a href="inbox.html" class="btn btn-danger btn-user btn-block btn-round">
+                        <a href="<?php echo base_url() ?>landing/inbox" class="btn btn-danger btn-user btn-block btn-round">
                           Tolak
                         </a>
                       </div>
                     </div>
-                    <a href="inbox.html" class="btn btn-warning btn-user btn-block btn-round">
+                    <a href="<?php echo base_url() ?>landing/inbox" class="btn btn-warning btn-user btn-block btn-round">
                       Kembali
                     </a>
                   </form>
@@ -273,19 +273,19 @@
 
 
   <!--   Core JS Files   -->
-  <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
-  <script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+  <script src="<?php echo base_url() ?>assets/js/core/jquery.min.js" type="text/javascript"></script>
+  <script src="<?php echo base_url() ?>assets/js/core/popper.min.js" type="text/javascript"></script>
+  <script src="<?php echo base_url() ?>assets/js/core/bootstrap.min.js" type="text/javascript"></script>
   <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-  <script src="./assets/js/plugins/bootstrap-switch.js"></script>
+  <script src="<?php echo base_url() ?>assets/js/plugins/bootstrap-switch.js"></script>
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+  <script src="<?php echo base_url() ?>assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
   <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
-  <script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
+  <script src="<?php echo base_url() ?>assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
-  <script src="./assets/js/now-ui-kit.js?v=1.3.0" type="text/javascript"></script>
+  <script src="<?php echo base_url() ?>assets/js/now-ui-kit.js?v=1.3.0" type="text/javascript"></script>
   <script>
     $(document).ready(function () {
       // the body of this function is in assets/js/now-ui-kit.js
