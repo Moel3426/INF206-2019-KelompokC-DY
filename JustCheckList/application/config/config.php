@@ -23,7 +23,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+<<<<<<< HEAD
 $config['base_url'] = 'http://localhost/INF206-2019-KelompokC-DY/JustCheckList/';
+=======
+<<<<<<< HEAD
+$config['base_url'] = 'http://localhost/INF206-2019-KelompokC-DY/JustCheckList/index.php';
+=======
+$config['base_url'] = 'http://localhost/JustCheckList/';
+>>>>>>> Fadhil
+>>>>>>> master
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +43,11 @@ $config['base_url'] = 'http://localhost/INF206-2019-KelompokC-DY/JustCheckList/'
 | variable so that it is blank.
 |
 */
+<<<<<<< HEAD
 $config['index_page'] = 'index.php';
+=======
+$config['index_page'] = ' ';
+>>>>>>> Fadhil
 
 /*
 |--------------------------------------------------------------------------
