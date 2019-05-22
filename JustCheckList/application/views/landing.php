@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="<?php echo base_url() ?>assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Landing Page
+    landing Page
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
     name='viewport' />
@@ -27,7 +27,7 @@
   <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
     <div class="container">
       <div class="navbar-translate">
-        <a class="navbar-brand" href="<?php echo base_url() ?>landing" rel="tooltip" title="Welcome" data-placement="bottom">
+        <a class="navbar-brand" href="<?php echo base_url() ?>index.php/landing" rel="tooltip" title="Welcome" data-placement="bottom">
           JUST CHECK LIST
         </a>
         <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
@@ -46,10 +46,10 @@
               <p style="font-size:12px;"> DAFTAR</p>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink1">
-              <a class="dropdown-item" href="<?php echo base_url() ?>landing/signup_admin">
+              <a class="dropdown-item" href="<?php echo base_url() ?>index.php/landing/signup_admin">
                 <i class="fas fa-user-lock"></i> Admin
               </a>
-              <a class="dropdown-item" href="<?php echo base_url() ?>landing/signup_member">
+              <a class="dropdown-item" href="<?php echo base_url() ?>index.php/landing/signup_member">
                 <i class="fas fa-user"></i> Anggota
               </a>
             </div>
@@ -73,7 +73,7 @@
               </div>
               <div class="card-body">
                 <div class="card-footer text-center">
-                  <a href="<?php echo base_url() ?>landing/login" class="btn btn-primary btn-round btn-lg btn-block">Masuk</a>
+                  <a href="<?php echo base_url() ?>index.php/landing/login" class="btn btn-primary btn-round btn-lg btn-block">Masuk</a>
                   <div class="pull-center">
                     <p style="text-transform:inherit; font-size:12px;">
                       Let's check your list today

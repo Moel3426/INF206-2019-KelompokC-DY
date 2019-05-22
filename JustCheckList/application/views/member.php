@@ -48,13 +48,13 @@
 					data-nav-image="<?php echo base_url() ?>assets/img/1.jpg">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link" href="<?php echo base_url() ?>landing/dashboard" onclick="scrollToDownload()">
+							<a class="nav-link" href="<?php echo base_url() ?>index.php/landing/dashboard" onclick="scrollToDownload()">
 								<i class="now-ui-icons shopping_shop"></i>
 								<p>Dashboard</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="<?php echo base_url() ?>landing/member" onclick="scrollToDownload()">
+							<a class="nav-link" href="<?php echo base_url() ?>index.php/landing/member" onclick="scrollToDownload()">
 								<i class="now-ui-icons business_badge"></i>
 								<p>Member</p>
 							</a>
@@ -66,17 +66,17 @@
 								<p>Schedule</p>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink1">
-								<a class="dropdown-item" href="<?php echo base_url() ?>landing/berangkat">
+								<a class="dropdown-item" href="<?php echo base_url() ?>index.php/landing/berangkat">
 									<i class="now-ui-icons files_box"></i> Keberangkatan
 								</a>
-								<a class="dropdown-item" href="<?php echo base_url() ?>landing/tiba">
+								<a class="dropdown-item" href="<?php echo base_url() ?>index.php/landing/tiba">
 									<i class="now-ui-icons location_pin"></i> Tiba
 								</a>
 							</div>
 						</li>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="<?php echo base_url() ?>landing/history" onclick="scrollToDownload()">
+							<a class="nav-link" href="<?php echo base_url() ?>index.php/landing/history" onclick="scrollToDownload()">
 								<i class="now-ui-icons education_agenda-bookmark"></i>
 								<p>History</p>
 							</a>
@@ -93,10 +93,10 @@
 								<a class="dropdown-item" href="#">
 									Maulana Ihsan Ahmad
 								</a>
-								<a class="dropdown-item" href="<?php echo base_url() ?>landing/cek_profile">
+								<a class="dropdown-item" href="<?php echo base_url() ?>index.php/landing/cek_profile">
 									<i class="now-ui-icons users_single-02"></i> Check Profile
 								</a>
-								<a class="dropdown-item" href="<?php echo base_url() ?>landing">
+								<a class="dropdown-item" href="<?php echo base_url() ?>index.php/landing">
 									<i class="now-ui-icons sport_user-run"></i> Check Out
 								</a>
 							</div>
@@ -654,7 +654,7 @@
 											src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="...">
 										<h5 class="title text-primary">Maulana Ihsan Ahmad</h5>
 
-										<a href="<?php echo base_url() ?>landing/edit_profile">
+										<a href="<?php echo base_url() ?>index.php/landing/edit_profile">
 											<button class="btn btn-danger" data-dismiss="modal"
 												aria-hidden="true">Close</button>
 										</a>

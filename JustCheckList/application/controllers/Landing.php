@@ -63,6 +63,11 @@ class Landing extends CI_Controller {
 		$this->load->view('member');
 	}
 
+	public function memberAdmin()
+	{
+		$this->load->view('memberAdmin');
+	}
+
 	public function memberView()
 	{
 		$this->load->view('memberView');
