@@ -42,7 +42,7 @@
 				<div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="<?php echo base_url() ?>assets/img/1.jpg">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link" href="<?php echo base_url() ?>index.php/website/dashboard" onclick="scrollToDownload()">
+							<a class="nav-link" href="<?php echo base_url() ?>index.php/website/dashboard_admin" onclick="scrollToDownload()">
 								<i class="now-ui-icons shopping_shop"></i>
 								<p>Dashboard</p>
 							</a>
