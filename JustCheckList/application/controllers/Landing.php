@@ -20,106 +20,22 @@ class Landing extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('landing');
+		$this->load->view('landingpage/landing');
 	}
 	
 	public function signup_admin()
 	{
-		$this->load->view('signup_admin');
+		$this->load->view('landingpage/signup_admin');
 	}
 
 	public function signup_member()
 	{
-		$this->load->view('signup_member');
+		$this->load->view('landingpage/signup_member');
 	}
 
 	public function login()
 	{
-		$this->load->view('login');
+		$this->load->view('landingpage/login');
 	}
 
-	public function dashboard()
-	{
-		$this->load->view('dashboard');
-	}
-
-	public function home()
-	{
-		$this->load->view('home');
-	}
-
-	public function homeAdmin()
-	{
-		$this->load->view('homeAdmin');
-	}
-
-	public function adminDashboard()
-	{
-		$this->load->view('adminDashboard');
-	}
-
-	public function member()
-	{
-		$this->load->view('member');
-	}
-
-	public function memberAdmin()
-	{
-		$this->load->view('memberAdmin');
-	}
-
-	public function memberView()
-	{
-		$this->load->view('memberView');
-	}
-
-	public function berangkat()
-	{
-		$this->load->view('berangkat');
-	}
-
-	public function cek_profile()
-	{
-		$this->load->view('cek_profile');
-	}
-
-	public function cek_profileAdmin()
-	{
-		$this->load->view('cek_profileAdmin');
-	}
-
-	public function edit_profile()
-	{
-		$this->load->view('edit_profile');
-	}
-
-	public function edit_profileAdmin()
-	{
-		$this->load->view('edit_profileAdmin');
-	}
-
-	public function history()
-	{
-		$this->load->view('history');
-	}
-
-	public function inbox()
-	{
-		$this->load->view('inbox');
-	}
-
-	public function preview()
-	{
-		$this->load->view('preview');
-	}
-
-	public function schedule()
-	{
-		$this->load->view('schedule');
-	}
-
-	public function tiba()
-	{
-		$this->load->view('tiba');
-	}
 }
