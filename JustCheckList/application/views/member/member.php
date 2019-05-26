@@ -35,6 +35,10 @@
 					</tr>
 				</thead>
 				<tbody>
+					<?php 
+							$no = 1;
+							foreach($data->result() as $result){ 
+					?>
 					<tr>
 						<td>
 							<span class="custom-checkbox">
@@ -42,104 +46,14 @@
 								<label for="checkbox1"></label>
 							</span>
 						</td>
-
-						<td>1</td>
+						<td><?php echo $no ?></td>
 						<td href="#cekAnggota" class="view" data-toggle="modal"><img class="gambar"
 								src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="" rel="tooltip"
 								title="Klik di  sini untuk melihat profil" data-placement="top" /></td>
-						<td>Maulana Ihsan Ahmad</td>
-						<td>maulanaihsanpress@gmail.com</td>
-						<td>Tibang, Syiah Kuala Banda Aceh</td>
-						<td>081264563223</td>
-						<td>
-							<a href="#editAnggota" class="edit" data-toggle="modal"><i class="material-icons"
-									data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#hapusAnggota" class="delete" data-toggle="modal"><i class="material-icons"
-									data-toggle="tooltip" title="Hapus">&#xE872;</i></a>
-						</td>
-
-					</tr>
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox2" name="options[]" value="1">
-								<label for="checkbox2"></label>
-							</span>
-						</td>
-						<td>2</td>
-						<td href="#cekAnggota" class="view" data-toggle="modal"><img class="gambar"
-								src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="" rel="tooltip"
-								title="Klik di  sini untuk melihat profil" data-placement="top" /></td>
-						<td>Dominique Perrier</td>
-						<td>dominiqueperrier@mail.com</td>
-						<td>Obere Str. 57, Berlin, Germany</td>
-						<td>(313) 555-5735</td>
-						<td>
-							<a href="#editAnggota" class="edit" data-toggle="modal"><i class="material-icons"
-									data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#hapusAnggota" class="delete" data-toggle="modal"><i class="material-icons"
-									data-toggle="tooltip" title="Hapus">&#xE872;</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox3" name="options[]" value="1">
-								<label for="checkbox3"></label>
-							</span>
-						</td>
-						<td>3</td>
-						<td href="#cekAnggota" class="view" data-toggle="modal"><img class="gambar"
-								src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="" rel="tooltip"
-								title="Klik di  sini untuk melihat profil" data-placement="top" /></td>
-						<td>Maria Anders</td>
-						<td>mariaanders@mail.com</td>
-						<td>25, rue Lauriston, Paris, France</td>
-						<td>(503) 555-9931</td>
-						<td>
-							<a href="#editAnggota" class="edit" data-toggle="modal"><i class="material-icons"
-									data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#hapusAnggota" class="delete" data-toggle="modal"><i class="material-icons"
-									data-toggle="tooltip" title="Hapus">&#xE872;</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox4" name="options[]" value="1">
-								<label for="checkbox4"></label>
-							</span>
-						</td>
-						<td>4</td>
-						<td href="#cekAnggota" class="view" data-toggle="modal"><img class="gambar"
-								src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="" rel="tooltip"
-								title="Klik di  sini untuk melihat profil" data-placement="top" /></td>
-						<td>Fran Wilson</td>
-						<td>franwilson@mail.com</td>
-						<td>C/ Araquil, 67, Madrid, Spain</td>
-						<td>(204) 619-5731</td>
-						<td>
-							<a href="#editAnggota" class="edit" data-toggle="modal"><i class="material-icons"
-									data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#hapusAnggota" class="delete" data-toggle="modal"><i class="material-icons"
-									data-toggle="tooltip" title="Hapus">&#xE872;</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox5" name="options[]" value="1">
-								<label for="checkbox5"></label>
-							</span>
-						</td>
-						<td>5</td>
-						<td href="#cekAnggota" class="view" data-toggle="modal"><img class="gambar"
-								src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="" rel="tooltip"
-								title="Klik di  sini untuk melihat profil" data-placement="top" /></td>
-						<td>Martin Blank</td>
-						<td>martinblank@mail.com</td>
-						<td>Via Monte Bianco 34, Turin, Italy</td>
-						<td>(480) 631-2097</td>
+						<td><?php echo $result->nama ?></td>
+						<td><?php echo $result->email ?></td>
+						<td><?php echo $result->alamat ?></td>
+						<td><?php echo $result->no_hp ?></td>
 						<td>
 							<a href="#editAnggota" class="edit" data-toggle="modal"><i class="material-icons"
 									data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -148,6 +62,7 @@
 
 						</td>
 					</tr>
+					<?php $no++; } ?>
 				</tbody>
 			</table>
 			<div class="clearfix">
@@ -177,26 +92,18 @@
 									<h5 class="title">Tambah Anggota</h5>
 								</div>
 								<div class="card-body">
-									<form class="p-2">
+									<form class="p-2" method = "post" action = "">
 										<div class="row">
-											<div class="col-md-5 pr-1">
-												<div class="form-group ">
-													<h6>ID</h6>
-													<input type="text" class="form-control" disabled=""
-														placeholder="Company"
-														value="Nanti isinya sesuai yang diinputnya pas daftar">
-												</div>
-											</div>
 											<div class="col-md-3 pr-1">
 												<div class="form-group">
 													<h6>Nama</h6>
-													<input type="text" class="form-control" placeholder="Nama" required>
+													<input type="text" class="form-control" name = "nama" placeholder="Nama" required>
 												</div>
 											</div>
 											<div class="col-md-4 pr-1">
 												<div class="form-group">
 													<h6>Agama</h6>
-													<input type="text" class="form-control" placeholder="Agama"
+													<input type="text" class="form-control" name = "agama" placeholder="Agama"
 														required>
 												</div>
 											</div>
@@ -206,21 +113,21 @@
 											<div class="col-md-5 pr-1">
 												<div class="form-group ">
 													<h6>Status</h6>
-													<input type="text" class="form-control" placeholder="Status"
+													<input type="text" class="form-control" name = "status" placeholder="Status"
 														required>
 												</div>
 											</div>
 											<div class="col-md-3 pr-1">
 												<div class="form-group">
 													<h6 for="exampleInputEmail1">Email</h6>
-													<input type="email" class="form-control" placeholder="Email"
+													<input type="email" class="form-control" name = "email" placeholder="Email"
 														required>
 												</div>
 											</div>
 											<div class="col-md-4 pr-1">
 												<div class="form-group">
 													<h6>No Hp /Telp</h6>
-													<input type="number" class="form-control" placeholder="NoHp/Telp">
+													<input type="number" class="form-control" name = "no_hp" placeholder="NoHp/Telp">
 												</div>
 											</div>
 										</div>
@@ -229,9 +136,7 @@
 											<div class="col-md-12 pr-1">
 												<div class="form-group">
 													<h6>Alamat</h6>
-													<input type="text" class="form-control" placeholder="Home Address"
-														value="Jalan Tengku Meulagu Tibang Kecamatan Syiah Kuala Banda Aceh"
-														required>
+													<input type="text" class="form-control" name = "alamat" placeholder="Home Address"required>
 												</div>
 											</div>
 										</div>
@@ -239,21 +144,19 @@
 											<div class="col-md-4 pr-1">
 												<div class="form-group text-warning">
 													<h6>Negara</h6>
-													<input type="text" class="form-control" placeholder="City"
-														value="Indonesia">
+													<input type="text" class="form-control" name = "negara" placeholder="City">
 												</div>
 											</div>
 											<div class="col-md-4 pr-1">
 												<div class="form-group text-warning">
 													<h6>Kota/Kabupaten</h6>
-													<input type="text" class="form-control" placeholder="Country"
-														value="Banda Aceh">
+													<input type="text" class="form-control" name = "kota" placeholder="Country">
 												</div>
 											</div>
 											<div class="col-md-4 pr-1">
 												<div class="form-group text-warning">
 													<h6>Kode Pos</h6>
-													<input type="number" class="form-control" placeholder="1234567">
+													<input type="number" class="form-control" name = "kodepos" placeholder="1234567">
 												</div>
 											</div>
 										</div>
@@ -261,9 +164,8 @@
 											<div class="col-md-12">
 												<div class="form-group">
 													<h6>Deskripsi</h6>
-													<textarea rows="4" cols="80" class="form-control"
-														placeholder="Ceritakan deskripsimu"
-														value="Mike">Saya adalah nelayan yang sangat ceria dan baik hati</textarea>
+													<textarea rows="4" cols="80" class="form-control" name = "deskripsi"
+														placeholder="Ceritakan deskripsimu"></textarea>
 												</div>
 											</div>
 										</div>
@@ -281,12 +183,12 @@
 										<div class="form-group shadow-none " rel="tooltip"
 											title="Klik di  sini untuk mengganti foto profil" data-placement="top">
 											<input type="file"><img type="file"
-												class="avatar border-gray rounded-circle"
+												class="avatar border-gray rounded-circle" name = "foto"
 												src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="...">
 											<h5 class="title text-primary">Maulana Ihsan Ahmad</h5>
 										</div>
 										<a href="#">
-											<button type="submit" class="btn btn-success">Simpan</button>
+											<button type="submit" name = "simpan" class="btn btn-success">Simpan</button>
 											<button class="btn btn-danger" data-dismiss="modal"
 												aria-hidden="true">Batal</button>
 										</a>
@@ -323,13 +225,13 @@
 														value="Nanti isinya sesuai yang diinputnya pas daftar">
 												</div>
 											</div>
-											<div class="col-md-3 pr-1">
+											<div class="col-md-6 pr-1">
 												<div class="form-group">
 													<h6>Nama</h6>
 													<input type="text" class="form-control" placeholder="Nama" required>
 												</div>
 											</div>
-											<div class="col-md-4 pr-1">
+											<div class="col-md-6 pr-1">
 												<div class="form-group">
 													<h6>Agama</h6>
 													<input type="text" class="form-control" placeholder="Agama"
