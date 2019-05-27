@@ -1,3 +1,4 @@
+
 <!-- content -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="<?php echo base_url() ?>assets/css/profil.css" rel="stylesheet" />
@@ -7,6 +8,7 @@
 				<div class="row ">
 					<div class="col-sm-6">
 						<h2>DAFTAR <b>ANGGOTA</b></h2>
+						<?php echo $this->session->userdata('email');?>
 					</div>
 					<div class="col-sm-6">
 						<a href="#tambahAnggota" class="btn btn-success" data-toggle="modal"><i
@@ -94,6 +96,12 @@
 								<div class="card-body">
 									<form class="p-2" method = "post" action = "">
 										<div class="row">
+										<div class="col-md-5 pr-1">
+												<div class="form-group">
+													<h6>ID</h6>
+													<input type="text" class="form-control" name = "id_member" value="<?php echo $this->session->userdata('id')?> Id" disabled>
+												</div>
+											</div>
 											<div class="col-md-3 pr-1">
 												<div class="form-group">
 													<h6>Nama</h6>
