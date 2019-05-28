@@ -58,7 +58,11 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
+<<<<<<< HEAD
 $autoload['libraries'] = array('database','form_validation','email','session');
+=======
+$autoload['libraries'] = array('database', 'form_validation', 'email', 'session');
+>>>>>>> atika
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +93,11 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
+<<<<<<< HEAD
 $autoload['helper'] = array('url','file','security');
+=======
+$autoload['helper'] = array('url', 'file', 'security');
+>>>>>>> atika
 
 /*
 | -------------------------------------------------------------------
@@ -132,4 +140,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array();
+$autoload['model'] = array('member_model');
