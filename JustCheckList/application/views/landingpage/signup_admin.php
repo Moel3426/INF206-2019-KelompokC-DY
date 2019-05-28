@@ -9,12 +9,10 @@
   <title>
     Sigup-admin
   </title>
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
-    name='viewport' />
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- CSS Files -->
   <link href="<?php echo base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="<?php echo base_url() ?>assets/css/now-ui-kit.css?v=1.3.0" rel="stylesheet" />
@@ -42,7 +40,7 @@
       <div class="container">
         <div class="col-md-4 ml-auto mr-auto">
           <div class="card card-login card-plain">
-            <form class="form" method="" action="">
+            <form class="form" method="post" action="<?php echo base_url('landing/signup_admin'); ?>">
               <div class="card-header text-center">
                 <div class="logo-container mb-1" style="height:auto;width: 130px;">
                   <img src="<?php echo base_url() ?>assets/img/logohitamputih.png" alt="">
@@ -55,66 +53,74 @@
                       <i class="now-ui-icons users_circle-08"></i>
                     </span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Nama..." required />
+                  <input type="text" class="form-control" name="nama" placeholder="Nama..." <?= set_value('nama'); ?> required />
                 </div>
                 <div class="input-group no-border input-lg">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
                       <i class="now-ui-icons ui-1_email-85"></i>
                     </span>
+                    <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                   </div>
-                  <input type="email" placeholder="Email..." class="form-control" required />
+                  <input type="email" placeholder="Email..." name="email" class="form-control" <?= set_value('email'); ?> required />
                 </div>
                 <div class="input-group no-border input-lg">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
                       <i class="now-ui-icons location_pin"></i>
                     </span>
+                    <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                   </div>
-                  <input type="text" placeholder="Alamat..." class="form-control" required />
+                  <input type="text" placeholder="Alamat..." name="alamat" class="form-control" value="<?= set_value('alamat'); ?>" required />
                 </div>
                 <div class="input-group no-border input-lg">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
                       <i class="now-ui-icons tech_mobile"></i>
                     </span>
+                    <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
                   </div>
-                  <input type="number" placeholder="Nomor HP/Telp..." class="form-control" required />
+                  <input type="number" placeholder="Nomor HP/Telp..." name="nohp" class="form-control" <?= set_value('nohp'); ?> required />
                 </div>
                 <div class="input-group no-border input-lg">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
                       <i class="now-ui-icons ui-1_lock-circle-open"></i>
                     </span>
+                    <?= form_error('nohp', '<small class="text-danger pl-3">', '</small>'); ?>
                   </div>
-                  <input type="password" placeholder="Password..." class="form-control" required />
+                  <input type="password" placeholder="Password..." class="form-control" name="password1" required />
                 </div>
                 <div class="input-group no-border input-lg">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
                       <i class="now-ui-icons ui-1_lock-circle-open"></i>
                     </span>
+                    <?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
                   </div>
-                  <input type="password" placeholder="Konfirmasi Password..." class="form-control" required />
+                  <input type="password" placeholder="Konfirmasi Password..." name="password2" class="form-control" required />
                 </div>
                 <div class="input-group no-border input-lg">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
                       <i class="now-ui-icons business_bank"></i>
                     </span>
+                    <?= form_error('password2', '<small class="text-danger pl-3">', '</small>'); ?>
                   </div>
-                  <input type="text" placeholder="Pelabuhan..." class="form-control" required />
+                  <input type="text" placeholder="Pelabuhan..." class="form-control" name="pelabuhan" <?= set_value('pelabuhan'); ?> required />
                 </div>
                 <div class="input-group no-border input-lg">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
                       <i class="now-ui-icons business_bank"></i>
                     </span>
+                    <?= form_error('pelabuhan', '<small class="text-danger pl-3">', '</small>'); ?>
                   </div>
-                  <input type="text" placeholder="ID Pelabuhan..." class="form-control" required />
+                  <input type="text" placeholder="ID Pelabuhan..." name="id_pelabuhan" id="id_pelabuhan" class="form-control" />
+                  <?= form_error('pelabuhan', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="card-footer text-center">
-                  <a href="#" class="btn btn-primary btn-round btn-lg btn-block">Daftar</a>
+                  <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">Daftar</button>
                   <div class="pull-center">
                     <p style="text-transform:inherit; font-size:12px;">
                       Daftar sebagai admin
