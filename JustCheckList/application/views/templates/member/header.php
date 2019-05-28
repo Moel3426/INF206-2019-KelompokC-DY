@@ -92,12 +92,12 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink1">
                                 <a class="dropdown-item" href="#">
-                                    Maulana Ihsan Ahmad
+                                <?= $user['nama']; ?>
                                 </a>
                                 <a class="dropdown-item" href="<?php echo base_url('home/cek_profile') ?>">
                                     <i class="now-ui-icons users_single-02"></i> Check Profile
                                 </a>
-                                <a class="dropdown-item" href="<?php echo base_url('landing/login') ?>">
+                                <a class="dropdown-item" href="<?php echo base_url('landing/logout') ?>">
                                     <i class="now-ui-icons sport_user-run"></i> Check Out
                                 </a>
                             </div>
