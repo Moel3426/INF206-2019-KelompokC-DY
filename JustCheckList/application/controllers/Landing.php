@@ -136,4 +136,10 @@ class Landing extends CI_Controller {
  			redirect('index.php/landing');
  		}
  	}
+public function logout()
+{
+	$this->session->unset_userdata('role');
+		$this->session->unset_userdata('email');
+		redirect('landing/login');
+}
 }
