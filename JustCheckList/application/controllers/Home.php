@@ -18,31 +18,15 @@ class Home extends CI_Controller
     }    
     
     public function member(){
-        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();   
-        $user=$this->db->get('addanggota'); 
-        $data['data'] = $user;
-                
+        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $data['member'] = $this->member_model->tampil_data()->result();
+        $data['users'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $data['tb_member'] = $this->db->get_where('tb_member', ['id_member' => $this->session->userdata('id')])->result_array();
         $this->load->view('templates/member/header',$data);
-        $this->load->view('member/member',$data);
+        $this->load->view('member/member', $data);
         $this->load->view('templates/member/footer');
 	
-		if (isset($_POST['simpan'])){
-				// add user in database
-				$data = array(
-					'nama'	=>	$_POST['nama'],
-					'agama' => $_POST['email'],
-					'status'=> $_POST['status'],
-					'no_hp'	=> $_POST['no_hp'],
-                    'alamat' => $_POST['alamat'],
-                    'email' => $_POST['email'],
-                    'negara' => $_POST['negara'],
-                    'kota' => $_POST['kota'],
-                    'kodepos' => $_POST['kodepos'],
-                    'deskripsi' => $_POST['deskripsi']
-				);
-                $this->db->insert('addanggota', $data);
-                redirect('home/member','refresh');
-			}
+		
 	}
 
     public function berangkat(){
