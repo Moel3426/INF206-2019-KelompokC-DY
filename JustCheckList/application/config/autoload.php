@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -58,11 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-<<<<<<< HEAD
-$autoload['libraries'] = array('database','form_validation','email','session');
-=======
 $autoload['libraries'] = array('database', 'form_validation', 'email', 'session');
->>>>>>> atika
 
 /*
 | -------------------------------------------------------------------
@@ -93,11 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-<<<<<<< HEAD
-$autoload['helper'] = array('url','file','security');
-=======
 $autoload['helper'] = array('url', 'file', 'security');
->>>>>>> atika
 
 /*
 | -------------------------------------------------------------------
