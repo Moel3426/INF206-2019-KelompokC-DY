@@ -2,10 +2,10 @@
 class tb_member_model extends CI_Model
 {
 
-    public function getAnggotaByIdBos($id)
-    {
-        $this->db->where('id_member', $id);
+	public function getAnggotaByIdBos($id)
+	{
+		$this->db->where('id_member', $id);
 
-        return $this->db->get('tb_member')->result();
-    }
+		return $this->db->get('tb_member')->result();
+	}
 }

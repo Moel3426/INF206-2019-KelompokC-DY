@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <!-- berlaayar.php -->
+
 <head>
 	<title>Grafik Stok Barang</title>
 

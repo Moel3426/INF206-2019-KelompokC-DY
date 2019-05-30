@@ -97,7 +97,13 @@ class Landing extends CI_Controller
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'pelabuhan' => $this->input->post('pelabuhan', true),
 				'id_pelabuhan' => $this->input->post('id_pelabuhan', true),
-				'role' => 1
+				'role' => 1,
+				'agama' => 'kosong',
+				'status' => 'kosong',
+				'gambar' => 'default-avatar.png',
+				'negara' => 'kosong',
+				'kode_pos' => 0,
+				'deskripsi' => 'kosong'
 			];
 			$this->db->insert('users', $data);
 			$this->session->set_flashdata('message', '<div class= "alert alert-success" role="alert">
@@ -129,7 +135,13 @@ class Landing extends CI_Controller
 				'no_hp' => $this->input->post('nohp', true),
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'id_kapal' => $this->input->post('id_kapal', true),
-				'role' => 2
+				'role' => 2,
+				'agama' => 'kosong',
+				'status' => 'kosong',
+				'gambar' => 'default-avatar.png',
+				'negara' => 'kosong',
+				'kode_pos' => 0,
+				'deskripsi' => 'kosong'
 
 			];
 
