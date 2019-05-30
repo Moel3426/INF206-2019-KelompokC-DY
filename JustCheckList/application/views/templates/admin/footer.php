@@ -21,6 +21,32 @@
 </footer>
 <!-- End Navbar -->
 
+
+<!--  Undang Anggota Modal -->
+<div id="undangAnggota" class="modal fade">
+	<div class="modal-dialog" style="max-width:400px;">
+		<div class="modal-content">
+			<form action="<?= base_url('admin/index') ?>" method="post">
+				<div class="modal-header">
+					<h4 class="modal-title">Undang Anggota</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="col-md-12 p-1">
+						<div class="form-group">
+							<p>Cari Anggota</p>
+							<input type="search" name="nama" class="form-control" placeholder="Nama" required>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" class="btn btn-success" value="OK">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
 <!--   Core JS Files   -->
 <script src="<?php echo base_url() ?>assets/js/core/jquery.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url() ?>assets/js/core/popper.min.js" type="text/javascript"></script>

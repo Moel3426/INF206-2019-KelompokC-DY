@@ -6,30 +6,61 @@ class Admin extends CI_Controller
 	public function __construct()
 	{
 		Parent::__construct();
+		$this->load->library('form_validation');
 		$this->load->model('member_model');
+		$this->load->model('keberangkatan_model');
 	}
 	public function index()
 	{
-		$list = [
-			'cuaca buruk',
-			'hasil tangkapan belum mencapai target'
-		];
+		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
+		if ($this->form_validation->run() == false) {
+			$data['inbox'] = 0;
+			$anggota = $this->db->get_where('anggota', ['admin_id' => $this->session->userdata('id')])->result();
+			foreach ($anggota as $a) {
+				$data['inbox'] += $this->db->get_where('keberangkatan', ['status' => 'dalam proses', 'user_id' => $a->member_id])->num_rows();
+			}
 
-		$data['jumlah_alasan'] = count($list);
-		for ($i = 0; $i < $data['jumlah_alasan']; $i++) {
-			$data['item'][] = $this->db->query("select * from keterlambatan where alasan_keterlambatan='$list[$i]' group by bulan order by bulan DESC");
+			$list = [
+				'cuaca buruk',
+				'hasil tangkapan belum mencapai target'
+			];
+
+			$data['jumlah_alasan'] = count($list);
+			for ($i = 0; $i < $data['jumlah_alasan']; $i++) {
+				$data['item'][] = $this->db->query("select * from keterlambatan where alasan_keterlambatan='$list[$i]' group by bulan order by bulan DESC");
+			}
+			$data['data'] = $this->db->query('select * from nelayan_berlayar');
+			$data['keberangkatan'] = $this->db->get('keberangkatan');
+			$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+
+			$this->load->view('templates/admin/header', $data);
+			$this->load->view('admin/index', $data, $list);
+			$this->load->view('templates/admin/footer');
+		} else {
+			$cek = $this->db->get_where('users', ['nama' => $this->input->post('nama'), 'role' => 2]);
+			if ($cek->num_rows() > 0) {
+				$member = $cek->row();
+				$data = [
+					'member_id' => $member->id,
+					'admin_id' => $this->session->userdata('id')
+				];
+				$this->db->insert('anggota', $data);
+				redirect('admin/member');
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">member dengan nama ' . $this->input->post('nama') . ' tidak ada </div>');
+				redirect('admin');
+			}
 		}
-		$data['data'] = $this->db->query('select * from nelayan_berlayar');
-
-		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-
-		$this->load->view('templates/admin/header', $data);
-		$this->load->view('admin/index', $data, $list);
-		$this->load->view('templates/admin/footer');
 	}
 
 	public function welcome()
 	{
+		$data['inbox'] = 0;
+		$anggota = $this->db->get_where('anggota', ['admin_id' => $this->session->userdata('id')])->result();
+		foreach ($anggota as $a) {
+			$data['inbox'] += $this->db->get_where('keberangkatan', ['status' => 'dalam proses', 'user_id' => $a->member_id])->num_rows();
+		}
+
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
 		$this->load->view('templates/admin/header', $data);
 		$this->load->view('admin/welcome');
@@ -38,14 +69,27 @@ class Admin extends CI_Controller
 
 	public function member()
 	{
+		$data['inbox'] = 0;
+		$anggota = $this->db->get_where('anggota', ['admin_id' => $this->session->userdata('id')])->result();
+		foreach ($anggota as $a) {
+			$data['inbox'] += $this->db->get_where('keberangkatan', ['status' => 'dalam proses', 'user_id' => $a->member_id])->num_rows();
+		}
+
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+		$data['member'] = $this->db->get_where('anggota', ['admin_id' => $this->session->userdata('id')]);
 		$this->load->view('templates/admin/header', $data);
-		$this->load->view('admin/member');
+		$this->load->view('admin/member', $data);
 		$this->load->view('templates/admin/footer');
 	}
 
 	public function memberView()
 	{
+		$data['inbox'] = 0;
+		$anggota = $this->db->get_where('anggota', ['admin_id' => $this->session->userdata('id')])->result();
+		foreach ($anggota as $a) {
+			$data['inbox'] += $this->db->get_where('keberangkatan', ['status' => 'dalam proses', 'user_id' => $a->member_id])->num_rows();
+		}
+
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
 		$this->load->view('templates/admin/header', $data);
 		$this->load->view('admin/memberView');
@@ -54,22 +98,55 @@ class Admin extends CI_Controller
 
 	public function inbox()
 	{
-		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-		$this->load->view('templates/admin/header', $data);
-		$this->load->view('admin/inbox');
-		$this->load->view('templates/admin/footer');
+		if (!$this->input->get('status')) {
+
+			$data['inbox'] = 0;
+			$i = 0;
+			$anggota = $this->db->get_where('anggota', ['admin_id' => $this->session->userdata('id')])->result();
+			foreach ($anggota as $a) {
+				$data['inbox'] += $this->db->get_where('keberangkatan', ['status' => 'dalam proses', 'user_id' => $a->member_id])->num_rows();
+				$data['konfirmasi'][$i++] = $this->db->get_where('keberangkatan', ['status' => 'dalam proses', 'user_id' => $a->member_id]);
+			}
+
+			$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+			$this->load->view('templates/admin/header', $data);
+			$this->load->view('admin/inbox', $data);
+			$this->load->view('templates/admin/footer');
+		} else {
+			$this->db->set('status', $this->input->get('status'));
+			$this->db->set('waktu_konfirmasi', date('Y-m-d H:i:s', time()));
+			$this->db->where('id', $this->input->get('id'));
+			$this->db->update('keberangkatan');
+			redirect('admin/inbox');
+		}
 	}
 
 	public function pesan()
 	{
+		$data['inbox'] = 0;
+		$anggota = $this->db->get_where('anggota', ['admin_id' => $this->session->userdata('id')])->result();
+		foreach ($anggota as $a) {
+			$data['inbox'] += $this->db->get_where('keberangkatan', ['status' => 'dalam proses', 'user_id' => $a->member_id])->num_rows();
+		}
+
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+
+		$data['keterangan'] = $this->db->get_where('keberangkatan', ['id' => $this->input->get('id')])->row();
+		$data['anggotaIkut'] = $this->keberangkatan_model->getAnggotaIkutById($this->input->get('id'));
+
 		$this->load->view('templates/admin/header', $data);
-		$this->load->view('admin/pesan');
+		$this->load->view('admin/pesan', $data);
 		$this->load->view('templates/admin/footer');
 	}
 
 	public function cek_profile()
 	{
+		$data['inbox'] = 0;
+		$anggota = $this->db->get_where('anggota', ['admin_id' => $this->session->userdata('id')])->result();
+		foreach ($anggota as $a) {
+			$data['inbox'] += $this->db->get_where('keberangkatan', ['status' => 'dalam proses', 'user_id' => $a->member_id])->num_rows();
+		}
+
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
 		$this->load->view('templates/admin/header', $data);
 		$this->load->view('admin/cek_profile', $data);
@@ -79,6 +156,12 @@ class Admin extends CI_Controller
 	public function edit_profile()
 	{
 		$this->load->library('form_validation');
+
+		$data['inbox'] = 0;
+		$anggota = $this->db->get_where('anggota', ['admin_id' => $this->session->userdata('id')])->result();
+		foreach ($anggota as $a) {
+			$data['inbox'] += $this->db->get_where('keberangkatan', ['status' => 'dalam proses', 'user_id' => $a->member_id])->num_rows();
+		}
 
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|matches[password1]');
 		$this->form_validation->set_rules('password1', 'Password', 'trim|required|matches[password]');
@@ -129,5 +212,12 @@ class Admin extends CI_Controller
 			$this->db->update('users', $data);
 			redirect('admin/cek_profile');
 		}
+	}
+
+	public function delete()
+	{
+		$where = array('id' => $this->input->get('id'));
+		$this->member_model->hapus_data($where, 'anggota');
+		redirect('admin/member');
 	}
 }
