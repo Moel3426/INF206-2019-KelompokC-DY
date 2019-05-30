@@ -124,7 +124,7 @@
 										<div class="col-md-12 pr-1">
 											<div class="form-group">
 												<h6>Alamat</h6>
-												<input type="text" name="alamat" class="form-control" placeholder="Home Address" value="Jalan Tengku Meulagu Tibang Kecamatan Syiah Kuala Banda Aceh" required>
+												<input type="text" name="alamat" class="form-control" placeholder="Home Address" required>
 											</div>
 										</div>
 									</div>
@@ -132,19 +132,19 @@
 										<div class="col-md-4 pr-1">
 											<div class="form-group text-warning">
 												<h6>Negara</h6>
-												<input type="text" name="negara" class="form-control" placeholder="City" value="Indonesia">
+												<input type="text" name="negara" class="form-control" placeholder="City">
 											</div>
 										</div>
 										<div class="col-md-4 pr-1">
 											<div class="form-group text-warning">
 												<h6>Kota/Kabupaten</h6>
-												<input type="text" name="kotakabupaten" class="form-control" placeholder="Country" value="Banda Aceh">
+												<input type="text" name="kotakabupaten" class="form-control" placeholder="Country">
 											</div>
 										</div>
 										<div class="col-md-4 pr-1">
 											<div class="form-group text-warning">
 												<h6>Kode Pos</h6>
-												<input type="number" name="kodepos" class="form-control" placeholder="1234567">
+												<input type="number" name="kodepos" class="form-control">
 											</div>
 										</div>
 									</div>
@@ -163,7 +163,7 @@
 										<div class="col-md-12">
 											<div class="form-group">
 												<h6>Deskripsi</h6>
-												<textarea rows="4" cols="80" name="deskripsi" class="form-control" placeholder="Ceritakan deskripsimu" value="Mike">Saya adalah nelayan yang sangat ceria dan baik hati</textarea>
+												<textarea rows="4" cols="80" name="deskripsi" class="form-control" placeholder="Ceritakan deskripsimu"></textarea>
 											</div>
 										</div>
 									</div>
