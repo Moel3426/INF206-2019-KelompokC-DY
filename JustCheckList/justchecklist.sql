@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Bulan Mei 2019 pada 09.28
--- Versi server: 10.1.37-MariaDB
--- Versi PHP: 7.3.1
+-- Generation Time: May 30, 2019 at 11:46 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `keterlambatan`
+-- Table structure for table `keberangkatan`
+--
+
+CREATE TABLE `keberangkatan` (
+  `id_kapal` int(11) NOT NULL,
+  `keberangkatan` varchar(12) NOT NULL,
+  `tiba` varchar(12) NOT NULL,
+  `anggota` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'dalam proses',
+  `waktu_konfirmasi` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `keterangan` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `keberangkatan`
+--
+
+INSERT INTO `keberangkatan` (`id_kapal`, `keberangkatan`, `tiba`, `anggota`, `status`, `waktu_konfirmasi`, `keterangan`) VALUES
+(12345, '05/31/2019', '06/12/2019', '[\"24\"]', 'dalam proses', '0000-00-00 00:00:00', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `keterlambatan`
 --
 
 CREATE TABLE `keterlambatan` (
@@ -37,7 +60,7 @@ CREATE TABLE `keterlambatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `keterlambatan`
+-- Dumping data for table `keterlambatan`
 --
 
 INSERT INTO `keterlambatan` (`id`, `alasan_keterlambatan`, `jumlah_keterlambatan`, `bulan`, `tahun`) VALUES
@@ -69,7 +92,7 @@ INSERT INTO `keterlambatan` (`id`, `alasan_keterlambatan`, `jumlah_keterlambatan
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `nelayan_berlayar`
+-- Table structure for table `nelayan_berlayar`
 --
 
 CREATE TABLE `nelayan_berlayar` (
@@ -80,7 +103,7 @@ CREATE TABLE `nelayan_berlayar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `nelayan_berlayar`
+-- Dumping data for table `nelayan_berlayar`
 --
 
 INSERT INTO `nelayan_berlayar` (`id`, `jumlah_user_berlayar`, `bulan`, `tahun`) VALUES
@@ -100,7 +123,29 @@ INSERT INTO `nelayan_berlayar` (`id`, `jumlah_user_berlayar`, `bulan`, `tahun`) 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `tb_member`
+--
+
+CREATE TABLE `tb_member` (
+  `id_member` int(11) NOT NULL,
+  `foto` varchar(500) NOT NULL,
+  `id` int(11) NOT NULL,
+  `nama` varchar(120) NOT NULL,
+  `agama` varchar(100) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `email` varchar(120) NOT NULL,
+  `noHp` varchar(12) NOT NULL,
+  `alamat` varchar(100) NOT NULL,
+  `negara` varchar(100) NOT NULL,
+  `kotakabupaten` varchar(100) NOT NULL,
+  `kodepos` int(100) NOT NULL,
+  `deskripsi` varchar(10000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -113,61 +158,79 @@ CREATE TABLE `users` (
   `id_kapal` int(11) DEFAULT NULL,
   `pelabuhan` varchar(100) DEFAULT NULL,
   `id_pelabuhan` int(11) DEFAULT NULL,
-  `role` varchar(6) NOT NULL
+  `role` varchar(6) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `negara` varchar(255) NOT NULL,
+  `kode_pos` int(11) NOT NULL,
+  `deskripsi` varchar(255) NOT NULL,
+  `gambar` varchar(255) NOT NULL,
+  `agama` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `nama`, `email`, `alamat`, `no_hp`, `password`, `id_kapal`, `pelabuhan`, `id_pelabuhan`, `role`) VALUES
-(4, 'fadhil', 'fadhil12@gmail.com', 'werew', '123456654', '$2y$10$.Zra6vv86m5cH0.N7m/xfunNAhed1lmZuIRjiY9xYIfR2QlsZmuj2', 12345, NULL, NULL, '2'),
-(5, 'daffa', 'daffa12@gmaail.com', 'setui', '243252454', '$2y$10$W75Mj04AuUB8TnWPOCyuWu7Aa2TnIe9/AJMqAjOBlAJWUU3IF.zSa', NULL, 'mata ie', NULL, '1');
+INSERT INTO `users` (`id`, `nama`, `email`, `alamat`, `no_hp`, `password`, `id_kapal`, `pelabuhan`, `id_pelabuhan`, `role`, `status`, `negara`, `kode_pos`, `deskripsi`, `gambar`, `agama`) VALUES
+(10, 'Aqil Fiqran', 'aqil@gmail.com', 'lamtemen', '081264563223', '$2y$10$w7CWaja793jKmWWrfTbIS.hIYgcc3ZZUe/D.cW1g/z0/ZcWMTrFW2', NULL, 'lampulo', 1, '1', 'belum nikah', 'Indonesia', 23231, 'bergembira bersama', 'carrot-cake.jpg', 'Islam'),
+(11, 'thari', 'thari@gmail.com', 'rukoh', '0822334455', '$2y$10$HZE/gSq3jbaqNwTIlFUfuemGn6WBjUPHRVokkoVrmMbk0rcxP6hy2', 1, NULL, NULL, '2', 'kosong', 'kosong', 0, 'kosong', 'default-avatar.png', 'kosong');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `keterlambatan`
+-- Indexes for table `keterlambatan`
 --
 ALTER TABLE `keterlambatan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `nelayan_berlayar`
+-- Indexes for table `nelayan_berlayar`
 --
 ALTER TABLE `nelayan_berlayar`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `tb_member`
+--
+ALTER TABLE `tb_member`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `keterlambatan`
+-- AUTO_INCREMENT for table `keterlambatan`
 --
 ALTER TABLE `keterlambatan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT untuk tabel `nelayan_berlayar`
+-- AUTO_INCREMENT for table `nelayan_berlayar`
 --
 ALTER TABLE `nelayan_berlayar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `tb_member`
+--
+ALTER TABLE `tb_member`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
