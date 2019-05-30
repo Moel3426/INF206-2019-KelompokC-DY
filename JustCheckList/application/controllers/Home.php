@@ -22,6 +22,7 @@ class Home extends CI_Controller
 			$data['item'][] = $this->db->query("select * from keterlambatan where alasan_keterlambatan='$list[$i]' group by bulan order by bulan DESC");
 		}
 		$data['data'] = $this->db->query('select * from nelayan_berlayar');
+		$data['keberangkatan'] = $this->db->get('keberangkatan');
 
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
 		$this->load->view('templates/member/header', $data);
@@ -41,7 +42,6 @@ class Home extends CI_Controller
 	{
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
 		$data['member'] = $this->member_model->tampil_data()->result();
-		$data['users'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
 		$data['tb_member'] = $this->db->get_where('tb_member', ['id_member' => $this->session->userdata('id')])->result_array();
 		$this->load->view('templates/member/header', $data);
 		$this->load->view('member/member', $data);
@@ -66,7 +66,8 @@ class Home extends CI_Controller
 			'id_kapal' => $this->input->post('idkapal'),
 			'keberangkatan' => $this->input->post('Keberangkatan', true),
 			'tiba' => $this->input->post('Tiba', true),
-			'anggota' => $anggota
+			'anggota' => $anggota,
+			'user_id' => $this->session->userdata('id')
 		];
 		$this->db->insert('keberangkatan',  $data);
 		$this->session->set_userdata($data);
@@ -88,7 +89,9 @@ class Home extends CI_Controller
 	{
 
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-		$data['keberangkatan'] = $this->keberangkatan_model->getDataById($data['user']['id_kapal']);
+		$data['anggotaIkut'] = $this->keberangkatan_model->getAnggotaIkutByIdKapal($data['user']['id_kapal']);
+		$data['keberangkatan'] = $this->db->get_where('keberangkatan', ['id_kapal' => $data['user']['id_kapal']]);
+
 		$this->load->view('templates/member/header', $data);
 		$this->load->view('member/tiba');
 		$this->load->view('templates/member/footer');

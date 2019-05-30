@@ -82,7 +82,7 @@
 										<div class="col-md-5 pr-1">
 											<div class="form-group ">
 												<h6>ID </h6>
-												<input type="text" name="id" class="form-control" readonly value="<?php echo $users['id']; ?>">
+												<input type="text" name="id" class="form-control" readonly value="<?php echo $user['id']; ?>">
 											</div>
 										</div>
 										<div class="col-md-3 pr-1">

@@ -67,7 +67,9 @@
 							<a class="nav-link" href="<?php echo base_url() ?>admin/inbox" onclick="scrollToDownload()">
 								<i class="now-ui-icons ui-1_email-85"></i>
 								<p>Inbox</p>
-								<span class="badge badge-danger badge-counter">100</span>
+								<?php if ($inbox > 0) { ?>
+									<span class="badge badge-danger badge-counter"><?= $inbox ?></span>
+								<?php } ?>
 							</a>
 						</li>
 						<li class="nav-item dropdown">

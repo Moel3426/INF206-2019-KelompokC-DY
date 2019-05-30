@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2019 at 11:46 AM
+-- Generation Time: May 30, 2019 at 04:57 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -25,6 +25,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `anggota`
+--
+
+CREATE TABLE `anggota` (
+  `id` int(11) NOT NULL,
+  `admin_id` int(11) NOT NULL,
+  `member_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `anggota`
+--
+
+INSERT INTO `anggota` (`id`, `admin_id`, `member_id`) VALUES
+(3, 10, 11);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `keberangkatan`
 --
 
@@ -35,15 +54,19 @@ CREATE TABLE `keberangkatan` (
   `anggota` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'dalam proses',
   `waktu_konfirmasi` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
-  `keterangan` varchar(255) NOT NULL
+  `keterangan` varchar(255) NOT NULL,
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `keberangkatan`
 --
 
-INSERT INTO `keberangkatan` (`id_kapal`, `keberangkatan`, `tiba`, `anggota`, `status`, `waktu_konfirmasi`, `keterangan`) VALUES
-(12345, '05/31/2019', '06/12/2019', '[\"24\"]', 'dalam proses', '0000-00-00 00:00:00', '');
+INSERT INTO `keberangkatan` (`id_kapal`, `keberangkatan`, `tiba`, `anggota`, `status`, `waktu_konfirmasi`, `keterangan`, `id`, `user_id`) VALUES
+(1, '05/08/2019', '05/23/2019', '[\"24\"]', 'diterima', '2019-05-30 14:34:01', 'on time', 5, 11),
+(1, '05/22/2019', '05/28/2019', '[\"24\"]', 'ditolak', '2019-05-30 14:34:11', 'on time', 6, 11),
+(1, '05/22/2019', '05/28/2019', '[\"24\",\"25\"]', 'diterima', '2019-05-30 09:56:22', '', 7, 11);
 
 -- --------------------------------------------------------
 
@@ -142,6 +165,14 @@ CREATE TABLE `tb_member` (
   `deskripsi` varchar(10000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_member`
+--
+
+INSERT INTO `tb_member` (`id_member`, `foto`, `id`, `nama`, `agama`, `status`, `email`, `noHp`, `alamat`, `negara`, `kotakabupaten`, `kodepos`, `deskripsi`) VALUES
+(11, '1.jpg', 24, 'yaumil', 'islam', 'belum nikah', 'yaumil@gmail.com', '081361300136', 'ketapang', 'Indonesia', 'banda aceh', 23235, 'waw'),
+(11, 'profilcewek.jpg', 25, 'maulana', 'islam', 'belum nikah', 'maulana@gmail.com', '92749823', 'ketapang', 'indonesia', 'banda aceh', 23232, 'harini bekuah');
+
 -- --------------------------------------------------------
 
 --
@@ -180,6 +211,18 @@ INSERT INTO `users` (`id`, `nama`, `email`, `alamat`, `no_hp`, `password`, `id_k
 --
 
 --
+-- Indexes for table `anggota`
+--
+ALTER TABLE `anggota`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `keberangkatan`
+--
+ALTER TABLE `keberangkatan`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `keterlambatan`
 --
 ALTER TABLE `keterlambatan`
@@ -209,6 +252,18 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `anggota`
+--
+ALTER TABLE `anggota`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `keberangkatan`
+--
+ALTER TABLE `keberangkatan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `keterlambatan`
 --
 ALTER TABLE `keterlambatan`
@@ -224,7 +279,7 @@ ALTER TABLE `nelayan_berlayar`
 -- AUTO_INCREMENT for table `tb_member`
 --
 ALTER TABLE `tb_member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -117,70 +117,22 @@ foreach ($data->result() as $d) {
 					<th>ID Kapal</th>
 					<th>Keberangkatan</th>
 					<th>Tiba</th>
-					<th></th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>
-						<span class="custom-checkbox">
-							<input type="checkbox" id="checkbox1" name="options[]" value="1">
-							<label for="checkbox1"></label>
-						</span>
-					</td>
-					<td>1</td>
-					<td>Sabtu, 10 Maret 2019/ 18:00</td>
-					<td>Minggu, 11 Maret 2019/ 18.00</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>
-						<span class="custom-checkbox">
-							<input type="checkbox" id="checkbox2" name="options[]" value="1">
-							<label for="checkbox2"></label>
-						</span>
-					</td>
-					<td>2</td>
-					<td>Sabtu, 10 Maret 2019/ 18:00</td>
-					<td>Minggu, 11 Maret 2019/ 18.00</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>
-						<span class="custom-checkbox">
-							<input type="checkbox" id="checkbox3" name="options[]" value="1">
-							<label for="checkbox3"></label>
-						</span>
-					</td>
-					<td>3</td>
-					<td>Sabtu, 10 Maret 2019/ 18:00</td>
-					<td>Minggu, 11 Maret 2019/ 18.00</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>
-						<span class="custom-checkbox">
-							<input type="checkbox" id="checkbox4" name="options[]" value="1">
-							<label for="checkbox4"></label>
-						</span>
-					</td>
-					<td>4</td>
-					<td>Sabtu, 10 Maret 2019/ 18:00</td>
-					<td>Minggu, 11 Maret 2019/ 18.00</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>
-						<span class="custom-checkbox">
-							<input type="checkbox" id="checkbox5" name="options[]" value="1">
-							<label for="checkbox5"></label>
-						</span>
-					</td>
-					<td>5</td>
-					<td>Sabtu, 10 Maret 2019/ 18:00</td>
-					<td>Minggu, 11 Maret 2019/ 18.00</td>
-					<td></td>
-				</tr>
+				<?php foreach ($keberangkatan->result() as $k) : ?>
+					<tr>
+						<td>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="checkbox1" name="options[]" value="1">
+								<label for="checkbox1"></label>
+							</span>
+						</td>
+						<td><?= $k->id ?></td>
+						<td><?= $k->keberangkatan; ?></td>
+						<td><?= $k->tiba; ?></td>
+					</tr>
+				<?php endforeach; ?>
 			</tbody>
 		</table>
 		<div class="clearfix">
@@ -197,32 +149,6 @@ foreach ($data->result() as $d) {
 		</div>
 	</div>
 </div>
-<!--  Undang Anggota Modal -->
-<div id="undangAnggota" class="modal fade">
-	<div class="modal-dialog" style="max-width:400px;">
-		<div class="modal-content">
-			<form>
-				<div class="modal-header">
-					<h4 class="modal-title">Undang Anggota</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">
-					<div class="col-md-12 p-1">
-						<div class="form-group">
-							<p>Cari Anggota</p>
-							<input type="search" class="form-control" placeholder="Nama" required>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<input type="submit" class="btn btn-success" value="OK">
-					<input type="button" class="btn btn-danger" data-dismiss="modal" value="Batal">
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
 <script>
