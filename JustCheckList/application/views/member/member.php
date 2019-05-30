@@ -179,7 +179,7 @@
 								<div class="author">
 									<div class="form-group shadow-none " rel="tooltip" title="Klik di  sini untuk mengganti foto profil" data-placement="top">
 										<input type="file"><img type="file" class="avatar border-gray rounded-circle" src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="...">
-										<h5 class="title text-primary">Maulana Ihsan Ahmad</h5>
+										<h5 class="title text-primary"><?= $user['nama'] ?></h5>
 									</div>
 									<button type="submit" class="btn btn-success">Simpan</button>
 									<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Batal</button>
