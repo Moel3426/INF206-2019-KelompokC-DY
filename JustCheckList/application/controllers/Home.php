@@ -46,10 +46,10 @@ class Home extends CI_Controller
 	{
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
 		$data['member'] = $this->member_model->tampil_data()->result();
-        $data['tb_member'] = $this->db->get_where('tb_member', ['id_member' => $this->session->userdata('id')])->result_array();
-        $this->load->view('templates/member/header', $data);
-        $this->load->view('member/member', $data);
-        $this->load->view('templates/member/footer');
+		$data['tb_member'] = $this->db->get_where('tb_member', ['id_member' => $this->session->userdata('id')])->result_array();
+		$this->load->view('templates/member/header', $data);
+		$this->load->view('member/member', $data);
+		$this->load->view('templates/member/footer');
 	}
 
 	//fungsi menampilkan laman berangkat
@@ -92,7 +92,6 @@ class Home extends CI_Controller
 	//fungsi menampilkan laman tiba(nelayan pulang berlayar)
 	public function tiba()
 	{
-
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
 		$data['anggotaIkut'] = $this->keberangkatan_model->getAnggotaIkutByIdKapal($data['user']['id_kapal']);
 		$data['keberangkatan'] = $this->db->get_where('keberangkatan', ['id_kapal' => $data['user']['id_kapal']]);
@@ -105,6 +104,10 @@ class Home extends CI_Controller
 	public function history()
 	{
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+		$data['anggotaIkut'] = $this->keberangkatan_model->getAnggotaIkutByIdKapal($data['user']['id_kapal']);
+		$data['keberangkatan'] = $this->db->get_where('keberangkatan', ['id_kapal' => $data['user']['id_kapal']]);
+
+
 		$this->load->view('templates/member/header', $data);
 		$this->load->view('member/history');
 		$this->load->view('templates/member/footer');
