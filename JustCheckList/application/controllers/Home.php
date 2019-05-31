@@ -10,8 +10,10 @@ class Home extends CI_Controller
 		$this->load->model('keberangkatan_model');
 	}
 
+	//fungsi menampilkan laman dashboard
 	public function index()
 	{
+		//list faktor keterlambatan pulang berlayar
 		$list = [
 			'cuaca buruk',
 			'hasil tangkapan belum mencapai target'
@@ -30,6 +32,7 @@ class Home extends CI_Controller
 		$this->load->view('templates/member/footer');
 	}
 
+	//fungsi menampilkan laman welcome
 	public function welcome()
 	{
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
@@ -38,16 +41,18 @@ class Home extends CI_Controller
 		$this->load->view('templates/member/footer');
 	}
 
+	//fungsi menampilkan laman member
 	public function member()
 	{
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
 		$data['member'] = $this->member_model->tampil_data()->result();
-		$data['tb_member'] = $this->db->get_where('tb_member', ['id_member' => $this->session->userdata('id')])->result_array();
-		$this->load->view('templates/member/header', $data);
-		$this->load->view('member/member', $data);
-		$this->load->view('templates/member/footer');
+        $data['tb_member'] = $this->db->get_where('tb_member', ['id_member' => $this->session->userdata('id')])->result_array();
+        $this->load->view('templates/member/header', $data);
+        $this->load->view('member/member', $data);
+        $this->load->view('templates/member/footer');
 	}
 
+	//fungsi menampilkan laman berangkat
 	public function berangkat()
 	{
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
@@ -57,7 +62,7 @@ class Home extends CI_Controller
 		$this->load->view('templates/member/footer');
 	}
 
-
+	//fungsi menampilkan laman untuk insert keberangkatan
 	public function insertBerangkat()
 	{
 		// menjadikan array menjadi string
@@ -74,7 +79,7 @@ class Home extends CI_Controller
 
 		redirect('home/preview');
 	}
-
+	//fungsi menampilkan laman preview
 	public function preview()
 	{
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
@@ -84,7 +89,7 @@ class Home extends CI_Controller
 		$this->load->view('member/preview');
 		$this->load->view('templates/member/footer');
 	}
-
+	//fungsi menampilkan laman tiba(nelayan pulang berlayar)
 	public function tiba()
 	{
 
@@ -96,7 +101,7 @@ class Home extends CI_Controller
 		$this->load->view('member/tiba');
 		$this->load->view('templates/member/footer');
 	}
-
+	//fungsi menampilkan laman history(semua jadwal berlayar )
 	public function history()
 	{
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
@@ -105,7 +110,7 @@ class Home extends CI_Controller
 		$this->load->view('templates/member/footer');
 	}
 
-
+	//fungsi menampilkan laman profil
 	public function cek_profile()
 	{
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
@@ -114,6 +119,7 @@ class Home extends CI_Controller
 		$this->load->view('templates/member/footer');
 	}
 
+	//fungsi menampilkan laman edit profil
 	public function edit_profile()
 	{
 		$this->load->library('form_validation');
@@ -153,7 +159,7 @@ class Home extends CI_Controller
 
 			$data = array(
 				'nama'              => $nama,
-				'password'              =>  password_hash($password, PASSWORD_DEFAULT),
+				'password'          =>  password_hash($password, PASSWORD_DEFAULT),
 				'agama'             => $agama,
 				'status'            => $status,
 				'no_hp'              => $noHp,
