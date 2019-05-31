@@ -53,6 +53,7 @@ class Landing extends CI_Controller
 				$data = [
 					'email' => $user['email'],
 					'role' => $user['role'],
+					'nama' => $user['nama'],
 					'id' => $user['id'],
 					'status' => 'loggen_in'
 				];
