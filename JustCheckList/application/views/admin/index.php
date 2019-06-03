@@ -17,6 +17,7 @@ foreach ($data->result() as $d) {
 
 <!-- content -->
 <div class="container-fluid pl-5 pr-5 pt-5 mt-5">
+	<?= $this->session->flashdata('message'); ?>
 	<div class="row">
 		<div class="col-xl-4 col-md-6 mb-4">
 			<div class="card border-left-success shadow h-100 py-2">

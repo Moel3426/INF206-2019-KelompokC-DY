@@ -29,76 +29,23 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr href="#cekAnggota" class="view" data-toggle="modal" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top">
-					<td>
-						<span class="custom-checkbox">
-							<input type="checkbox" id="checkbox1" name="options[]" value="1">
-							<label for="checkbox1"></label>
-						</span>
-					</td>
-					<td>1</td>
-					<td><img class="gambar" src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="" /></td>
-					<td>Maulana Ihsan Ahmad</td>
-					<td>maulanaihsanpress@gmail.com</td>
-					<td>Tibang, Syiah Kuala Banda Aceh</td>
-					<td>081264563223</td>
-				</tr>
-				<tr href="#cekAnggota" class="view" data-toggle="modal" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top">
-					<td>
-						<span class="custom-checkbox">
-							<input type="checkbox" id="checkbox2" name="options[]" value="1">
-							<label for="checkbox2"></label>
-						</span>
-					</td>
-					<td>2</td>
-					<td><img class="gambar" src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="" /></td>
-					<td>Dominique Perrier</td>
-					<td>dominiqueperrier@mail.com</td>
-					<td>Obere Str. 57, Berlin, Germany</td>
-					<td>(313) 555-5735</td>
-				</tr>
-				<tr href="#cekAnggota" class="view" data-toggle="modal" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top">
-					<td>
-						<span class="custom-checkbox">
-							<input type="checkbox" id="checkbox3" name="options[]" value="1">
-							<label for="checkbox3"></label>
-						</span>
-					</td>
-					<td>3</td>
-					<td><img class="gambar" src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="" /></td>
-					<td>Maria Anders</td>
-					<td>mariaanders@mail.com</td>
-					<td>25, rue Lauriston, Paris, France</td>
-					<td>(503) 555-9931</td>
-				</tr>
-				<tr href="#cekAnggota" class="view" data-toggle="modal" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top">
-					<td>
-						<span class="custom-checkbox">
-							<input type="checkbox" id="checkbox4" name="options[]" value="1">
-							<label for="checkbox4"></label>
-						</span>
-					</td>
-					<td>4</td>
-					<td><img class="gambar" src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="" /></td>
-					<td>Fran Wilson</td>
-					<td>franwilson@mail.com</td>
-					<td>C/ Araquil, 67, Madrid, Spain</td>
-					<td>(204) 619-5731</td>
-				</tr>
-				<tr href="#cekAnggota" class="view" data-toggle="modal" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top">
-					<td>
-						<span class="custom-checkbox">
-							<input type="checkbox" id="checkbox5" name="options[]" value="1">
-							<label for="checkbox5"></label>
-						</span>
-					</td>
-					<td>5</td>
-					<td><img class="gambar" src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="" /></td>
-					<td>Martin Blank</td>
-					<td>martinblank@mail.com</td>
-					<td>Via Monte Bianco 34, Turin, Italy</td>
-					<td>(480) 631-2097</td>
-				</tr>
+				<?php foreach ($lihatanggota->result() as $lihat) : ?>
+					<tr>
+						<td>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="checkbox1" name="options[]" value="1">
+								<label for="checkbox1"></label>
+							</span>
+						</td>
+						<td>1</td>
+						<td><a href="#cekAnggota-<?= $lihat->id ?>" class="view" data-toggle="modal" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top"><img class="gambar" src="<?php echo base_url('assets/foto/' . $lihat->foto) ?>" alt="" /></td>
+						</a>
+						<td><?= $lihat->nama ?></td>
+						<td><?= $lihat->email ?></td>
+						<td><?= $lihat->alamat ?></td>
+						<td><?= $lihat->noHp ?></td>
+					</tr>
+				<?php endforeach; ?>
 			</tbody>
 		</table>
 		<div class="clearfix">
@@ -356,119 +303,116 @@
 	</div>
 </div>
 <!-- Cek Data Anggota Modal -->
-<div id="cekAnggota" class="modal fade">
-	<div class="modal-dialog ">
-		<div class="modal-content">
-			<div class="user-profle p-3">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<div class="row">
-					<div class="col-md-8">
-						<div class="card">
-							<div class="card-header pb-4 pt-4 text-info">
-								<h5 class="title">My Profile</h5>
-							</div>
-							<div class="card-body">
-								<form class="p-2">
-									<div class="row">
-										<div class="col-md-5 pr-1">
-											<div class="form-group ">
-												<h6>ID</h6>
-												<p class="profile-list">Nanti isinya sesuai yang diinputnya pas
-													daftar</p>
+<?php foreach ($lihatanggota->result() as $lihat) : ?>
+	<div id="cekAnggota-<?= $lihat->id ?>" class="modal fade">
+		<div class="modal-dialog ">
+			<div class="modal-content">
+				<div class="user-profle p-3">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<div class="row">
+						<div class="col-md-8">
+							<div class="card">
+								<div class="card-header pb-4 pt-4 text-info">
+									<h5 class="title">My Profile</h5>
+								</div>
+								<div class="card-body">
+									<form class="p-2">
+										<div class="row">
+											<div class="col-md-5 pr-1">
+												<div class="form-group ">
+													<h6>ID</h6>
+													<p class="profile-list"><?= $lihat->id ?></p>
+												</div>
+											</div>
+											<div class="col-md-3 pr-1">
+												<div class="form-group">
+													<h6>Nama</h6>
+													<p class="profile-list"><?= $lihat->nama ?></p>
+												</div>
+											</div>
+											<div class="col-md-4 pr-1">
+												<div class="form-group">
+													<h6>Agama</h6>
+													<p class="profile-list"><?= $lihat->agama ?></p>
+												</div>
 											</div>
 										</div>
-										<div class="col-md-3 pr-1">
-											<div class="form-group">
-												<h6>Nama</h6>
-												<p class="profile-list">Maulana Ihsan Ahmad</p>
-											</div>
-										</div>
-										<div class="col-md-4 pr-1">
-											<div class="form-group">
-												<h6>Agama</h6>
-												<p class="profile-list">Islam</p>
-											</div>
-										</div>
-									</div>
 
-									<div class="row">
-										<div class="col-md-5 pr-1">
-											<div class="form-group ">
-												<h6>Status</h6>
-												<p class="profile-list">Kawin</p>
+										<div class="row">
+											<div class="col-md-5 pr-1">
+												<div class="form-group ">
+													<h6>Status</h6>
+													<p class="profile-list"><?= $lihat->status ?></p>
+												</div>
+											</div>
+											<div class="col-md-3 pr-1">
+												<div class="form-group">
+													<h6 for="exampleInputEmail1">Email</h6>
+													<p class="profile-list"><?= $lihat->email ?></p>
+												</div>
+											</div>
+											<div class="col-md-4 pr-1">
+												<div class="form-group">
+													<h6>No Hp/Telp</h6>
+													<p class="profile-list"><?= $lihat->noHp ?></p>
+												</div>
 											</div>
 										</div>
-										<div class="col-md-3 pr-1">
-											<div class="form-group">
-												<h6 for="exampleInputEmail1">Email</h6>
-												<p class="profile-list">MaulanaIhsan@gmail.com</p>
+										<div class="row">
+											<div class="col-md-12 pr-1">
+												<div class="form-group">
+													<h6>Alamat</h6>
+													<p class="profile-list"><?= $lihat->alamat ?></p>
+												</div>
 											</div>
 										</div>
-										<div class="col-md-4 pr-1">
-											<div class="form-group">
-												<h6>No Hp/Telp</h6>
-												<p class="profile-list">081260741115</p>
+										<div class="row">
+											<div class="col-md-4 pr-1">
+												<div class="form-group text-warning">
+													<h6>Negara</h6>
+													<p class="profile-list"><?= $lihat->negara ?></p>
+												</div>
+											</div>
+											<div class="col-md-4 pr-1">
+												<div class="form-group text-warning">
+													<h6>Kota/Kabupaten</h6>
+													<p class="profile-list"><?= $lihat->kotakabupaten ?></p>
+												</div>
+											</div>
+											<div class="col-md-4 pr-1">
+												<div class="form-group text-warning">
+													<h6>Kode Pos</h6>
+													<p class="profile-list"><?= $lihat->kodepos ?></p>
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-12 pr-1">
-											<div class="form-group">
-												<h6>Alamat</h6>
-												<p class="profile-list">Jalan Tengku Meulagu Tibang Kecamatan Syiah
-													Kuala
-													Banda Aceh</p>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group">
+													<h6>Deskripsi</h6>
+													<p class="profile-list"><?= $lihat->deskripsi ?></p>
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-4 pr-1">
-											<div class="form-group text-warning">
-												<h6>Negara</h6>
-												<p class="profile-list">Indonesia</p>
-											</div>
-										</div>
-										<div class="col-md-4 pr-1">
-											<div class="form-group text-warning">
-												<h6>Kota/Kabupaten</h6>
-												<p class="profile-list">Aceh</p>
-											</div>
-										</div>
-										<div class="col-md-4 pr-1">
-											<div class="form-group text-warning">
-												<h6>Kode Pos</h6>
-												<p class="profile-list">1234567</p>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-12">
-											<div class="form-group">
-												<h6>Deskripsi</h6>
-												<p class="profile-list">Saya adalah nelayan yang bahagia baik hati
-													dan rajin
-													menabung.</p>
-											</div>
-										</div>
-									</div>
-								</form>
+									</form>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="card card-user">
-							<div class="belakang">
-								<img src="<?php echo base_url() ?>assets/img/header.jpg" alt="...">
-							</div>
-							<div class="card-body">
-								<div class="author">
+						<div class="col-md-4">
+							<div class="card card-user">
+								<div class="belakang">
+									<img src="<?php echo base_url() ?>assets/img/header.jpg" alt="...">
+								</div>
+								<div class="card-body">
+									<div class="author">
 
-									<img class="avatar border-gray rounded-circle" src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="...">
-									<h5 class="title text-primary">Maulana Ihsan Ahmad</h5>
+										<img class="avatar border-gray rounded-circle" src="<?= base_url('assets/foto/' . $lihat->foto) ?>" alt="...">
+										<h5 class="title text-primary"><?= $lihat->nama ?></h5>
 
-									<a href="<?php echo base_url() ?>index.php/landing/edit_profile">
-										<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
-									</a>
+										<a href="<?php echo base_url() ?>index.php/landing/edit_profile">
+											<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
+										</a>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -477,7 +421,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+<?php endforeach; ?>
 <!-- Hapus Data Anggota Modal-->
 <div id="hapusAnggota" class="modal fade">
 	<div class="modal-dialog" style="max-width:400px;">

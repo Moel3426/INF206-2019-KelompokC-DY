@@ -84,15 +84,17 @@ class Admin extends CI_Controller
 
 	public function memberView()
 	{
+
 		$data['inbox'] = 0;
 		$anggota = $this->db->get_where('anggota', ['admin_id' => $this->session->userdata('id')])->result();
 		foreach ($anggota as $a) {
 			$data['inbox'] += $this->db->get_where('keberangkatan', ['status' => 'dalam proses', 'user_id' => $a->member_id])->num_rows();
 		}
 
+		$data['lihatanggota'] = $this->db->get_where('tb_member', ['id_member' => $this->input->get('id')]);
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
 		$this->load->view('templates/admin/header', $data);
-		$this->load->view('admin/memberView');
+		$this->load->view('admin/memberView', $data);
 		$this->load->view('templates/admin/footer');
 	}
 
@@ -114,7 +116,6 @@ class Admin extends CI_Controller
 			$this->load->view('templates/admin/footer');
 		} else {
 			$this->db->set('status', $this->input->get('status'));
-			$this->db->set('waktu_konfirmasi', date('Y-m-d H:i:s', time()));
 			$this->db->where('id', $this->input->get('id'));
 			$this->db->update('keberangkatan');
 			redirect('admin/inbox');

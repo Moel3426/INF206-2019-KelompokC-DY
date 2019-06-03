@@ -92,8 +92,10 @@
 						</div>
 						<div class="card-body">
 							<div class="author">
+
 								<img class="avatar border-gray rounded-circle" src="<?php echo base_url('assets/profil/' . $user['gambar']) ?>" alt="...">
 								<h5 class="title text-primary"><?= $user['nama'] ?></h5>
+
 								<a href="<?php echo base_url('home/edit_profile') ?>">
 									<button class="btn btn-warning">Edit</button>
 								</a>
