@@ -35,34 +35,39 @@
 			<tbody>
 				<?php $i = 0;
 				foreach ($keberangkatan->result() as $k) : ?>
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox1" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
-						</td>
-						<td><?= $k->id_kapal ?></td>
-						<td>
-							<?= $k->keberangkatan ?>
-						</td>
-						<td><?= $k->tiba ?></td>
-						<td>
-							<?php $data = json_decode($anggotaIkut[$i++]->anggota);
-							foreach ($data as $id) : $anggota = $this->db->get_where('tb_member', ['id' => $id])->row(); ?>
-								<img class="gambar" src="<?= base_url('assets/foto/' . $anggota->foto) ?>" alt="" />
-							<?php endforeach; ?>
-						</td>
-						<?php if ($k->status == 'diterima') { ?>
-							<td><a href="#" class="badge badge-success text-light"><?= $k->status ?></a></td>
-						<?php } else if ($k->status == 'ditolak') { ?>
-							<td><a href="#" class="badge badge-danger text-light"><?= $k->status ?></a></td>
-						<?php } else { ?>
-							<td><a href="#" class="badge badge-warning text-light"><?= $k->status ?></a></td>
-						<?php } ?>
-						<td><a href="#konfirmasiTepat" class="konfirmasi" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Konfirmasi tiba">&#xe0cf;</i></a></td>
-						<td><?= $k->waktu_konfirmasi ?></td>
-					</tr>
+					<?php if ($k->keterangan == '') : ?>
+						<tr>
+							<td>
+								<span class="custom-checkbox">
+									<input type="checkbox" id="checkbox1" name="options[]" value="1">
+									<label for="checkbox1"></label>
+								</span>
+							</td>
+							<td><?= $k->id_kapal ?></td>
+							<td>
+								<?= $k->keberangkatan ?>
+							</td>
+							<td><?= $k->tiba ?></td>
+							<td>
+								<?php $data = json_decode($anggotaIkut[$i++]->anggota);
+								foreach ($data as $id) : $anggota = $this->db->get_where('tb_member', ['id' => $id])->row(); ?>
+									<img class="gambar" src="<?= base_url('assets/foto/' . $anggota->foto) ?>" alt="" />
+								<?php endforeach; ?>
+							</td>
+							<?php if ($k->status == 'diterima') { ?>
+								<td><a href="#" class="badge badge-success text-light"><?= $k->status ?></a></td>
+							<?php } else if ($k->status == 'ditolak') { ?>
+								<td><a href="#" class="badge badge-danger text-light"><?= $k->status ?></a></td>
+							<?php } else { ?>
+								<td><a href="#" class="badge badge-warning text-light"><?= $k->status ?></a></td>
+							<?php } ?>
+							<td>
+								<a href="<?= base_url('home/tiba') ?>?id=<?= $k->id ?>" class="konfirmasi mr-3"><i class="material-icons" title="Konfirmasi tiba">&#xe0cf;</i> </a>
+								<a href="<?= base_url('home/hapustiba') ?>?id=<?= $k->id ?>" class="konfirmasi"><i class="fa fa-trash" title="delete tiba"></i> </a>
+							</td>
+							<td><?= $k->waktu_konfirmasi ?></td>
+						</tr>
+					<?php endif; ?>
 				<?php endforeach; ?>
 			</tbody>
 		</table>

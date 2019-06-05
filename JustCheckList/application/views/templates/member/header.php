@@ -76,6 +76,7 @@
 							</a>
 						</li>
 						<li class="nav-item dropdown">
+						<li class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink1" data-toggle="dropdown">
 								<img class="rounded-circle" src="<?php echo base_url('assets/profil/' . $user['gambar']) ?>" width="30px" height="30px" alt="" srcset="">
 							</a>
