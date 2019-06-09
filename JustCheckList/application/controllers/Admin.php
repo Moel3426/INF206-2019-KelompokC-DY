@@ -22,7 +22,8 @@ class Admin extends CI_Controller
 
 			$list = [
 				'cuaca buruk',
-				'hasil tangkapan belum mencapai target'
+				'hasil tangkapan belum mencapai target',
+				'kapal rusak'
 			];
 
 			$data['jumlah_alasan'] = count($list);

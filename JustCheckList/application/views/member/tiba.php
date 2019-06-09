@@ -45,9 +45,11 @@
 							</td>
 							<td><?= $k->id_kapal ?></td>
 							<td>
-								<?= $k->keberangkatan ?>
+								<?= date('d M Y', strtotime($k->keberangkatan)) ?>
 							</td>
-							<td><?= $k->tiba ?></td>
+							<td>
+								<?= date('d M Y', strtotime($k->tiba)) ?>
+							</td>
 							<td>
 								<?php $data = json_decode($anggotaIkut[$i++]->anggota);
 								foreach ($data as $id) : $anggota = $this->db->get_where('tb_member', ['id' => $id])->row(); ?>
@@ -62,7 +64,11 @@
 								<td><a href="#" class="badge badge-warning text-light"><?= $k->status ?></a></td>
 							<?php } ?>
 							<td>
-								<a href="<?= base_url('home/tiba') ?>?id=<?= $k->id ?>" class="konfirmasi mr-3"><i class="material-icons" title="Konfirmasi tiba">&#xe0cf;</i> </a>
+								<?php if (strtotime($k->tiba) >  time()) { ?>
+									<a href="<?= base_url('home/tiba') ?>?id=<?= $k->id ?>" class="konfirmasi mr-3"><i class="material-icons" title="Konfirmasi tiba">&#xe0cf;</i> </a>
+								<?php } else { ?>
+									<a href="#konfirmasiTiba-<?= $k->id ?>" class="konfirmasi mr-3" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Konfirmasi tiba">&#xe0cf;</i></a>
+								<?php } ?>
 								<a href="<?= base_url('home/hapustiba') ?>?id=<?= $k->id ?>" class="konfirmasi"><i class="fa fa-trash" title="delete tiba"></i> </a>
 							</td>
 							<td><?= $k->waktu_konfirmasi ?></td>
@@ -127,81 +133,69 @@
 		</div>
 	</div>
 </div>
-<!-- Konfirmasi Tiba Modal -->
-<div id="konfirmasiTiba" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="row justify-content-center">
-				<div class="col-xl-10 col-lg-12 col-md-9">
-					<div class="card o-hidden border-0 shadow-lg my-5">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<div class="card-body p-0">
-							<!-- Nested Row within Card Body -->
-							<div class="row">
-								<div class="col-lg-6 d-none d-lg-block bg-schedule-image"></div>
-								<div class="col-lg-6">
-									<div class="p-5">
-										<div class="text-center">
-											<h1 class="h4 text-gray-900 mb-4">Form Konfirmasi Keterlambatan</h1>
+
+
+<?php foreach ($keberangkatan->result() as $k) : ?>
+	<div id="konfirmasiTiba-<?= $k->id ?>" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="row justify-content-center">
+					<div class="col-lg-10">
+						<div class="card my-5">
+							<div class="card-body p-0">
+								<!-- Nested Row within Card Body -->
+								<div class="row">
+									<div class="col-lg-6 d-none d-lg-block bg-schedule-image"></div>
+									<div class="col-lg-6">
+										<div class="p-5">
+											<div class="text-center">
+												<h1 class="h4 text-gray-900 mb-4">Form Konfirmasi Keterlambatan</h1>
+												<hr>
+											</div>
+											<form class="user" action="<?= base_url('home/terlambat') ?>" method="post">
+												<label for="">ID</label>
+												<div class="form-group">
+													<input type="text" class="form-control form-control-user" id="idKapal" aria-describedby="emailHelp" value="<?= $k->id ?>" name="id" readonly>
+												</div>
+												<div class="form-group">
+													<label for="">Sebab Keterlambatan</label>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input class="form-check-input" name="keterangan" type="checkbox" value="kapal rusak">
+															Kapal rusak
+															<span class="form-check-sign">
+																<span class="check"></span>
+															</span>
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input class="form-check-input" name="keterangan" type="checkbox" value="cuaca buruk">
+															Cuaca buruk
+															<span class="form-check-sign">
+																<span class="check"></span>
+															</span>
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input class="form-check-input" type="checkbox" value="hasil tangkapan belum mencapai target" name="keterangan">
+															Minim target
+															<span class="form-check-sign">
+																<span class="check"></span>
+															</span>
+														</label>
+													</div>
+													<button type="submit" class="btn btn-warning btn-user btn-block btn-round">
+														Konfimasi
+													</button>
+													<a href="#" class="btn btn-danger btn-user btn-block btn-round" class="close" data-dismiss="modal" aria-hidden="true">
+														Batal
+													</a>
+												</div>
+											</form>
 											<hr>
 										</div>
-										<form class="user">
-											<label for="">ID Kapal</label>
-											<div class="form-group">
-												<input type="text" class="form-control form-control-user" id="idKapal" aria-describedby="emailHelp" placeholder="Masukkan ID Kapal ..." readonly>
-											</div>
-											<div class="form-group">
-												<label for="">Sebab Keterlambatan</label>
-												<div class="form-check">
-													<label class="form-check-label">
-														<input class="form-check-input" type="checkbox" value="">
-														Kapal rusak
-														<span class="form-check-sign">
-															<span class="check"></span>
-														</span>
-													</label>
-												</div>
-												<div class="form-check">
-													<label class="form-check-label">
-														<input class="form-check-input" type="checkbox" value="">
-														Cuaca buruk
-														<span class="form-check-sign">
-															<span class="check"></span>
-														</span>
-													</label>
-												</div>
-												<div class="form-check">
-													<label class="form-check-label">
-														<input class="form-check-input" type="checkbox" value="">
-														Minim target
-														<span class="form-check-sign">
-															<span class="check"></span>
-														</span>
-													</label>
-												</div>
-												<div class="form-check">
-													<label class="form-check-label">
-														<input class="form-check-input" type="checkbox" value="">
-														Lainnya
-														<span class="form-check-sign">
-															<span class="check"></span>
-														</span>
-													</label>
-												</div>
-												<div class="mt-3">
-													<label for="">Keterangan</label>
-													<div class="form-group">
-														<textarea class="form-control" rows="3"></textarea>
-													</div>
-												</div>
-												<a href="#" class="btn btn-warning btn-user btn-block btn-round">
-													Konfimasi
-												</a>
-												<a href="#" class="btn btn-danger btn-user btn-block btn-round" class="close" data-dismiss="modal" aria-hidden="true">
-													Batal
-												</a>
-										</form>
-										<hr>
 									</div>
 								</div>
 							</div>
@@ -211,7 +205,4 @@
 			</div>
 		</div>
 	</div>
-</div>
-</div>
-
-<!-- /content -->
+<?php endforeach; ?>

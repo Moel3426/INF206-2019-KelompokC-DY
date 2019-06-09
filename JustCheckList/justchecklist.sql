@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2019 at 04:57 PM
+-- Generation Time: Jun 03, 2019 at 03:48 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -56,17 +56,22 @@ CREATE TABLE `keberangkatan` (
   `waktu_konfirmasi` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   `keterangan` varchar(255) NOT NULL,
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `waktu` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `keberangkatan`
 --
 
-INSERT INTO `keberangkatan` (`id_kapal`, `keberangkatan`, `tiba`, `anggota`, `status`, `waktu_konfirmasi`, `keterangan`, `id`, `user_id`) VALUES
-(1, '05/08/2019', '05/23/2019', '[\"24\"]', 'diterima', '2019-05-30 14:34:01', 'on time', 5, 11),
-(1, '05/22/2019', '05/28/2019', '[\"24\"]', 'ditolak', '2019-05-30 14:34:11', 'on time', 6, 11),
-(1, '05/22/2019', '05/28/2019', '[\"24\",\"25\"]', 'diterima', '2019-05-30 09:56:22', '', 7, 11);
+INSERT INTO `keberangkatan` (`id_kapal`, `keberangkatan`, `tiba`, `anggota`, `status`, `waktu_konfirmasi`, `keterangan`, `id`, `user_id`, `waktu`) VALUES
+(1, '05/06/2019', '05/28/2019', '[\"24\"]', 'diterima', '2019-06-03 13:41:45', 'Terlambat', 24, 11, '06/03/2019'),
+(1, '06/04/2019', '06/06/2019', '[\"24\",\"25\"]', 'dalam proses', '0000-00-00 00:00:00', '', 27, 11, ''),
+(1, '06/04/2019', '06/19/2019', '[\"24\"]', 'dalam proses', '0000-00-00 00:00:00', '', 28, 11, ''),
+(1, '06/04/2019', '06/12/2019', '[\"25\"]', 'dalam proses', '0000-00-00 00:00:00', '', 29, 11, ''),
+(1, '05/08/2019', '05/28/2019', '[\"24\"]', 'diterima', '2019-06-03 13:42:10', 'Terlambat', 30, 11, '06/03/2019'),
+(1, '05/08/2019', '05/23/2019', '[\"24\"]', 'diterima', '2019-06-03 13:42:14', 'Terlambat', 31, 11, '06/03/2019'),
+(1, '05/06/2019', '05/31/2019', '[\"24\"]', 'dalam proses', '0000-00-00 00:00:00', '', 34, 11, '');
 
 -- --------------------------------------------------------
 
@@ -87,30 +92,42 @@ CREATE TABLE `keterlambatan` (
 --
 
 INSERT INTO `keterlambatan` (`id`, `alasan_keterlambatan`, `jumlah_keterlambatan`, `bulan`, `tahun`) VALUES
-(1, 'cuaca buruk', 10, 'januari', 2019),
-(2, 'hasil tangkapan belum mencapai target', 9, 'januari', 2019),
-(5, 'cuaca buruk', 4, 'februari', 2019),
-(6, 'hasil tangkapan belum mencapai target', 6, 'februari', 2019),
-(9, 'cuaca buruk', 8, 'maret', 2019),
-(10, 'hasil tangkapan belum mencapai target', 9, 'maret', 2019),
-(11, 'cuaca buruk', 7, 'april', 2019),
-(12, 'hasil tangkapan belum mencapai target', 5, 'april', 2019),
-(13, 'cuaca buruk', 6, 'mei', 2019),
-(14, 'hasil tangkapan belum mencapai target', 3, 'mei', 2019),
-(15, 'cuaca buruk', 9, 'juni', 2019),
-(16, 'hasil tangkapan belum mencapai target', 7, 'juni', 2019),
-(17, 'cuaca buruk', 5, 'juli', 2019),
-(18, 'hasil tangkapan belum mencapai target', 2, 'juli', 2019),
-(19, 'cuaca buruk', 2, 'agustus', 2019),
-(20, 'hasil tangkapan belum mencapai target', 2, 'agustus', 2019),
-(21, 'cuaca buruk', 15, 'september', 2019),
-(22, 'hasil tangkapan belum mencapai target', 9, 'september', 2019),
-(23, 'cuaca buruk', 20, 'oktober', 2019),
-(24, 'hasil tangkapan belum mencapai target', 13, 'oktober', 2019),
-(25, 'cuaca buruk', 16, 'november', 2019),
-(26, 'hasil tangkapan belum mencapai target', 18, 'november', 2019),
-(27, 'cuaca buruk', 21, 'desember', 2019),
-(28, 'hasil tangkapan belum mencapai target', 12, 'desember', 2019);
+(1, 'cuaca buruk', 0, 'January', 2019),
+(2, 'hasil tangkapan belum mencapai target', 0, 'January', 2019),
+(5, 'cuaca buruk', 0, 'February', 2019),
+(6, 'hasil tangkapan belum mencapai target', 0, 'February', 2019),
+(9, 'cuaca buruk', 0, 'March', 2019),
+(10, 'hasil tangkapan belum mencapai target', 0, 'March', 2019),
+(11, 'cuaca buruk', 0, 'April', 2019),
+(12, 'hasil tangkapan belum mencapai target', 0, 'April', 2019),
+(13, 'cuaca buruk', 0, 'May', 2019),
+(14, 'hasil tangkapan belum mencapai target', 0, 'May', 2019),
+(15, 'cuaca buruk', 1, 'June', 2019),
+(16, 'hasil tangkapan belum mencapai target', 0, 'June', 2019),
+(17, 'cuaca buruk', 0, 'July', 2019),
+(18, 'hasil tangkapan belum mencapai target', 0, 'July', 2019),
+(19, 'cuaca buruk', 0, 'August', 2019),
+(20, 'hasil tangkapan belum mencapai target', 0, 'August', 2019),
+(21, 'cuaca buruk', 0, 'September', 2019),
+(22, 'hasil tangkapan belum mencapai target', 0, 'September', 2019),
+(23, 'cuaca buruk', 0, 'October', 2019),
+(24, 'hasil tangkapan belum mencapai target', 0, 'October', 2019),
+(25, 'cuaca buruk', 0, 'November', 2019),
+(26, 'hasil tangkapan belum mencapai target', 0, 'November', 2019),
+(27, 'cuaca buruk', 0, 'December', 2019),
+(28, 'hasil tangkapan belum mencapai target', 0, 'December', 2019),
+(29, 'kapal rusak', 0, 'January', 2019),
+(30, 'kapal rusak', 0, 'February', 2019),
+(31, 'kapal rusak', 0, 'March', 2019),
+(32, 'kapal rusak', 0, 'April', 2019),
+(33, 'kapal rusak', 0, 'May', 2019),
+(34, 'kapal rusak', 2, 'June', 2019),
+(35, 'kapal rusak', 0, 'July', 2019),
+(36, 'kapal rusak', 0, 'August', 2019),
+(37, 'kapal rusak', 0, 'September', 2019),
+(38, 'kapal rusak', 0, 'October', 2019),
+(39, 'kapal rusak', 0, 'November', 2019),
+(40, 'kapal rusak', 0, 'December', 2019);
 
 -- --------------------------------------------------------
 
@@ -130,18 +147,18 @@ CREATE TABLE `nelayan_berlayar` (
 --
 
 INSERT INTO `nelayan_berlayar` (`id`, `jumlah_user_berlayar`, `bulan`, `tahun`) VALUES
-(1, 30, 'januari', 2019),
-(2, 33, 'februari', 2019),
-(3, 41, 'maret', 2019),
-(4, 45, 'april', 2019),
-(5, 50, 'mei', 2019),
-(6, 45, 'juni', 2019),
-(7, 46, 'juli', 2019),
-(8, 43, 'agustus', 2019),
-(9, 55, 'september', 2019),
-(10, 54, 'oktober', 2019),
-(11, 44, 'november', 2019),
-(12, 51, 'desember', 2019);
+(1, 0, 'January', 2019),
+(2, 0, 'February', 2019),
+(3, 0, 'maret', 2019),
+(4, 0, 'April', 2019),
+(5, 4, 'May', 2019),
+(6, 3, 'June', 2019),
+(7, 0, 'July', 2019),
+(8, 0, 'August', 2019),
+(9, 0, 'September', 2019),
+(10, 0, 'October', 2019),
+(11, 0, 'November', 2019),
+(12, 0, 'December', 2019);
 
 -- --------------------------------------------------------
 
@@ -204,7 +221,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `nama`, `email`, `alamat`, `no_hp`, `password`, `id_kapal`, `pelabuhan`, `id_pelabuhan`, `role`, `status`, `negara`, `kode_pos`, `deskripsi`, `gambar`, `agama`) VALUES
 (10, 'Aqil Fiqran', 'aqil@gmail.com', 'lamtemen', '081264563223', '$2y$10$w7CWaja793jKmWWrfTbIS.hIYgcc3ZZUe/D.cW1g/z0/ZcWMTrFW2', NULL, 'lampulo', 1, '1', 'belum nikah', 'Indonesia', 23231, 'bergembira bersama', 'carrot-cake.jpg', 'Islam'),
-(11, 'thari', 'thari@gmail.com', 'rukoh', '0822334455', '$2y$10$HZE/gSq3jbaqNwTIlFUfuemGn6WBjUPHRVokkoVrmMbk0rcxP6hy2', 1, NULL, NULL, '2', 'kosong', 'kosong', 0, 'kosong', 'default-avatar.png', 'kosong');
+(11, 'thari', 'thari@gmail.com', 'rukoh', '0822334455', '$2y$10$HZE/gSq3jbaqNwTIlFUfuemGn6WBjUPHRVokkoVrmMbk0rcxP6hy2', 1, NULL, NULL, '2', 'kosong', 'kosong', 0, 'kosong', 'default-avatar.png', 'kosong'),
+(12, 'atika', 'atika@gmail.com', 'lamtemen', '7239482734', '$2y$10$IXPuKr5gH4A7ZSglKRfGh.ia4m//XFh3LRT.6.mGE4ATrw7zL56Mm', 5, NULL, NULL, '2', 'kosong', 'kosong', 0, 'kosong', 'default-avatar.png', 'kosong');
 
 --
 -- Indexes for dumped tables
@@ -261,13 +279,13 @@ ALTER TABLE `anggota`
 -- AUTO_INCREMENT for table `keberangkatan`
 --
 ALTER TABLE `keberangkatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `keterlambatan`
 --
 ALTER TABLE `keterlambatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `nelayan_berlayar`
@@ -285,7 +303,7 @@ ALTER TABLE `tb_member`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

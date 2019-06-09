@@ -129,8 +129,8 @@ foreach ($data->result() as $d) {
 							</span>
 						</td>
 						<td><?= $k->id ?></td>
-						<td><?= $k->keberangkatan; ?></td>
-						<td><?= $k->tiba; ?></td>
+						<td><?= date('d M Y', strtotime($k->keberangkatan)); ?></td>
+						<td><?= date('d M Y', strtotime($k->tiba)) ?></td>
 					</tr>
 				<?php endforeach; ?>
 			</tbody>
@@ -170,15 +170,15 @@ foreach ($data->result() as $d) {
 					// untuk ganti warna dari naik turun statistiknya
 					borderColor: "#8e5ea2",
 					fill: false
-				} //jika nambah alasan baru maka tambah , seperti pada line 31
+				}, //jika nambah alasan baru maka tambah , seperti pada line 31
 
 				// bila mau menambah alasan baru makan tambah dataset seperti Ini 
-				// {
-				// 	data:  echo json_encode($jumlah_keterlambatan[2]); seperti pembuatan pada line 27,
-				// 	label: "gakbisa berenang",
-				// 	borderColor: "#3e95cd",
-				// 	fill: false
-				// }
+				{
+					data: <?php echo json_encode($jumlah_keterlambatan[2]); ?>,
+					label: "Kapal rusak",
+					borderColor: "#3cba9f",
+					fill: false
+				}
 
 			]
 		},

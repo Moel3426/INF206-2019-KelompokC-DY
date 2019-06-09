@@ -45,9 +45,11 @@
 							</td>
 							<td><?= $k->id_kapal ?></td>
 							<td>
-								<?= $k->keberangkatan ?>
+								<?= date('d M Y', strtotime($k->keberangkatan)) ?>
 							</td>
-							<td><?= $k->tiba ?></td>
+							<td>
+								<?= date('d M Y', strtotime($k->tiba)) ?>
+							</td>
 							<td>
 								<?php $data = json_decode($anggotaIkut[$i++]->anggota);
 								foreach ($data as $id) : $anggota = $this->db->get_where('tb_member', ['id' => $id])->row(); ?>
@@ -61,7 +63,9 @@
 							<?php } else { ?>
 								<td><a href="#" class="badge badge-warning text-light"><?= $k->status ?></a></td>
 							<?php } ?>
-							<td><?= $k->waktu_konfirmasi ?></td>
+							<td>
+								<?= date('H:i:s, d M Y', strtotime($k->waktu_konfirmasi)) ?>
+							</td>
 							<td><?= $k->keterangan ?></td>
 						</tr>
 					<?php endif; ?>
