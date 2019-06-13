@@ -39,6 +39,7 @@ class Home extends CI_Controller
 		$this->load->view('templates/member/footer');
 	}
 
+	//fungsi menampilkan laman member
 	public function member()
 	{
 		$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
