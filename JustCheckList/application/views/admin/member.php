@@ -50,7 +50,7 @@
 						<td><?= $anggota->email ?></td>
 						<td><?= $anggota->alamat ?></td>
 						<td><?= $anggota->no_hp ?></td>
-						<td> <a href="<?= base_url('admin/delete') ?>?id=<?= $members->id ?>" class="delete"><i class="material-icons" data-toggle="tooltip" title="Hapus">&#xE872;</i></a>
+						<td> <a href="#hapusAnggota-<?=$anggota->id?>" data-toggle="modal" class="delete"><i class="material-icons" data-toggle="tooltip" title="Hapus">&#xE872;</i></a>
 						</td>
 
 					</tr>
@@ -429,10 +429,11 @@
 	</div>
 <?php endforeach; ?>
 <!-- Hapus Data Anggota Modal-->
-<div id="hapusAnggota" class="modal fade">
+<?php foreach ($member->result() as $members) : $anggota = $this->db->get_where('users', ['id' => $members->member_id])->row(); ?>
+<div id="hapusAnggota-<?=$anggota->id?>" class="modal fade">
 	<div class="modal-dialog" style="max-width:400px;">
 		<div class="modal-content">
-			<form>
+			<form action="<?= base_url('admin/delete') ?>" method="get">
 				<div class="modal-header">
 					<h4 class="modal-title">Hapus Angota</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -442,10 +443,11 @@
 					<p class="text-warning"><small>Keputusan tidak dapat diulang.</small></p>
 				</div>
 				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
-					<input type="submit" class="btn btn-danger" value="Hapus">
+					<input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">					
+					<button type="submit" class="btn btn-danger" value="<?= $members->id ?>" name="id">Hapus</button>
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
+<?php endforeach;?>

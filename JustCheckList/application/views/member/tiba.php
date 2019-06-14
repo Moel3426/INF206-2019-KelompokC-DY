@@ -63,13 +63,15 @@
 							<?php } else { ?>
 								<td><a href="#" class="badge badge-warning text-light"><?= $k->status ?></a></td>
 							<?php } ?>
+
+
 							<td>
 								<?php if (strtotime($k->tiba) >  time()) { ?>
-									<a href="<?= base_url('home/tiba') ?>?id=<?= $k->id ?>" class="konfirmasi mr-3"><i class="material-icons" title="Konfirmasi tiba">&#xe0cf;</i> </a>
+									<a href="#konfirmasiTepat-<?= $k->id ?>" class="konfirmasi mr-3" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Konfirmasi Tiba">&#xe0cf;</i> </a>
 								<?php } else { ?>
 									<a href="#konfirmasiTiba-<?= $k->id ?>" class="konfirmasi mr-3" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Konfirmasi tiba">&#xe0cf;</i></a>
 								<?php } ?>
-								<a href="<?= base_url('home/hapustiba') ?>?id=<?= $k->id ?>" class="konfirmasi"><i class="fa fa-trash" title="delete tiba"></i> </a>
+								<a href="<?= base_url('home/hapustiba') ?>?id=<?= $k->id ?>" class="konfirmasi" data-toggle="tooltip" title="Hapus"><i class="material-icons" data-toggle="tooltip" title="Hapus">&#xE872;</i> </a>
 							</td>
 							<td><?= $k->waktu_konfirmasi ?></td>
 						</tr>
@@ -113,26 +115,28 @@
 		</div>
 	</div>
 </div>
-<!-- Konfirmasi Sukses Anggota Modal -->
-<div id="konfirmasiTepat" class="modal fade">
-	<div class="modal-dialog" style="max-width:400px;">
-		<div class="modal-content">
-			<form>
-				<div class="modal-header">
-					<h4 class="modal-title">Konfimasi</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">
-					<p>Waktu tiba anda telah dikonfirmasi</p>
-					<p class="text-success"><small>Terima kasih.</small></p>
-				</div>
-				<div class="modal-footer">
-					<input type="submit" class="btn btn-success" value="OK">
-				</div>
-			</form>
+<?php foreach ($keberangkatan->result() as $k) : ?>
+	<!-- Konfirmasi Sukses Anggota Modal -->
+	<div id="konfirmasiTepat-<?= $k->id ?>" class="modal fade">
+		<div class="modal-dialog" style="max-width:400px;">
+			<div class="modal-content">
+				<form action="<?= base_url('home/tiba') ?>" method="get">
+					<div class="modal-header">
+						<h4 class="modal-title">Konfimasi</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p>Waktu tiba anda telah dikonfirmasi</p>
+						<p class="text-success"><small>Terima kasih.</small></p>
+					</div>
+					<div class="modal-footer">
+						<button value="<?= $k->id ?>" name="id" type="submit" class="btn btn-success">OK</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
-</div>
+<?php endforeach; ?>
 
 
 <?php foreach ($keberangkatan->result() as $k) : ?>
