@@ -41,14 +41,20 @@ class Admin extends CI_Controller
 			$cek = $this->db->get_where('users', ['nama' => $this->input->post('nama'), 'role' => 2]);
 			if ($cek->num_rows() > 0) {
 				$member = $cek->row();
-				$data = [
-					'member_id' => $member->id,
-					'admin_id' => $this->session->userdata('id')
-				];
-				$this->db->insert('anggota', $data);
-				redirect('admin/member');
+				$duplikat = $this->db->get_where('anggota',['member_id'=> $member->id,'admin_id'=>$this->session->userdata('id')]);
+				if(!$duplikat->num_rows()>0){ 	
+					$data = [
+						'member_id' => $member->id,
+						'admin_id' => $this->session->userdata('id')
+					];
+					$this->db->insert('anggota', $data);
+					redirect('admin/member');
+				}else{
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Member dengan nama ' . $this->input->post('nama') . ' telah terdaftar </div>');
+					redirect('admin');
+				}
 			} else {
-				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">member dengan nama ' . $this->input->post('nama') . ' tidak ada </div>');
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Member dengan nama ' . $this->input->post('nama') . ' tidak ada </div>');
 				redirect('admin');
 			}
 		}
@@ -102,13 +108,16 @@ class Admin extends CI_Controller
 	public function inbox()
 	{
 		if (!$this->input->get('status')) {
-
 			$data['inbox'] = 0;
 			$i = 0;
-			$anggota = $this->db->get_where('anggota', ['admin_id' => $this->session->userdata('id')])->result();
-			foreach ($anggota as $a) {
-				$data['inbox'] += $this->db->get_where('keberangkatan', ['status' => 'dalam proses', 'user_id' => $a->member_id])->num_rows();
-				$data['konfirmasi'][$i++] = $this->db->get_where('keberangkatan', ['status' => 'dalam proses', 'user_id' => $a->member_id]);
+			$anggota = $this->db->get_where('anggota', ['admin_id' => $this->session->userdata('id')]);
+			if($anggota->num_rows()>0){
+				foreach ($anggota->result() as $a) {
+					$data['inbox'] += $this->db->get_where('keberangkatan', ['status' => 'dalam proses', 'user_id' => $a->member_id])->num_rows();
+					$data['konfirmasi'][$i++] = $this->db->get_where('keberangkatan', ['status' => 'dalam proses', 'user_id' => $a->member_id]);
+				}
+			}else{
+				$data['konfirmasi'][$i]="kosong";
 			}
 
 			$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();

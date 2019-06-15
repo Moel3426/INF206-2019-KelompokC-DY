@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="<?php echo base_url() ?>assets/css/profil.css" rel="stylesheet" />
 <div class="container-fluid p-5 mt-5">
+	<?php if($konfirmasi[0]!="kosong"):?>
 	<div class="row">
 		<?php for ($i = 0; $i < count($konfirmasi); $i++) : ?>
 			<?php foreach ($konfirmasi[$i]->result() as $konfir) : ?>
@@ -19,4 +20,5 @@
 			<?php endforeach; ?>
 		<?php endfor; ?>
 	</div>
+<?php endif;?>
 </div>
