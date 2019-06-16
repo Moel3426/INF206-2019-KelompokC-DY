@@ -43,7 +43,7 @@
 									<label for="checkbox1"></label>
 								</span>
 							</td>
-							<td><?= $k->id_kapal ?></td>
+							<td><?= $k->id ?></td>
 							<td>
 								<?= date('d M Y', strtotime($k->keberangkatan)) ?>
 							</td>
