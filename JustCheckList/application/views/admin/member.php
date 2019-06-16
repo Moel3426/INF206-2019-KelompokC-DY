@@ -44,13 +44,13 @@
 							</span>
 						</td>
 
-						<td>1</td>
+						<td><?php echo $anggota->id; ?></td>
 						<td href="#cekAnggota-<?php echo $anggota->id; ?>" class="view" data-toggle="modal"><img class="gambar" src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top" /></td>
 						<td><?= $anggota->nama ?></td>
 						<td><?= $anggota->email ?></td>
 						<td><?= $anggota->alamat ?></td>
 						<td><?= $anggota->no_hp ?></td>
-						<td> <a href="#hapusAnggota-<?=$anggota->id?>" data-toggle="modal" class="delete"><i class="material-icons" data-toggle="tooltip" title="Hapus">&#xE872;</i></a>
+						<td> <a href="#hapusAnggota-<?= $anggota->id ?>" data-toggle="modal" class="delete"><i class="material-icons" data-toggle="tooltip" title="Hapus">&#xE872;</i></a>
 						</td>
 
 					</tr>
@@ -430,24 +430,24 @@
 <?php endforeach; ?>
 <!-- Hapus Data Anggota Modal-->
 <?php foreach ($member->result() as $members) : $anggota = $this->db->get_where('users', ['id' => $members->member_id])->row(); ?>
-<div id="hapusAnggota-<?=$anggota->id?>" class="modal fade">
-	<div class="modal-dialog" style="max-width:400px;">
-		<div class="modal-content">
-			<form action="<?= base_url('admin/delete') ?>" method="get">
-				<div class="modal-header">
-					<h4 class="modal-title">Hapus Angota</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">
-					<p>Anda yakin ingin menghapus data anggota?</p>
-					<p class="text-warning"><small>Keputusan tidak dapat diulang.</small></p>
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">					
-					<button type="submit" class="btn btn-danger" value="<?= $members->id ?>" name="id">Hapus</button>
-				</div>
-			</form>
+	<div id="hapusAnggota-<?= $anggota->id ?>" class="modal fade">
+		<div class="modal-dialog" style="max-width:400px;">
+			<div class="modal-content">
+				<form action="<?= base_url('admin/delete') ?>" method="get">
+					<div class="modal-header">
+						<h4 class="modal-title">Hapus Angota</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p>Anda yakin ingin menghapus data anggota?</p>
+						<p class="text-warning"><small>Keputusan tidak dapat diulang.</small></p>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+						<button type="submit" class="btn btn-danger" value="<?= $members->id ?>" name="id">Hapus</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
-</div>
-<?php endforeach;?>
+<?php endforeach; ?>
