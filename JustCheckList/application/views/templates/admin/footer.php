@@ -1,4 +1,4 @@
-<footer class="footer footer-default bg-dark">
+<footer class="footer footer-default bg-dark" >
 	<div class=" container text-light">
 		<nav>
 			<ul>
