@@ -28,33 +28,32 @@
 					<th colspan="3">Aksi</th>
 				</tr>
 				<?php
-				$id = 1;
 				foreach ($tb_member as $mbr) : ?>
 					<tr>
-						<td><?php echo $id++ ?></td>
+						<td><?php echo $mbr['id']; ?></td>
 						<td data-target="#cekAnggota-<?php echo $mbr['id']; ?>" data-toggle="modal">
-							<img class="avatar border-gray rounded-circle" src="<?php echo base_url("assets/foto/" . $mbr['foto']); ?>" width="50px" height="50px" data-toggle="tooltip" title="Klik di  sini untuk melihat profil" >
+							<img class="avatar border-gray rounded-circle" src="<?php echo base_url("assets/foto/" . $mbr['foto']); ?>" width="50px" height="50px" data-toggle="tooltip" title="Klik di  sini untuk melihat profil">
 						</td>
 						<td><?php echo $mbr['nama'];  ?></td>
 						<td><?php echo $mbr['email']; ?></td>
-						<td><?php echo $mbr['noHp']; ?></td>						
+						<td><?php echo $mbr['noHp']; ?></td>
 						<td>
-							<a  href="#editAnggota-<?php echo $mbr['id']; ?>" data-toggle="modal" class="edit">
-								<i class="material-icons"data-toggle="tooltip" title="Edit">&#xE254;</i>
+							<a href="#editAnggota-<?php echo $mbr['id']; ?>" data-toggle="modal" class="edit">
+								<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
 							</a>
-							<a  href="#hapusAnggota-<?php echo $mbr['id']; ?>" data-toggle="modal" class="delete">
-								<i class="material-icons"data-toggle="tooltip" title="Hapus">&#xE872;</i>
+							<a href="#hapusAnggota-<?php echo $mbr['id']; ?>" data-toggle="modal" class="delete">
+								<i class="material-icons" data-toggle="tooltip" title="Hapus">&#xE872;</i>
 							</a>
 						</td>
 						<!-- <td onclick="javascript: return confirm('Anda yakin ingin menghapus?')">
-							<?php echo anchor(
-								'member/hapus/' . $mbr['id'],
-								'<div  class="badge badge-danger">
+															<?php echo anchor(
+																'member/hapus/' . $mbr['id'],
+																'<div  class="badge badge-danger">
                                     <i class="fa fa-trash"data-toggle="tooltip" 
                                     title="Hapus"></i>
 								</div>'
-							) ?>
-						</td> -->
+															) ?>
+														</td> -->
 					</tr>
 				<?php endforeach; ?>
 			</thead>
@@ -465,13 +464,13 @@
 
 <!-- Hapus Data Anggota Modal-->
 <?php
-				$id = 1;
-				foreach ($tb_member as $mbr) : ?>
+$id = 1;
+foreach ($tb_member as $mbr) : ?>
 
-<div id="hapusAnggota-<?=$mbr['id'];?>" class="modal fade">
+	<div id="hapusAnggota-<?= $mbr['id']; ?>" class="modal fade">
 		<div class="modal-dialog" style="max-width:400px;">
 			<div class="modal-content">
-				<form action="<?=base_url('member/hapus/' . $mbr['id'])?>" method="get">
+				<form action="<?= base_url('member/hapus/' . $mbr['id']) ?>" method="get">
 					<div class="modal-header">
 						<h4 class="modal-title">Hapus Angota</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -489,4 +488,4 @@
 		</div>
 	</div>
 
-<?php endforeach;?>
+<?php endforeach; ?>
