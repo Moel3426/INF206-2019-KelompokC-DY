@@ -47,14 +47,14 @@
 							</a>
 						</td>
 						<!-- <td onclick="javascript: return confirm('Anda yakin ingin menghapus?')">
-																																				<?php echo anchor(
-																																					'member/hapus/' . $mbr['id'],
-																																					'<div  class="badge badge-danger">
+																																						<?php echo anchor(
+																																							'member/hapus/' . $mbr['id'],
+																																							'<div  class="badge badge-danger">
                                     <i class="fa fa-trash"data-toggle="tooltip" 
                                     title="Hapus"></i>
 								</div>'
-																																				) ?>
-																																			</td> -->
+																																						) ?>
+																																					</td> -->
 					</tr>
 				<?php endforeach; ?>
 			</thead>
@@ -306,7 +306,7 @@
 									<div class="author">
 										<input class="d-none" type="file" name="foto" id="image-<?= $mbr['id'] ?>">
 										<label for="image-<?= $mbr['id'] ?>">
-											<img class="avatar border-gray rounded-circle" src="<?php echo base_url("assets/foto/" . $mbr['foto']); ?>" data-toggle="tooltip" title="Foto tidak bisa diedit" width="100px" height="100px">
+											<img class="avatar border-gray rounded-circle" src="<?php echo base_url("assets/foto/" . $mbr['foto']); ?>" data-toggle="tooltip" title="Klik di sini edit foto" width="100px" height="100px">
 										</label>
 										<h5 class="title text-primary"><?php echo $mbr['nama']; ?></h5>
 
