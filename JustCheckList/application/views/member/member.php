@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="<?php echo base_url() ?>assets/css/profil.css" rel="stylesheet" />
 
-<div class="container-fluid p-5 mt-5">
+<div class="container-fluid p-5 mt-5" style="min-height:100vh;">
 	<!--untuk memnampilkan flashdata-->
 	<?php echo $this->session->flashdata('message'); ?>
 	<div class="table-wrapper shadow-lg">
@@ -47,14 +47,14 @@
 							</a>
 						</td>
 						<!-- <td onclick="javascript: return confirm('Anda yakin ingin menghapus?')">
-																																			<?php echo anchor(
-																																				'member/hapus/' . $mbr['id'],
-																																				'<div  class="badge badge-danger">
+																																				<?php echo anchor(
+																																					'member/hapus/' . $mbr['id'],
+																																					'<div  class="badge badge-danger">
                                     <i class="fa fa-trash"data-toggle="tooltip" 
                                     title="Hapus"></i>
 								</div>'
-																																			) ?>
-																																		</td> -->
+																																				) ?>
+																																			</td> -->
 					</tr>
 				<?php endforeach; ?>
 			</thead>

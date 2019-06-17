@@ -1,9 +1,9 @@
 <!-- content -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="<?php echo base_url() ?>assets/css/profil.css" rel="stylesheet" />
-<div class="container-fluid p-5 mt-5">
+<div class="container-fluid p-5 mt-5" style="min-height:100vh;">
 	<div class="table-wrapper shadow-lg">
-		
+
 		<div class="table-title">
 
 			<div class="row ">
@@ -25,9 +25,9 @@
 				</tr>
 			</thead>
 			<tbody>
-				
+
 				<?php
-				$id=1;
+				$id = 1;
 				foreach ($member->result() as $members) :
 					$anggota = $this->db->get_where('users', ['id' => $members->member_id])->row();
 					?>
@@ -384,7 +384,7 @@
 								</div>
 								<div class="card-body">
 									<div class="author">
-										<img class="avatar border-gray rounded-circle" src="<?php echo base_url('assets/profil/' . $anggota->gambar) ?>" width="100px" height="100px"/>
+										<img class="avatar border-gray rounded-circle" src="<?php echo base_url('assets/profil/' . $anggota->gambar) ?>" width="100px" height="100px" />
 
 										<h5 class="title text-primary"><?= $anggota->nama ?></h5>
 										<div>

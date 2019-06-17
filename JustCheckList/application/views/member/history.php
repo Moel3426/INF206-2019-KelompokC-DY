@@ -1,6 +1,6 @@
 <!-- content -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<div class="container-fluid p-5 mt-5">
+<div class="container-fluid p-5 mt-5" style="min-height:100vh;">
 	<div class="table-wrapper shadow-lg">
 		<div class="table-title">
 			<div class="row">
@@ -26,7 +26,7 @@
 			<tbody>
 
 				<?php $i = 0;
-				$id=1;
+				$id = 1;
 				foreach ($keberangkatan->result() as $k) : ?>
 					<?php if ($k->keterangan != '') : ?>
 						<tr>
