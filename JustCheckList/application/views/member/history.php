@@ -1,6 +1,6 @@
 <!-- content -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<div class="container-fluid p-5 mt-5">
+<div class="container-fluid p-5 mt-5" style="min-height:100vh;">
 	<div class="table-wrapper shadow-lg">
 		<div class="table-title">
 			<div class="row">
@@ -8,20 +8,12 @@
 					<h2>HISTORY <b>JADWAL</b></h2>
 				</div>
 				<div class="col-sm-6">
-
-					<a href="#hapusAnggota" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Hapus</span></a>
 				</div>
 			</div>
 		</div>
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th>
-						<span class="custom-checkbox">
-							<input type="checkbox" id="selectAll">
-							<label for="selectAll"></label>
-						</span>
-					</th>
 					<th>ID Kapal</th>
 					<th>Keberangkatan</th>
 					<th>Tiba</th>
@@ -34,16 +26,11 @@
 			<tbody>
 
 				<?php $i = 0;
+				$id = 1;
 				foreach ($keberangkatan->result() as $k) : ?>
 					<?php if ($k->keterangan != '') : ?>
 						<tr>
-							<td>
-								<span class="custom-checkbox">
-									<input type="checkbox" id="checkbox1" name="options[]" value="1">
-									<label for="checkbox1"></label>
-								</span>
-							</td>
-							<td><?= $k->id ?></td>
+							<td><?= $id++ ?></td>
 							<td>
 								<?= date('d M Y', strtotime($k->keberangkatan)) ?>
 							</td>
@@ -72,18 +59,6 @@
 				<?php endforeach; ?> <tr>
 			</tbody>
 		</table>
-		<div class="clearfix">
-			<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-			<ul class="pagination">
-				<li class="page-item disabled"><a href="#">Previous</a></li>
-				<li class="page-item"><a href="#" class="page-link">1</a></li>
-				<li class="page-item"><a href="#" class="page-link">2</a></li>
-				<li class="page-item active"><a href="#" class="page-link">3</a></li>
-				<li class="page-item"><a href="#" class="page-link">4</a></li>
-				<li class="page-item"><a href="#" class="page-link">5</a></li>
-				<li class="page-item"><a href="#" class="page-link">Next</a></li>
-			</ul>
-		</div>
 	</div>
 </div>
 </div>
