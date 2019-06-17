@@ -34,7 +34,7 @@
 					<tr>
 						<td><?php echo $id++ ?></td>
 						<td href="#cekAnggota-<?php echo $anggota->id; ?>" class="view" data-toggle="modal">
-							<img class="gambar" src="<?php echo base_url('assets/foto/' . $anggota->gambar) ?>" alt="" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top" />
+							<img class="gambar" src="<?php echo base_url('assets/profil/' . $anggota->gambar) ?>" alt="" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top" />
 						</td>
 						<td><?= $anggota->nama ?></td>
 						<td><?= $anggota->email ?></td>
