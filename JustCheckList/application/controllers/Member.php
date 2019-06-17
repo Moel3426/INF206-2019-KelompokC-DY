@@ -78,14 +78,15 @@ class Member extends CI_Controller
 		$kodepos = $this->input->post('kodepos');
 		$deskripsi = $this->input->post('deskripsi');
 		$foto   = $_FILES['foto'];
-		if ($foto = '') { } else {
+		if ($foto = '') {
+			$foto = "default-avatar.png";
+		} else {
 			$config['upload_path'] = './assets/foto';
 			$config['allowed_types'] = 'jpg|png|gif';
 			$config['max_size']      = '2048';
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('foto')) {
-				echo "Mohon Masukkan Foto Anda";
-				die();
+				$foto = "default-avatar.png";
 			} else {
 				$foto = $this->upload->data('file_name');
 			}
