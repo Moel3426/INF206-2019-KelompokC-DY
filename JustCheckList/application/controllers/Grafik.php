@@ -38,4 +38,17 @@ class Grafik extends CI_Controller
 		$data['data'] = $this->db->query('select * from nelayan_berlayar');
 		$this->load->view('berlayar', $data);
 	}
+
+	public function tes()
+	{
+		$tes = $this->db->get_where('keterlambatan', ['id' => 15])->row_array();
+		// if (date('M', strtotime($tes['bulan']))  >  time())
+		// 	echo "lebih besar dulu";
+		// else {
+		// 	echo "leih besar sekarang";
+		// }
+		echo date('F', strtotime($tes['bulan']));
+
+		die;
+	}
 }

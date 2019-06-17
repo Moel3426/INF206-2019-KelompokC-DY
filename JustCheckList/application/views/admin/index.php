@@ -17,6 +17,7 @@ foreach ($data->result() as $d) {
 
 <!-- content -->
 <div class="container-fluid pl-5 pr-5 pt-5 mt-5">
+	<?= $this->session->flashdata('message'); ?>
 	<div class="row">
 		<div class="col-xl-4 col-md-6 mb-4">
 			<div class="card border-left-success shadow h-100 py-2">
@@ -108,12 +109,6 @@ foreach ($data->result() as $d) {
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th>
-						<span class="custom-checkbox">
-							<input type="checkbox" id="selectAll">
-							<label for="selectAll"></label>
-						</span>
-					</th>
 					<th>ID Kapal</th>
 					<th>Keberangkatan</th>
 					<th>Tiba</th>
@@ -122,31 +117,14 @@ foreach ($data->result() as $d) {
 			<tbody>
 				<?php foreach ($keberangkatan->result() as $k) : ?>
 					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox1" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
-						</td>
 						<td><?= $k->id ?></td>
-						<td><?= $k->keberangkatan; ?></td>
-						<td><?= $k->tiba; ?></td>
+						<td><?= date('d M Y', strtotime($k->keberangkatan)); ?></td>
+						<td><?= date('d M Y', strtotime($k->tiba)) ?></td>
 					</tr>
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-		<div class="clearfix">
-			<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-			<ul class="pagination">
-				<li class="page-item disabled"><a href="#">Previous</a></li>
-				<li class="page-item"><a href="#" class="page-link">1</a></li>
-				<li class="page-item"><a href="#" class="page-link">2</a></li>
-				<li class="page-item active"><a href="#" class="page-link">3</a></li>
-				<li class="page-item"><a href="#" class="page-link">4</a></li>
-				<li class="page-item"><a href="#" class="page-link">5</a></li>
-				<li class="page-item"><a href="#" class="page-link">Next</a></li>
-			</ul>
-		</div>
+
 	</div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
@@ -170,15 +148,15 @@ foreach ($data->result() as $d) {
 					// untuk ganti warna dari naik turun statistiknya
 					borderColor: "#8e5ea2",
 					fill: false
-				} //jika nambah alasan baru maka tambah , seperti pada line 31
+				}, //jika nambah alasan baru maka tambah , seperti pada line 31
 
 				// bila mau menambah alasan baru makan tambah dataset seperti Ini 
-				// {
-				// 	data:  echo json_encode($jumlah_keterlambatan[2]); seperti pembuatan pada line 27,
-				// 	label: "gakbisa berenang",
-				// 	borderColor: "#3e95cd",
-				// 	fill: false
-				// }
+				{
+					data: <?php echo json_encode($jumlah_keterlambatan[2]); ?>,
+					label: "Kapal rusak",
+					borderColor: "#3cba9f",
+					fill: false
+				}
 
 			]
 		},

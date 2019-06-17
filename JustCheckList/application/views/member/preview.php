@@ -46,7 +46,7 @@
 												</thead>
 												<tbody>
 													<?php
-													$data = json_decode($anggotaIkut[0]->anggota);
+													$data = json_decode($anggotaIkut[count($anggotaIkut) - 1]->anggota);
 													foreach ($data as $id) {
 														foreach ($anggota as $item) {
 															if ($item->id == $id) {

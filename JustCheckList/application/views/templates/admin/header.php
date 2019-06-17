@@ -24,7 +24,7 @@
 
 </head>
 
-<body class="index-page sidebar-collapse">
+<body class="index-page sidebar-collapse" >
 	<div class="container">
 		<!-- Navbar -->
 		<nav class="navbar navbar-expand-lg bg-dark fixed-top navbar-dark">
