@@ -25,7 +25,7 @@
 					<th>Nama</th>
 					<th>Email</th>
 					<th>No.Hp/Telp</th>
-					<th colspan="3">Aksi</th>
+					<th>Aksi</th>
 				</tr>
 				<?php
 				foreach ($tb_member as $mbr) : ?>
@@ -46,14 +46,14 @@
 							</a>
 						</td>
 						<!-- <td onclick="javascript: return confirm('Anda yakin ingin menghapus?')">
-															<?php echo anchor(
-																'member/hapus/' . $mbr['id'],
-																'<div  class="badge badge-danger">
+																<?php echo anchor(
+																	'member/hapus/' . $mbr['id'],
+																	'<div  class="badge badge-danger">
                                     <i class="fa fa-trash"data-toggle="tooltip" 
                                     title="Hapus"></i>
 								</div>'
-															) ?>
-														</td> -->
+																) ?>
+															</td> -->
 					</tr>
 				<?php endforeach; ?>
 			</thead>
@@ -109,7 +109,7 @@
 											<div class="form-group">
 												<h6 for="exampleInputEmail1">Email</h6>
 												<input type="email" name="email" class="form-control" placeholder="Email">
-												<small class="text-danger"><?= form_error('status'); ?></small>
+												<small class="text-danger"><?= form_error('email'); ?></small>
 											</div>
 										</div>
 										<div class="col-md-4 pr-1">
@@ -125,36 +125,36 @@
 										<div class="col-md-12 pr-1">
 											<div class="form-group">
 												<h6>Alamat</h6>
-												<input type="text" name="alamat" class="form-control" placeholder="Jalan Tengku Meulagu Tibang Kecamatan Syiah Kuala Banda Aceh">
+												<input type="text" name="alamat" class="form-control" placeholder="Alamat">
 												<small class="text-danger"><?= form_error('alamat'); ?></small>
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-4 pr-1">
-											<div class="form-group text-warning">
+											<div class="form-group">
 												<h6>Negara</h6>
-												<input type="text" name="negara" class="form-control" placeholder="nama negara">
+												<input type="text" name="negara" class="form-control" placeholder="Negara">
 												<small class="text-danger"><?= form_error('negara'); ?></small>
 											</div>
 										</div>
 										<div class="col-md-4 pr-1">
-											<div class="form-group text-warning">
+											<div class="form-group">
 												<h6>Kota/Kabupaten</h6>
-												<input type="text" name="kotakabupaten" class="form-control" placeholder="nama kota/kabupaten">
+												<input type="text" name="kotakabupaten" class="form-control" placeholder="Kota/kabupaten">
 												<small class="text-danger"><?= form_error('kotakabupaten'); ?></small>
 											</div>
 										</div>
 										<div class="col-md-4 pr-1">
-											<div class="form-group text-warning">
+											<div class="form-group">
 												<h6>Kode Pos</h6>
-												<input type="number" name="kodepos" class="form-control" placeholder="isi kode pos">
+												<input type="number" name="kodepos" class="form-control" placeholder="Kode pos(5 digit)">
 												<small class="text-danger"><?= form_error('kodepos'); ?></small>
 											</div>
 										</div>
 									</div>
 									<div class="row col pr-1">
-										<h6>Foto</h6><br>
+										<h6>Gambar Profil</h6><br>
 									</div>
 									<div class="row col pr-1">
 										<div class="input-group form-control">
@@ -184,7 +184,7 @@
 								<div class="author">
 									<div class="form-group shadow-none " data-placement="top">
 										<img class="avatar border-gray rounded-circle" src="<?php echo base_url('assets/profil/' . $user['gambar']) ?>" alt="...">
-										<h6 class="title text-primary mb-3">-----</h6>
+										<h6 class="title text-primary mb-3"><?= $user['nama'] ?></h6>
 									</div>
 									<button type="submit" class="btn btn-success">Simpan</button>
 									<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Batal</button>
@@ -266,19 +266,19 @@
 										</div>
 										<div class="row">
 											<div class="col-md-4 pr-1">
-												<div class="form-group text-warning">
+												<div class="form-group ">
 													<h6>Negara</h6>
 													<input type="text" class="form-control" placeholder="City" value="<?php echo $mbr['negara']; ?>" name="negara">
 												</div>
 											</div>
 											<div class="col-md-4 pr-1">
-												<div class="form-group text-warning">
+												<div class="form-group">
 													<h6>Kota/Kabupaten</h6>
 													<input type="text" class="form-control" placeholder="Country" value="<?php echo $mbr['kotakabupaten']; ?>" name="kotakabupaten">
 												</div>
 											</div>
 											<div class="col-md-4 pr-1">
-												<div class="form-group text-warning">
+												<div class="form-group">
 													<h6>Kode Pos</h6>
 													<input type="number" class="form-control" placeholder="1234567" value="<?php echo $mbr['kodepos']; ?>" name="kodepos">
 												</div>
@@ -340,13 +340,13 @@
 								<div class="card-body">
 									<form>
 										<div class="row">
-											<div class="col-md-5 ">
+											<div class="col-md-4 ">
 												<div class="form-group ">
 													<h6>ID</h6>
 													<p><?php echo $mbr['id']; ?></p>
 												</div>
 											</div>
-											<div class="col-md-3 ">
+											<div class="col-md-4 ">
 												<div class="form-group">
 													<h6>Nama</h6>
 													<p><?php echo $mbr['nama']; ?></p>
@@ -361,13 +361,13 @@
 										</div>
 
 										<div class="row">
-											<div class="col-md-5 pr-1">
+											<div class="col-md-4 pr-1">
 												<div class="form-group ">
 													<h6>Status</h6>
 													<p><?php echo $mbr['status']; ?></p>
 												</div>
 											</div>
-											<div class="col-md-3 pr-1">
+											<div class="col-md-4 pr-1">
 												<div class="form-group">
 													<h6 for="exampleInputEmail1">Email</h6>
 													<p><?php echo $mbr['email']; ?></p>
@@ -398,13 +398,13 @@
 												</div>
 											</div>
 											<div class="col-md-4 pr-1">
-												<div class="form-group text-warning">
+												<div class="form-group">
 													<h6>Kota/Kabupaten</h6>
 													<p><?php echo $mbr['kotakabupaten']; ?></p>
 												</div>
 											</div>
 											<div class="col-md-4 pr-1">
-												<div class="form-group text-warning">
+												<div class="form-group">
 													<h6>Kode Pos</h6>
 													<p><?php echo $mbr['kodepos']; ?></p>
 												</div>

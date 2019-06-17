@@ -108,12 +108,6 @@ foreach ($data->result() as $d) {
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th>
-						<span class="custom-checkbox">
-							<input type="checkbox" id="selectAll">
-							<label for="selectAll"></label>
-						</span>
-					</th>
 					<th>ID Kapal</th>
 					<th>Keberangkatan</th>
 					<th>Tiba</th>
@@ -122,12 +116,6 @@ foreach ($data->result() as $d) {
 			<tbody>
 				<?php foreach ($keberangkatan->result() as $k) : ?>
 					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox1" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
-						</td>
 						<td><?= $k->id ?></td>
 						<td><?= date('d M Y', strtotime($k->keberangkatan)); ?></td>
 						<td><?= date('d M Y', strtotime($k->tiba)) ?></td>
@@ -135,18 +123,6 @@ foreach ($data->result() as $d) {
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-		<div class="clearfix">
-			<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-			<ul class="pagination">
-				<li class="page-item disabled"><a href="#">Previous</a></li>
-				<li class="page-item"><a href="#" class="page-link">1</a></li>
-				<li class="page-item"><a href="#" class="page-link">2</a></li>
-				<li class="page-item active"><a href="#" class="page-link">3</a></li>
-				<li class="page-item"><a href="#" class="page-link">4</a></li>
-				<li class="page-item"><a href="#" class="page-link">5</a></li>
-				<li class="page-item"><a href="#" class="page-link">Next</a></li>
-			</ul>
-		</div>
 	</div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>

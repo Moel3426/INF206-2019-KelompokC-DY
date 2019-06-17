@@ -13,19 +13,19 @@
 								<div class="row">
 									<div class="col-md-5 pr-1">
 										<div class="form-group ">
-											<label>ID Kapal</label>
+											<h6>ID Kapal</h6>
 											<p class="profile-list"><?= $user['id_kapal'] ?></p>
 										</div>
 									</div>
 									<div class="col-md-3 pr-1">
 										<div class="form-group">
-											<label>Nama</label>
+											<h6>Nama</h6>
 											<p class="profile-list"><?= $user['nama'] ?></p>
 										</div>
 									</div>
 									<div class="col-md-4 pr-1">
 										<div class="form-group">
-											<label for="exampleInputEmail1">Email</label>
+											<h6 for="exampleInputEmail1">Email</h6>
 											<p class="profile-list"><?= $user['email'] ?></p>
 										</div>
 									</div>
@@ -33,19 +33,19 @@
 								<div class="row">
 									<div class="col-md-5 pr-1">
 										<div class="form-group">
-											<label>Status</label>
+											<h6>Status</h6>
 											<p class="profile-list"><?= $user['status'] ?></p>
 										</div>
 									</div>
 									<div class="col-md-3 pr-1">
 										<div class="form-group">
-											<label>Agama</label>
+											<h6>Agama</h6>
 											<p class="profile-list"><?= $user['agama'] ?></p>
 										</div>
 									</div>
 									<div class="col-md-4 pr-1">
 										<div class="form-group">
-											<label>No HP/Telp</label>
+											<h6>No HP/Telp</h6>
 											<p class="profile-list"><?= $user['no_hp'] ?></p>
 										</div>
 									</div>
@@ -53,22 +53,22 @@
 								<div class="row">
 									<div class="col-md-12 pr-1">
 										<div class="form-group">
-											<label>Alamat</label>
+											<h6>Alamat</h6>
 											<p class="profile-list"><?= $user['alamat'] ?></p>
 										</div>
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-md-6 pr-1">
-										<div class="form-group text-warning">
-											<label>Negara</label>
+									<div class="col-md-5 pr-1">
+										<div class="form-group">
+											<h6>Negara</h6>
 											<p class="profile-list"><?= $user['negara'] ?></p>
 										</div>
 									</div>
 
-									<div class="col-md-6 pr-1">
-										<div class="form-group text-warning">
-											<label>Kode Pos</label>
+									<div class="col-md-3 pr-1">
+										<div class="form-group">
+											<h6>Kode Pos</h6>
 											<p class="profile-list"><?= $user['kode_pos'] ?></p>
 										</div>
 									</div>
@@ -76,7 +76,7 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
-											<label>Deskripsi</label>
+											<h6>Deskripsi</h6>
 											<p class="profile-list"><?= $user['deskripsi'] ?></p>
 										</div>
 									</div>
