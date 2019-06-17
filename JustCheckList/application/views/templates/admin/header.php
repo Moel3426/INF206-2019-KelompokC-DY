@@ -45,13 +45,13 @@
 						<li class="nav-item">
 							<a class="nav-link" href="<?php echo base_url() ?>admin" onclick="scrollToDownload()">
 								<i class="now-ui-icons shopping_shop"></i>
-								<p>Dashboard</p>
+								<p>Beranda</p>
 							</a>
 						</li>
 						<li class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink1" data-toggle="dropdown">
 								<i class="now-ui-icons business_badge"></i>
-								<p>Member</p>
+								<p>Anggota</p>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink1">
 								<a class="dropdown-item" href="#undangAnggota" class="undang" data-toggle="modal">
@@ -66,7 +66,7 @@
 						<li class="nav-item">
 							<a class="nav-link" href="<?php echo base_url() ?>admin/inbox" onclick="scrollToDownload()">
 								<i class="now-ui-icons ui-1_email-85"></i>
-								<p>Inbox</p>
+								<p>Pesan Masuk</p>
 								<?php if ($inbox > 0) { ?>
 									<span class="badge badge-danger badge-counter"><?= $inbox ?></span>
 								<?php } ?>
@@ -82,10 +82,10 @@
 									<?= $user['nama']; ?>
 								</a>
 								<a class="dropdown-item" href="<?php echo base_url() ?>admin/cek_profile">
-									<i class="now-ui-icons users_single-02"></i> Check Profile
+									<i class="now-ui-icons users_single-02"></i> Lihat Profil
 								</a>
 								<a class="dropdown-item" href="<?php echo base_url() ?>landing/logout">
-									<i class="now-ui-icons sport_user-run"></i> Check Out
+									<i class="now-ui-icons sport_user-run"></i> Keluar
 								</a>
 							</div>
 						</li>

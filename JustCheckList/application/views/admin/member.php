@@ -26,11 +26,13 @@
 			</thead>
 			<tbody>
 				
-				<?php foreach ($member->result() as $members) :
+				<?php
+				$id=1;
+				foreach ($member->result() as $members) :
 					$anggota = $this->db->get_where('users', ['id' => $members->member_id])->row();
 					?>
 					<tr>
-						<td><?php echo $anggota->id; ?></td>
+						<td><?php echo $id++ ?></td>
 						<td href="#cekAnggota-<?php echo $anggota->id; ?>" class="view" data-toggle="modal">
 							<img class="gambar" src="<?php echo base_url('assets/foto/' . $anggota->gambar) ?>" alt="" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top" />
 						</td>
@@ -297,7 +299,7 @@
 						<div class="col-md-8">
 							<div class="card">
 								<div class="card-header pb-4 pt-4 text-info">
-									<h5 class="title">My Profile</h5>
+									<h5 class="title">Profil Saya</h5>
 								</div>
 								<div class="card-body">
 									<form class="p-2">
@@ -350,14 +352,14 @@
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-md-6 pr-1">
-												<div class="form-group text-warning">
+											<div class="col-md-5 pr-1">
+												<div class="form-group">
 													<label>Negara</label>
 													<p class="profile-list"><?= $anggota->negara ?></p>
 												</div>
 											</div>
 											<div class="col-md-6 pr-1">
-												<div class="form-group text-warning">
+												<div class="form-group">
 													<label>Kode Pos</label>
 													<p class="profile-list"><?= $anggota->kode_pos ?></p>
 												</div>

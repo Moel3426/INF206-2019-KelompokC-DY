@@ -45,19 +45,19 @@
 						<li class="nav-item">
 							<a class="nav-link" href="<?php echo base_url('home') ?>" onclick="scrollToDownload()">
 								<i class="now-ui-icons shopping_shop"></i>
-								<p>Dashboard</p>
+								<p>Beranda</p>
 							</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="<?php echo base_url('home/member') ?>" onclick="scrollToDownload()">
 								<i class="now-ui-icons business_badge"></i>
-								<p>Member</p>
+								<p>Anggota</p>
 							</a>
 						</li>
 						<li class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink1" data-toggle="dropdown">
 								<i class="now-ui-icons tech_watch-time"></i>
-								<p>Schedule</p>
+								<p>Jadwal</p>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink1">
 								<a class="dropdown-item" href="<?php echo base_url('home/berangkat') ?>">
@@ -72,7 +72,7 @@
 						<li class="nav-item">
 							<a class="nav-link" href="<?php echo base_url('home/history') ?>" onclick="scrollToDownload()">
 								<i class="now-ui-icons education_agenda-bookmark"></i>
-								<p>History</p>
+								<p>Riwayat</p>
 							</a>
 						</li>
 						<li class="nav-item dropdown">
@@ -85,10 +85,10 @@
 									<?= $user['nama']; ?>
 								</a>
 								<a class="dropdown-item" href="<?php echo base_url('home/cek_profile') ?>">
-									<i class="now-ui-icons users_single-02"></i> Check Profile
+									<i class="now-ui-icons users_single-02"></i> Lihat Profil
 								</a>
 								<a class="dropdown-item" href="<?php echo base_url('landing/logout') ?>">
-									<i class="now-ui-icons sport_user-run"></i> Check Out
+									<i class="now-ui-icons sport_user-run"></i> Keluar
 								</a>
 							</div>
 						</li>
