@@ -12,6 +12,10 @@
         padding: 20px;
     }
 </style>
+<?php
+$data = $tb_member[0];
+
+?>
 <section id="title">
     <div>
         <p>Profil Anggota</p>
@@ -28,52 +32,50 @@
     <div class="container">
         <table class="table mt-2 data">
             <tbody>
-                <?php foreach ($tb_member as $mbr) { ?>
-                    <tr>
-                        <td>ID </td>
-                        <td><?= $mbr['id']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>NAMA</td>
-                        <td><?= $mbr['nama']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>AGAMA</td>
-                        <td><?= $mbr['agama']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>STATUS</td>
-                        <td><?= $mbr['status']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>EMAIL</td>
-                        <td><?= $mbr['email']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>NoHP/TELP</td>
-                        <td><?= $mbr['noHp']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Alamat</td>
-                        <td><?= $mbr['alamat']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>NEGARA</td>
-                        <td><?= $mbr['negara']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>KOTA/KABUPATEN</td>
-                        <td><?= $mbr['kotakabupaten']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>KODE POS</td>
-                        <td><?= $mbr['kodepos']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>DESKRIPSI</td>
-                        <td><?= $mbr['deskripsi']; ?></td>
-                    </tr>
-                <?php } ?>
+                <tr>
+                    <td>ID </td>
+                    <td><?= $data['id'] ?></td>
+                </tr>
+                <tr>
+                    <td>NAMA</td>
+                    <td><?= $data['nama'] ?></td>
+                </tr>
+                <tr>
+                    <td>AGAMA</td>
+                    <td><?= $data['agama'] ?></td>
+                </tr>
+                <tr>
+                    <td>STATUS</td>
+                    <td><?= $data['status'] ?></td>
+                </tr>
+                <tr>
+                    <td>EMAIL</td>
+                    <td><?= $data['email'] ?></td>
+                </tr>
+                <tr>
+                    <td>NoHP/TELP</td>
+                    <td><?= $data['noHp'] ?></td>
+                </tr>
+                <tr>
+                    <td>Alamat</td>
+                    <td><?= $data['alamat'] ?></td>
+                </tr>
+                <tr>
+                    <td>NEGARA</td>
+                    <td><?= $data['negara'] ?></td>
+                </tr>
+                <tr>
+                    <td>KOTA/KABUPATEN</td>
+                    <td><?= $data['kotakabupaten'] ?></td>
+                </tr>
+                <tr>
+                    <td>KODE POS</td>
+                    <td><?= $data['kodepos'] ?></td>
+                </tr>
+                <tr>
+                    <td>DESKRIPSI</td>
+                    <td><?= $data['deskripsi'] ?></td>
+                </tr>
             </tbody>
         </table>
     </div>
