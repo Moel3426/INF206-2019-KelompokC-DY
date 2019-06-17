@@ -46,14 +46,14 @@
 							</a>
 						</td>
 						<!-- <td onclick="javascript: return confirm('Anda yakin ingin menghapus?')">
-																<?php echo anchor(
-																	'member/hapus/' . $mbr['id'],
-																	'<div  class="badge badge-danger">
+																																	<?php echo anchor(
+																																		'member/hapus/' . $mbr['id'],
+																																		'<div  class="badge badge-danger">
                                     <i class="fa fa-trash"data-toggle="tooltip" 
                                     title="Hapus"></i>
 								</div>'
-																) ?>
-															</td> -->
+																																	) ?>
+																																</td> -->
 					</tr>
 				<?php endforeach; ?>
 			</thead>
@@ -213,7 +213,7 @@
 									<h5 class="title">Edit Profile</h5>
 								</div>
 								<div class="card-body">
-									<form class="p-2" action="<?php echo base_url() . 'member/update'; ?>" method="post">
+									<form class="p-2" enctype="multipart/form-data" action="<?php echo base_url() . 'member/update'; ?>" method="post">
 										<div class="row">
 											<div class="col-md-5 ">
 												<div class="form-group ">
@@ -303,8 +303,10 @@
 								</div>
 								<div class="card-body">
 									<div class="author">
-
-										<img class="avatar border-gray rounded-circle" src="<?php echo base_url("assets/foto/" . $mbr['foto']); ?>" data-toggle="tooltip" title="Foto tidak bisa diedit" width="100px" height="100px">
+										<input class="d-none" type="file" name="foto" id="image">
+										<label for="image">
+											<img class="avatar border-gray rounded-circle" src="<?php echo base_url("assets/foto/" . $mbr['foto']); ?>" data-toggle="tooltip" title="Foto tidak bisa diedit" width="100px" height="100px">
+										</label>
 										<h5 class="title text-primary"><?php echo $mbr['nama']; ?></h5>
 
 										<a href="<?php echo base_url() ?>index.php/landing/edit_profile">
@@ -427,6 +429,7 @@
 							<div class="card card-user">
 								<div class="belakang">
 									<img src="<?php echo base_url() ?>assets/img/header.jpg" alt="...">
+
 								</div>
 								<div class="card-body">
 									<div class="author">
