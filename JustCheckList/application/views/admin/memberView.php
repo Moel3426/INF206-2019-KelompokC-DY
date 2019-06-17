@@ -1,7 +1,7 @@
 <!-- content -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="<?php echo base_url() ?>assets/css/profil.css" rel="stylesheet" />
-<div class="container-fluid p-5 mt-5">
+<div class="container-fluid p-5 mt-5" style="min-height:100vh;">
 	<div class="table-wrapper shadow-lg">
 		<div class="table-title">
 			<div class="row ">
@@ -24,7 +24,7 @@
 			</thead>
 			<tbody>
 				<?php
-				$id = 1; 
+				$id = 1;
 				foreach ($lihatanggota->result() as $lihat) : ?>
 					<tr>
 						<td><?php echo $id++ ?></td>

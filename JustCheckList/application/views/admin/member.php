@@ -1,9 +1,9 @@
 <!-- content -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="<?php echo base_url() ?>assets/css/profil.css" rel="stylesheet" />
-<div class="container-fluid p-5 mt-5">
+<div class="container-fluid p-5 mt-5" style="min-height:100vh;">
 	<div class="table-wrapper shadow-lg">
-		
+
 		<div class="table-title">
 
 			<div class="row ">
@@ -25,14 +25,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				
-				<?php foreach ($member->result() as $members) :
+
+				<?php
+				$id = 1;
+				foreach ($member->result() as $members) :
 					$anggota = $this->db->get_where('users', ['id' => $members->member_id])->row();
 					?>
 					<tr>
-						<td><?php echo $anggota->id; ?></td>
+						<td><?php echo $id++ ?></td>
 						<td href="#cekAnggota-<?php echo $anggota->id; ?>" class="view" data-toggle="modal">
-							<img class="gambar" src="<?php echo base_url('assets/foto/' . $anggota->gambar) ?>" alt="" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top" />
+							<img class="gambar" src="<?php echo base_url('assets/profil/' . $anggota->gambar) ?>" alt="" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top" />
 						</td>
 						<td><?= $anggota->nama ?></td>
 						<td><?= $anggota->email ?></td>
@@ -297,7 +299,7 @@
 						<div class="col-md-8">
 							<div class="card">
 								<div class="card-header pb-4 pt-4 text-info">
-									<h5 class="title">My Profile</h5>
+									<h5 class="title">Profil Saya</h5>
 								</div>
 								<div class="card-body">
 									<form class="p-2">
@@ -350,14 +352,14 @@
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-md-6 pr-1">
-												<div class="form-group text-warning">
+											<div class="col-md-5 pr-1">
+												<div class="form-group">
 													<label>Negara</label>
 													<p class="profile-list"><?= $anggota->negara ?></p>
 												</div>
 											</div>
 											<div class="col-md-6 pr-1">
-												<div class="form-group text-warning">
+												<div class="form-group">
 													<label>Kode Pos</label>
 													<p class="profile-list"><?= $anggota->kode_pos ?></p>
 												</div>
@@ -382,7 +384,7 @@
 								</div>
 								<div class="card-body">
 									<div class="author">
-										<img class="avatar border-gray rounded-circle" src="<?php echo base_url('assets/profil/' . $anggota->gambar) ?>" width="100px" height="100px"/>
+										<img class="avatar border-gray rounded-circle" src="<?php echo base_url('assets/profil/' . $anggota->gambar) ?>" width="100px" height="100px" />
 
 										<h5 class="title text-primary"><?= $anggota->nama ?></h5>
 										<div>
