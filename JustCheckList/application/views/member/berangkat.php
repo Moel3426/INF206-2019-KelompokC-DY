@@ -12,24 +12,24 @@
 						<div class="col-lg-6">
 							<div class="p-5">
 								<div class="text-center">
-									<h1 class="h4 text-gray-900 mb-4">Form Keberangkatan</h1>
+									<h6 class="h4 text-gray-900 mb-4">Form Keberangkatan</h6>
 									<hr>
 								</div>
 								<form class="user" action="<?= base_url('home/insertBerangkat') ?>" method="post">
-									<label for="">ID Kapal</label>
+									<h6 for="">ID Kapal</h6>
 									<div class="form-group">
 										<input type="text" class="form-control form-control-user" id="idkapal" name="idkapal" value="<?= $user['id_kapal']; ?>" readonly>
 									</div>
 									<div class="form-group">
-										<label for="">Keberangkatan</label>
+										<h6 for="">Keberangkatan</h6>
 										<input type="text" class="form-control date-picker" name="Keberangkatan" placeholder="Masukkan Jadwal..." data-datepicker-color="primary" required>
 									</div>
 									<div class="form-group">
-										<label for="">Tiba</label>
+										<h6 for="">Tiba</h6>
 										<input type="text" class="form-control date-picker" name="Tiba" placeholder="Masukkan Jadwal..." data-datepicker-color="primary" required>
 									</div>
 									<div class="form-group mt-4">
-										<label for="">ID Anggota</label>
+										<h6 for="">ID Anggota</h6>
 										<div class="table-wrapper mt-0">
 											<table class="table table-striped table-hover">
 												<thead>

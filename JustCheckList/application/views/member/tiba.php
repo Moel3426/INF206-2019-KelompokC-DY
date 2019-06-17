@@ -23,11 +23,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				<?php $i = 0;
+				<?php $i = 1;
+				$id= 1;
 				foreach ($keberangkatan->result() as $k) : ?>
 					<?php if ($k->keterangan == '') : ?>
 						<tr>
-							<td><?= $k->id ?></td>
+						<td><?php echo $id++ ?></td>
 							<td>
 								<?= date('d M Y', strtotime($k->keberangkatan)) ?>
 							</td>

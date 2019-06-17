@@ -13,14 +13,14 @@
 				</div>
 				<div class="col-sm-6">
 					<a class="btn btn-success" data-toggle="modal" data-target="#tambahAnggota"><i class="material-icons">&#xE147;</i> <span>Tambah Anggota</span></a>
-					<a class="btn btn-primary" href="<?php echo base_url('member/print') ?>"><i class="material-icons">&#xe8ad;</i> <span>Print Data</span></a>
+					<a class="btn btn-primary" href="<?php echo base_url('member/print') ?>"><i class="material-icons">&#xe8ad;</i> <span>Cetak Data</span></a>
 				</div>
 			</div>
 		</div>
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th>ID</th>
+					<th>No</th>
 					<th>Foto</th>
 					<th>Nama</th>
 					<th>Email</th>
@@ -28,9 +28,10 @@
 					<th>Aksi</th>
 				</tr>
 				<?php
+				$id = 1;
 				foreach ($tb_member as $mbr) : ?>
 					<tr>
-						<td><?php echo $mbr['id']; ?></td>
+						<td><?php echo $id++ ?></td>
 						<td data-target="#cekAnggota-<?php echo $mbr['id']; ?>" data-toggle="modal">
 							<img class="avatar border-gray rounded-circle" src="<?php echo base_url("assets/foto/" . $mbr['foto']); ?>" width="50px" height="50px" data-toggle="tooltip" title="Klik di  sini untuk melihat profil">
 						</td>
@@ -46,14 +47,14 @@
 							</a>
 						</td>
 						<!-- <td onclick="javascript: return confirm('Anda yakin ingin menghapus?')">
-																<?php echo anchor(
-																	'member/hapus/' . $mbr['id'],
-																	'<div  class="badge badge-danger">
+																																			<?php echo anchor(
+																																				'member/hapus/' . $mbr['id'],
+																																				'<div  class="badge badge-danger">
                                     <i class="fa fa-trash"data-toggle="tooltip" 
                                     title="Hapus"></i>
 								</div>'
-																) ?>
-															</td> -->
+																																			) ?>
+																																		</td> -->
 					</tr>
 				<?php endforeach; ?>
 			</thead>
@@ -210,10 +211,10 @@
 						<div class="col-md-8">
 							<div class="card">
 								<div class="card-header pb-4 pt-4 text-info">
-									<h5 class="title">Edit Profile</h5>
+									<h5 class="title">Edit Profil</h5>
 								</div>
 								<div class="card-body">
-									<form class="p-2" action="<?php echo base_url() . 'member/update'; ?>" method="post">
+									<form class="p-2" enctype="multipart/form-data" action="<?php echo base_url() . 'member/update'; ?>" method="post">
 										<div class="row">
 											<div class="col-md-5 ">
 												<div class="form-group ">
@@ -303,8 +304,10 @@
 								</div>
 								<div class="card-body">
 									<div class="author">
-
-										<img class="avatar border-gray rounded-circle" src="<?php echo base_url("assets/foto/" . $mbr['foto']); ?>" data-toggle="tooltip" title="Foto tidak bisa diedit" width="100px" height="100px">
+										<input class="d-none" type="file" name="foto" id="image-<?= $mbr['id'] ?>">
+										<label for="image-<?= $mbr['id'] ?>">
+											<img class="avatar border-gray rounded-circle" src="<?php echo base_url("assets/foto/" . $mbr['foto']); ?>" data-toggle="tooltip" title="Foto tidak bisa diedit" width="100px" height="100px">
+										</label>
 										<h5 class="title text-primary"><?php echo $mbr['nama']; ?></h5>
 
 										<a href="<?php echo base_url() ?>index.php/landing/edit_profile">
@@ -335,7 +338,7 @@
 						<div class="col-md-8">
 							<div class="card">
 								<div class="card-header text-info">
-									<h5 class="title">My Profile</h5>
+									<h5 class="title">Profil Saya</h5>
 								</div>
 								<div class="card-body">
 									<form>
@@ -427,6 +430,7 @@
 							<div class="card card-user">
 								<div class="belakang">
 									<img src="<?php echo base_url() ?>assets/img/header.jpg" alt="...">
+
 								</div>
 								<div class="card-body">
 									<div class="author">
@@ -435,8 +439,8 @@
 										<h5 class="title text-primary"><?php echo $mbr['nama']; ?></h5>
 
 										<a href="<?php echo base_url() ?>index.php/landing/edit_profile">
-											<a class="btn btn-primary" href="<?php echo base_url('member/print1') ?>"><span>Print Data</span></a>
-											<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
+											<a class="btn btn-primary" href="<?php echo base_url('member/print1') ?>"><span>Cetak Data</span></a>
+											<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Tutup</button>
 										</a>
 									</div>
 								</div>
