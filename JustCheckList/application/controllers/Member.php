@@ -20,7 +20,7 @@ class Member extends CI_Controller
         $this->form_validation->set_rules('status', 'Status', 'required', ['required' => "Status harus diisi"]);
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email', ['required' => "Email harus diisi"]);
         $this->form_validation->set_rules('noHp', 'noHP/Telp', 'required|numeric|max_length[12]', ['required' => "NoHp/Telp harus diisi"]);
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required', ['required' => "alamat harus diisi"]);
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required', ['required' => "Alamat harus diisi"]);
         $this->form_validation->set_rules('negara', 'Negara', 'required', ['required' => "Negara harus diisi"]);
         $this->form_validation->set_rules('kotakabupaten', 'Kota/kabupaten', 'required', ['required' => "Kota Kabupaten harus diisi"]);
         $this->form_validation->set_rules('kodepos', 'Kode pos', 'required|numeric|max_length[5]', ['required' => "Kode pos harus diisi[5 digit]"]);

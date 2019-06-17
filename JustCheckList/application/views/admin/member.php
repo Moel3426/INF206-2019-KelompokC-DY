@@ -3,26 +3,18 @@
 <link href="<?php echo base_url() ?>assets/css/profil.css" rel="stylesheet" />
 <div class="container-fluid p-5 mt-5">
 	<div class="table-wrapper shadow-lg">
+		
 		<div class="table-title">
+
 			<div class="row ">
 				<div class="col-sm-6">
 					<h2>DAFTAR <b>ANGGOTA</b></h2>
-				</div>
-				<div class="col-sm-6">
-
-					<a href="#hapusAnggota" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Hapus</span></a>
 				</div>
 			</div>
 		</div>
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th>
-						<span class="custom-checkbox">
-							<input type="checkbox" id="selectAll">
-							<label for="selectAll"></label>
-						</span>
-					</th>
 					<th>ID</th>
 					<th>Foto</th>
 					<th>Nama</th>
@@ -33,19 +25,15 @@
 				</tr>
 			</thead>
 			<tbody>
+				
 				<?php foreach ($member->result() as $members) :
 					$anggota = $this->db->get_where('users', ['id' => $members->member_id])->row();
 					?>
 					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox1" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
-						</td>
-
 						<td><?php echo $anggota->id; ?></td>
-						<td href="#cekAnggota-<?php echo $anggota->id; ?>" class="view" data-toggle="modal"><img class="gambar" src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top" /></td>
+						<td href="#cekAnggota-<?php echo $anggota->id; ?>" class="view" data-toggle="modal">
+							<img class="gambar" src="<?php echo base_url('assets/foto/' . $anggota->gambar) ?>" alt="" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top" />
+						</td>
 						<td><?= $anggota->nama ?></td>
 						<td><?= $anggota->email ?></td>
 						<td><?= $anggota->alamat ?></td>
@@ -57,18 +45,6 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-		<div class="clearfix">
-			<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-			<ul class="pagination">
-				<li class="page-item disabled"><a href="#">Previous</a></li>
-				<li class="page-item"><a href="#" class="page-link">1</a></li>
-				<li class="page-item"><a href="#" class="page-link">2</a></li>
-				<li class="page-item active"><a href="#" class="page-link">3</a></li>
-				<li class="page-item"><a href="#" class="page-link">4</a></li>
-				<li class="page-item"><a href="#" class="page-link">5</a></li>
-				<li class="page-item"><a href="#" class="page-link">Next</a></li>
-			</ul>
-		</div>
 	</div>
 </div>
 <!-- Tambah Data Anggota Modal -->
@@ -402,12 +378,12 @@
 						<div class="col-md-4">
 							<div class="card card-user">
 								<div class="belakang">
-									<img src="<?= base_url('assets/profil/' . $anggota->nama) ?>" alt="...">
+									<img src="<?php echo base_url() ?>assets/img/header.jpg" alt="...">
 								</div>
 								<div class="card-body">
 									<div class="author">
+										<img class="avatar border-gray rounded-circle" src="<?php echo base_url('assets/profil/' . $anggota->gambar) ?>" width="100px" height="100px"/>
 
-										<img class="avatar border-gray rounded-circle" src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="...">
 										<h5 class="title text-primary"><?= $anggota->nama ?></h5>
 										<div>
 											<a href="<?php echo base_url() ?>admin/memberView?id=<?= $anggota->id ?>">
