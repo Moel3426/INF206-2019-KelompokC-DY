@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="<?php echo base_url() ?>assets/css/profil.css" rel="stylesheet" />
 
-<div class="container-fluid p-5 mt-5">
+<div class="container-fluid p-5 mt-5" style="min-height:100vh;">
 	<!--untuk memnampilkan flashdata-->
 	<?php echo $this->session->flashdata('message'); ?>
 	<div class="table-wrapper shadow-lg">
@@ -13,52 +13,54 @@
 				</div>
 				<div class="col-sm-6">
 					<a class="btn btn-success" data-toggle="modal" data-target="#tambahAnggota"><i class="material-icons">&#xE147;</i> <span>Tambah Anggota</span></a>
-					<a class="btn btn-primary" href="<?php echo base_url('member/print') ?>"><i class="material-icons">&#xe8ad;</i> <span>Print Data</span></a>
+					<a class="btn btn-primary" href="<?php echo base_url('member/print') ?>"><i class="material-icons">&#xe8ad;</i> <span>Cetak Data</span></a>
 				</div>
 			</div>
 		</div>
-		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Foto</th>
-					<th>Nama</th>
-					<th>Email</th>
-					<th>No.Hp/Telp</th>
-					<th colspan="3">Aksi</th>
-				</tr>
-				<?php
-				$id = 1;
-				foreach ($tb_member as $mbr) : ?>
+		<div class="table-responsive">
+			<table class="table table-striped table-hover">
+				<thead>
 					<tr>
-						<td><?php echo $id++ ?></td>
-						<td data-target="#cekAnggota-<?php echo $mbr['id']; ?>" data-toggle="modal">
-							<img class="avatar border-gray rounded-circle" src="<?php echo base_url("assets/foto/" . $mbr['foto']); ?>" width="50px" height="50px" data-toggle="tooltip" title="Klik di  sini untuk melihat profil" >
-						</td>
-						<td><?php echo $mbr['nama'];  ?></td>
-						<td><?php echo $mbr['email']; ?></td>
-						<td><?php echo $mbr['noHp']; ?></td>						
-						<td>
-							<a  href="#editAnggota-<?php echo $mbr['id']; ?>" data-toggle="modal" class="edit">
-								<i class="material-icons"data-toggle="tooltip" title="Edit">&#xE254;</i>
-							</a>
-							<a  href="#hapusAnggota-<?php echo $mbr['id']; ?>" data-toggle="modal" class="delete">
-								<i class="material-icons"data-toggle="tooltip" title="Hapus">&#xE872;</i>
-							</a>
-						</td>
-						<!-- <td onclick="javascript: return confirm('Anda yakin ingin menghapus?')">
-							<?php echo anchor(
-								'member/hapus/' . $mbr['id'],
-								'<div  class="badge badge-danger">
+						<th>No</th>
+						<th>Foto</th>
+						<th>Nama</th>
+						<th>Email</th>
+						<th>No.Hp/Telp</th>
+						<th>Aksi</th>
+					</tr>
+					<?php
+					$id = 1;
+					foreach ($tb_member as $mbr) : ?>
+						<tr>
+							<td><?php echo $id++ ?></td>
+							<td data-target="#cekAnggota-<?php echo $mbr['id']; ?>" data-toggle="modal">
+								<img class="avatar border-gray rounded-circle" src="<?php echo base_url("assets/foto/" . $mbr['foto']); ?>" width="50px" height="50px" data-toggle="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top">
+							</td>
+							<td><?php echo $mbr['nama'];  ?></td>
+							<td><?php echo $mbr['email']; ?></td>
+							<td><?php echo $mbr['noHp']; ?></td>
+							<td>
+								<a href="#editAnggota-<?php echo $mbr['id']; ?>" data-toggle="modal" class="edit">
+									<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+								</a>
+								<a href="#hapusAnggota-<?php echo $mbr['id']; ?>" data-toggle="modal" class="delete">
+									<i class="material-icons" data-toggle="tooltip" title="Hapus">&#xE872;</i>
+								</a>
+							</td>
+							<!-- <td onclick="javascript: return confirm('Anda yakin ingin menghapus?')">
+																																												<?php echo anchor(
+																																													'member/hapus/' . $mbr['id'],
+																																													'<div  class="badge badge-danger">
                                     <i class="fa fa-trash"data-toggle="tooltip" 
                                     title="Hapus"></i>
 								</div>'
-							) ?>
-						</td> -->
-					</tr>
-				<?php endforeach; ?>
-			</thead>
-		</table>
+																																												) ?>
+																																											</td> -->
+						</tr>
+					<?php endforeach; ?>
+				</thead>
+			</table>
+		</div>
 	</div>
 </div>
 <!-- Tambah Data Anggota Modal -->
@@ -110,7 +112,7 @@
 											<div class="form-group">
 												<h6 for="exampleInputEmail1">Email</h6>
 												<input type="email" name="email" class="form-control" placeholder="Email">
-												<small class="text-danger"><?= form_error('status'); ?></small>
+												<small class="text-danger"><?= form_error('email'); ?></small>
 											</div>
 										</div>
 										<div class="col-md-4 pr-1">
@@ -126,36 +128,36 @@
 										<div class="col-md-12 pr-1">
 											<div class="form-group">
 												<h6>Alamat</h6>
-												<input type="text" name="alamat" class="form-control" placeholder="Jalan Tengku Meulagu Tibang Kecamatan Syiah Kuala Banda Aceh">
+												<input type="text" name="alamat" class="form-control" placeholder="Alamat">
 												<small class="text-danger"><?= form_error('alamat'); ?></small>
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-4 pr-1">
-											<div class="form-group text-warning">
+											<div class="form-group">
 												<h6>Negara</h6>
-												<input type="text" name="negara" class="form-control" placeholder="nama negara">
+												<input type="text" name="negara" class="form-control" placeholder="Negara">
 												<small class="text-danger"><?= form_error('negara'); ?></small>
 											</div>
 										</div>
 										<div class="col-md-4 pr-1">
-											<div class="form-group text-warning">
+											<div class="form-group">
 												<h6>Kota/Kabupaten</h6>
-												<input type="text" name="kotakabupaten" class="form-control" placeholder="nama kota/kabupaten">
+												<input type="text" name="kotakabupaten" class="form-control" placeholder="Kota/kabupaten">
 												<small class="text-danger"><?= form_error('kotakabupaten'); ?></small>
 											</div>
 										</div>
 										<div class="col-md-4 pr-1">
-											<div class="form-group text-warning">
+											<div class="form-group">
 												<h6>Kode Pos</h6>
-												<input type="number" name="kodepos" class="form-control" placeholder="isi kode pos">
+												<input type="number" name="kodepos" class="form-control" placeholder="Kode pos(5 digit)">
 												<small class="text-danger"><?= form_error('kodepos'); ?></small>
 											</div>
 										</div>
 									</div>
 									<div class="row col pr-1">
-										<h6>Foto</h6><br>
+										<h6>Gambar Profil</h6><br>
 									</div>
 									<div class="row col pr-1">
 										<div class="input-group form-control">
@@ -184,8 +186,8 @@
 							<div class="card-body">
 								<div class="author">
 									<div class="form-group shadow-none " data-placement="top">
-										<img class="avatar border-gray rounded-circle" src="<?php echo base_url('assets/profil/' . $user['gambar']) ?>" alt="...">
-										<h6 class="title text-primary mb-3">-----</h6>
+										<img class="avatar border-gray rounded-circle" src="<?php echo base_url('assets/profil/default-avatar.png') ?>" alt="...">
+										<h6 class="title text-primary mb-3">---</h6>
 									</div>
 									<button type="submit" class="btn btn-success">Simpan</button>
 									<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Batal</button>
@@ -211,10 +213,10 @@
 						<div class="col-md-8">
 							<div class="card">
 								<div class="card-header pb-4 pt-4 text-info">
-									<h5 class="title">Edit Profile</h5>
+									<h5 class="title">Edit Profil</h5>
 								</div>
 								<div class="card-body">
-									<form class="p-2" action="<?php echo base_url() . 'member/update'; ?>" method="post">
+									<form class="p-2" enctype="multipart/form-data" action="<?php echo base_url() . 'member/update'; ?>" method="post">
 										<div class="row">
 											<div class="col-md-5 ">
 												<div class="form-group ">
@@ -267,19 +269,19 @@
 										</div>
 										<div class="row">
 											<div class="col-md-4 pr-1">
-												<div class="form-group text-warning">
+												<div class="form-group ">
 													<h6>Negara</h6>
 													<input type="text" class="form-control" placeholder="City" value="<?php echo $mbr['negara']; ?>" name="negara">
 												</div>
 											</div>
 											<div class="col-md-4 pr-1">
-												<div class="form-group text-warning">
+												<div class="form-group">
 													<h6>Kota/Kabupaten</h6>
 													<input type="text" class="form-control" placeholder="Country" value="<?php echo $mbr['kotakabupaten']; ?>" name="kotakabupaten">
 												</div>
 											</div>
 											<div class="col-md-4 pr-1">
-												<div class="form-group text-warning">
+												<div class="form-group">
 													<h6>Kode Pos</h6>
 													<input type="number" class="form-control" placeholder="1234567" value="<?php echo $mbr['kodepos']; ?>" name="kodepos">
 												</div>
@@ -304,8 +306,10 @@
 								</div>
 								<div class="card-body">
 									<div class="author">
-
-										<img class="avatar border-gray rounded-circle" src="<?php echo base_url("assets/foto/" . $mbr['foto']); ?>" data-toggle="tooltip" title="Foto tidak bisa diedit" width="100px" height="100px">
+										<input class="d-none" type="file" name="foto" id="image-<?= $mbr['id'] ?>">
+										<label for="image-<?= $mbr['id'] ?>">
+											<img class="avatar border-gray rounded-circle" src="<?php echo base_url("assets/foto/" . $mbr['foto']); ?>" data-toggle="tooltip" title="Klik di sini edit foto" width="100px" height="100px">
+										</label>
 										<h5 class="title text-primary"><?php echo $mbr['nama']; ?></h5>
 
 										<a href="<?php echo base_url() ?>index.php/landing/edit_profile">
@@ -336,18 +340,18 @@
 						<div class="col-md-8">
 							<div class="card">
 								<div class="card-header text-info">
-									<h5 class="title">My Profile</h5>
+									<h5 class="title">Profil Saya</h5>
 								</div>
 								<div class="card-body">
 									<form>
 										<div class="row">
-											<div class="col-md-5 ">
+											<div class="col-md-4 ">
 												<div class="form-group ">
 													<h6>ID</h6>
 													<p><?php echo $mbr['id']; ?></p>
 												</div>
 											</div>
-											<div class="col-md-3 ">
+											<div class="col-md-4 ">
 												<div class="form-group">
 													<h6>Nama</h6>
 													<p><?php echo $mbr['nama']; ?></p>
@@ -362,13 +366,13 @@
 										</div>
 
 										<div class="row">
-											<div class="col-md-5 pr-1">
+											<div class="col-md-4 pr-1">
 												<div class="form-group ">
 													<h6>Status</h6>
 													<p><?php echo $mbr['status']; ?></p>
 												</div>
 											</div>
-											<div class="col-md-3 pr-1">
+											<div class="col-md-4 pr-1">
 												<div class="form-group">
 													<h6 for="exampleInputEmail1">Email</h6>
 													<p><?php echo $mbr['email']; ?></p>
@@ -399,13 +403,13 @@
 												</div>
 											</div>
 											<div class="col-md-4 pr-1">
-												<div class="form-group text-warning">
+												<div class="form-group">
 													<h6>Kota/Kabupaten</h6>
 													<p><?php echo $mbr['kotakabupaten']; ?></p>
 												</div>
 											</div>
 											<div class="col-md-4 pr-1">
-												<div class="form-group text-warning">
+												<div class="form-group">
 													<h6>Kode Pos</h6>
 													<p><?php echo $mbr['kodepos']; ?></p>
 												</div>
@@ -428,6 +432,7 @@
 							<div class="card card-user">
 								<div class="belakang">
 									<img src="<?php echo base_url() ?>assets/img/header.jpg" alt="...">
+
 								</div>
 								<div class="card-body">
 									<div class="author">
@@ -436,8 +441,8 @@
 										<h5 class="title text-primary"><?php echo $mbr['nama']; ?></h5>
 
 										<a href="<?php echo base_url() ?>index.php/landing/edit_profile">
-											<a class="btn btn-primary" href="<?php echo base_url('member/print1') ?>"><span>Print Data</span></a>
-											<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
+											<a class="btn btn-primary" href="<?php echo base_url('member/print1') ?>"><span>Cetak Data</span></a>
+											<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Tutup</button>
 										</a>
 									</div>
 								</div>
@@ -465,13 +470,13 @@
 
 <!-- Hapus Data Anggota Modal-->
 <?php
-				$id = 1;
-				foreach ($tb_member as $mbr) : ?>
+$id = 1;
+foreach ($tb_member as $mbr) : ?>
 
-<div id="hapusAnggota-<?=$mbr['id'];?>" class="modal fade">
+	<div id="hapusAnggota-<?= $mbr['id']; ?>" class="modal fade">
 		<div class="modal-dialog" style="max-width:400px;">
 			<div class="modal-content">
-				<form action="<?=base_url('member/hapus/' . $mbr['id'])?>" method="get">
+				<form action="<?= base_url('member/hapus/' . $mbr['id']) ?>" method="get">
 					<div class="modal-header">
 						<h4 class="modal-title">Hapus Angota</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -489,4 +494,4 @@
 		</div>
 	</div>
 
-<?php endforeach;?>
+<?php endforeach; ?>

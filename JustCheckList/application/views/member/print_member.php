@@ -28,7 +28,7 @@
                 <tr>
                     <td><?php echo $no++ ?></td>
                     <td>
-                        <img class="avatar border-gray rounded-circle" src="<?php echo base_url("assets/foto/" . $mbr['foto']); ?>" width="50px" height="50px" data-toggle="tooltip" title="Klik di  sini untuk melihat profil" data-target="#cekAnggota">
+                        <img class="avatar border-gray rounded-circle" src="<?php echo base_url("assets/foto/" . $mbr['foto']); ?>" width="50px" height="50px">
                     </td>
                     <td><?php echo $mbr['nama'];  ?></td>
                     <td><?php echo $mbr['email']; ?></td>

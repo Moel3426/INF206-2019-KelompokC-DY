@@ -43,7 +43,11 @@ foreach ($data->result() as $d) {
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Jumlah Nelayan
 							</div>
-							<div class="h5 mb-0 font-weight-bold text-gray-800"><?= $this->db->count_all_results('users'); ?> <span>Orang</span> </div>
+							<?php $total = 0;
+							foreach ($this->db->get_where('anggota', ['admin_id' => $this->session->userdata('id')])->result() as $i) {
+								$total += 1 + $this->db->get_where('tb_member', ['id_member' => $i->member_id])->num_rows();
+							} ?>
+							<div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total ?> <span>Orang</span> </div>
 						</div>
 						<div class="col-auto">
 							<i class="fas fa-users" style="font-size:35px; color: gainsboro;"></i>
@@ -106,48 +110,27 @@ foreach ($data->result() as $d) {
 				</div>
 			</div>
 		</div>
-		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
-					<th>
-						<span class="custom-checkbox">
-							<input type="checkbox" id="selectAll">
-							<label for="selectAll"></label>
-						</span>
-					</th>
-					<th>ID Kapal</th>
-					<th>Keberangkatan</th>
-					<th>Tiba</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php foreach ($keberangkatan->result() as $k) : ?>
+		<div class="table-responsive">
+			<table class="table table-striped table-hover">
+				<thead>
 					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox1" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
-						</td>
-						<td><?= $k->id ?></td>
-						<td><?= date('d M Y', strtotime($k->keberangkatan)); ?></td>
-						<td><?= date('d M Y', strtotime($k->tiba)) ?></td>
+						<th width="10%">ID Keberangkatan</th>
+						<th width="45%">Keberangkatan</th>
+						<th width="45%">Tiba</th>
 					</tr>
-				<?php endforeach; ?>
-			</tbody>
-		</table>
-		<div class="clearfix">
-			<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-			<ul class="pagination">
-				<li class="page-item disabled"><a href="#">Previous</a></li>
-				<li class="page-item"><a href="#" class="page-link">1</a></li>
-				<li class="page-item"><a href="#" class="page-link">2</a></li>
-				<li class="page-item active"><a href="#" class="page-link">3</a></li>
-				<li class="page-item"><a href="#" class="page-link">4</a></li>
-				<li class="page-item"><a href="#" class="page-link">5</a></li>
-				<li class="page-item"><a href="#" class="page-link">Next</a></li>
-			</ul>
+				</thead>
+				<tbody>
+					<?php foreach ($keberangkatan->result() as $k) : ?>
+						<tr>
+							<td><?= $k->id ?></td>
+							<td><?= date('d M Y', strtotime($k->keberangkatan)); ?></td>
+							<td><?= date('d M Y', strtotime($k->tiba)) ?></td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
 		</div>
+
 	</div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>

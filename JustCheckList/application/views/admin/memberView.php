@@ -1,7 +1,7 @@
 <!-- content -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="<?php echo base_url() ?>assets/css/profil.css" rel="stylesheet" />
-<div class="container-fluid p-5 mt-5">
+<div class="container-fluid p-5 mt-5" style="min-height:100vh;">
 	<div class="table-wrapper shadow-lg">
 		<div class="table-title">
 			<div class="row ">
@@ -11,54 +11,34 @@
 
 			</div>
 		</div>
-		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
-					<th>
-						<span class="custom-checkbox">
-							<input type="checkbox" id="selectAll">
-							<label for="selectAll"></label>
-						</span>
-					</th>
-					<th>ID</th>
-					<th>Foto</th>
-					<th>Nama</th>
-					<th>Email</th>
-					<th>Alamat</th>
-					<th>No.Hp/Telp</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php foreach ($lihatanggota->result() as $lihat) : ?>
+		<div class="table-responsive">
+			<table class="table table-striped table-hover">
+				<thead>
 					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox1" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
-						</td>
-						<td>1</td>
-						<td><a href="#cekAnggota-<?= $lihat->id ?>" class="view" data-toggle="modal" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top"><img class="gambar" src="<?php echo base_url('assets/foto/' . $lihat->foto) ?>" alt="" /></td>
-						</a>
-						<td><?= $lihat->nama ?></td>
-						<td><?= $lihat->email ?></td>
-						<td><?= $lihat->alamat ?></td>
-						<td><?= $lihat->noHp ?></td>
+						<th>ID</th>
+						<th>Foto</th>
+						<th>Nama</th>
+						<th>Email</th>
+						<th>Alamat</th>
+						<th>No.Hp/Telp</th>
 					</tr>
-				<?php endforeach; ?>
-			</tbody>
-		</table>
-		<div class="clearfix">
-			<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-			<ul class="pagination">
-				<li class="page-item disabled"><a href="#">Previous</a></li>
-				<li class="page-item"><a href="#" class="page-link">1</a></li>
-				<li class="page-item"><a href="#" class="page-link">2</a></li>
-				<li class="page-item active"><a href="#" class="page-link">3</a></li>
-				<li class="page-item"><a href="#" class="page-link">4</a></li>
-				<li class="page-item"><a href="#" class="page-link">5</a></li>
-				<li class="page-item"><a href="#" class="page-link">Next</a></li>
-			</ul>
+				</thead>
+				<tbody>
+					<?php
+					$id = 1;
+					foreach ($lihatanggota->result() as $lihat) : ?>
+						<tr>
+							<td><?php echo $id++ ?></td>
+							<td><a href="#cekAnggota-<?= $lihat->id ?>" class="view" data-toggle="modal" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top"><img class="gambar" src="<?php echo base_url('assets/foto/' . $lihat->foto) ?>" alt="" /></td>
+							</a>
+							<td><?= $lihat->nama ?></td>
+							<td><?= $lihat->email ?></td>
+							<td><?= $lihat->alamat ?></td>
+							<td><?= $lihat->noHp ?></td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>

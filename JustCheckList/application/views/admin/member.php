@@ -1,75 +1,55 @@
 <!-- content -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="<?php echo base_url() ?>assets/css/profil.css" rel="stylesheet" />
-<div class="container-fluid p-5 mt-5">
+<div class="container-fluid p-5 mt-5" style="min-height:100vh;">
 	<div class="table-wrapper shadow-lg">
+
 		<div class="table-title">
+
 			<div class="row ">
 				<div class="col-sm-6">
 					<h2>DAFTAR <b>ANGGOTA</b></h2>
 				</div>
-				<div class="col-sm-6">
-
-					<a href="#hapusAnggota" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Hapus</span></a>
-				</div>
 			</div>
 		</div>
-		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
-					<th>
-						<span class="custom-checkbox">
-							<input type="checkbox" id="selectAll">
-							<label for="selectAll"></label>
-						</span>
-					</th>
-					<th>ID</th>
-					<th>Foto</th>
-					<th>Nama</th>
-					<th>Email</th>
-					<th>Alamat</th>
-					<th>No.Hp/Telp</th>
-					<th>Aksi</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php foreach ($member->result() as $members) :
-					$anggota = $this->db->get_where('users', ['id' => $members->member_id])->row();
-					?>
+		<div class="table-responsive">
+			<table class="table table-striped table-hover ">
+				<thead>
 					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox1" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
-						</td>
-
-						<td>1</td>
-						<td href="#cekAnggota-<?php echo $anggota->id; ?>" class="view" data-toggle="modal"><img class="gambar" src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top" /></td>
-						<td><?= $anggota->nama ?></td>
-						<td><?= $anggota->email ?></td>
-						<td><?= $anggota->alamat ?></td>
-						<td><?= $anggota->no_hp ?></td>
-						<td> <a href="#hapusAnggota-<?=$anggota->id?>" data-toggle="modal" class="delete"><i class="material-icons" data-toggle="tooltip" title="Hapus">&#xE872;</i></a>
-						</td>
-
+						<th>ID</th>
+						<th>Foto</th>
+						<th>Nama</th>
+						<th>Email</th>
+						<th>Alamat</th>
+						<th>No.Hp/Telp</th>
+						<th>Aksi</th>
 					</tr>
-				<?php endforeach; ?>
-			</tbody>
-		</table>
-		<div class="clearfix">
-			<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-			<ul class="pagination">
-				<li class="page-item disabled"><a href="#">Previous</a></li>
-				<li class="page-item"><a href="#" class="page-link">1</a></li>
-				<li class="page-item"><a href="#" class="page-link">2</a></li>
-				<li class="page-item active"><a href="#" class="page-link">3</a></li>
-				<li class="page-item"><a href="#" class="page-link">4</a></li>
-				<li class="page-item"><a href="#" class="page-link">5</a></li>
-				<li class="page-item"><a href="#" class="page-link">Next</a></li>
-			</ul>
+				</thead>
+				<tbody>
+
+					<?php
+					$id = 1;
+					foreach ($member->result() as $members) :
+						$anggota = $this->db->get_where('users', ['id' => $members->member_id])->row();
+						?>
+						<tr>
+							<td><?php echo $id++ ?></td>
+							<td href="#cekAnggota-<?php echo $anggota->id; ?>" class="view" data-toggle="modal">
+								<img class="gambar" src="<?php echo base_url('assets/profil/' . $anggota->gambar) ?>" alt="" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top" />
+							</td>
+							<td><?= $anggota->nama ?></td>
+							<td><?= $anggota->email ?></td>
+							<td><?= $anggota->alamat ?></td>
+							<td><?= $anggota->no_hp ?></td>
+							<td> <a href="#hapusAnggota-<?= $anggota->id ?>" data-toggle="modal" class="delete"><i class="material-icons" data-toggle="tooltip" title="Hapus">&#xE872;</i></a>
+							</td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
 		</div>
 	</div>
+
 </div>
 <!-- Tambah Data Anggota Modal -->
 <div id="tambahAnggota" class="modal fade">
@@ -321,7 +301,7 @@
 						<div class="col-md-8">
 							<div class="card">
 								<div class="card-header pb-4 pt-4 text-info">
-									<h5 class="title">My Profile</h5>
+									<h5 class="title">Profil Saya</h5>
 								</div>
 								<div class="card-body">
 									<form class="p-2">
@@ -374,14 +354,14 @@
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-md-6 pr-1">
-												<div class="form-group text-warning">
+											<div class="col-md-5 pr-1">
+												<div class="form-group">
 													<label>Negara</label>
 													<p class="profile-list"><?= $anggota->negara ?></p>
 												</div>
 											</div>
 											<div class="col-md-6 pr-1">
-												<div class="form-group text-warning">
+												<div class="form-group">
 													<label>Kode Pos</label>
 													<p class="profile-list"><?= $anggota->kode_pos ?></p>
 												</div>
@@ -402,12 +382,12 @@
 						<div class="col-md-4">
 							<div class="card card-user">
 								<div class="belakang">
-									<img src="<?= base_url('assets/profil/' . $anggota->nama) ?>" alt="...">
+									<img src="<?php echo base_url() ?>assets/img/header.jpg" alt="...">
 								</div>
 								<div class="card-body">
 									<div class="author">
+										<img class="avatar border-gray rounded-circle" src="<?php echo base_url('assets/profil/' . $anggota->gambar) ?>" width="100px" height="100px" />
 
-										<img class="avatar border-gray rounded-circle" src="<?php echo base_url() ?>assets/img/default-avatar.png" alt="...">
 										<h5 class="title text-primary"><?= $anggota->nama ?></h5>
 										<div>
 											<a href="<?php echo base_url() ?>admin/memberView?id=<?= $anggota->id ?>">
@@ -430,24 +410,24 @@
 <?php endforeach; ?>
 <!-- Hapus Data Anggota Modal-->
 <?php foreach ($member->result() as $members) : $anggota = $this->db->get_where('users', ['id' => $members->member_id])->row(); ?>
-<div id="hapusAnggota-<?=$anggota->id?>" class="modal fade">
-	<div class="modal-dialog" style="max-width:400px;">
-		<div class="modal-content">
-			<form action="<?= base_url('admin/delete') ?>" method="get">
-				<div class="modal-header">
-					<h4 class="modal-title">Hapus Angota</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">
-					<p>Anda yakin ingin menghapus data anggota?</p>
-					<p class="text-warning"><small>Keputusan tidak dapat diulang.</small></p>
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">					
-					<button type="submit" class="btn btn-danger" value="<?= $members->id ?>" name="id">Hapus</button>
-				</div>
-			</form>
+	<div id="hapusAnggota-<?= $anggota->id ?>" class="modal fade">
+		<div class="modal-dialog" style="max-width:400px;">
+			<div class="modal-content">
+				<form action="<?= base_url('admin/delete') ?>" method="get">
+					<div class="modal-header">
+						<h4 class="modal-title">Hapus Angota</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p>Anda yakin ingin menghapus data anggota?</p>
+						<p class="text-warning"><small>Keputusan tidak dapat diulang.</small></p>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+						<button type="submit" class="btn btn-danger" value="<?= $members->id ?>" name="id">Hapus</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
-</div>
-<?php endforeach;?>
+<?php endforeach; ?>
