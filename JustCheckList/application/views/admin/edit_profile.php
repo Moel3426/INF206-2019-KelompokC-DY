@@ -121,8 +121,8 @@
 					</div>
 					<div class="card-body">
 						<div class="author">
-							<div class="form-group shadow-none " rel="tooltip" title="Klik di  sini untuk mengganti foto profil" data-placement="top">
-								<input type="file"><img type="file" class="avatar border-gray rounded-circle" src="<?php echo base_url('assets/profil/' . $user['gambar']) ?>" alt="...">
+							<div class="form-group shadow-none ">
+								<img class="avatar border-gray rounded-circle" src="<?php echo base_url('assets/profil/' . $user['gambar']) ?>" alt="...">
 								<h5 class="title text-primary"><?= $user['nama'] ?></h5>
 							</div>
 							<div>

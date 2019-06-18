@@ -12,42 +12,44 @@
 				</div>
 			</div>
 		</div>
-		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Foto</th>
-					<th>Nama</th>
-					<th>Email</th>
-					<th>Alamat</th>
-					<th>No.Hp/Telp</th>
-					<th>Aksi</th>
-				</tr>
-			</thead>
-			<tbody>
-
-				<?php
-				$id = 1;
-				foreach ($member->result() as $members) :
-					$anggota = $this->db->get_where('users', ['id' => $members->member_id])->row();
-					?>
+		<div class="table-responsive">
+			<table class="table table-striped table-hover ">
+				<thead>
 					<tr>
-						<td><?php echo $id++ ?></td>
-						<td href="#cekAnggota-<?php echo $anggota->id; ?>" class="view" data-toggle="modal">
-							<img class="gambar" src="<?php echo base_url('assets/profil/' . $anggota->gambar) ?>" alt="" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top" />
-						</td>
-						<td><?= $anggota->nama ?></td>
-						<td><?= $anggota->email ?></td>
-						<td><?= $anggota->alamat ?></td>
-						<td><?= $anggota->no_hp ?></td>
-						<td> <a href="#hapusAnggota-<?= $anggota->id ?>" data-toggle="modal" class="delete"><i class="material-icons" data-toggle="tooltip" title="Hapus">&#xE872;</i></a>
-						</td>
-
+						<th>ID</th>
+						<th>Foto</th>
+						<th>Nama</th>
+						<th>Email</th>
+						<th>Alamat</th>
+						<th>No.Hp/Telp</th>
+						<th>Aksi</th>
 					</tr>
-				<?php endforeach; ?>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+
+					<?php
+					$id = 1;
+					foreach ($member->result() as $members) :
+						$anggota = $this->db->get_where('users', ['id' => $members->member_id])->row();
+						?>
+						<tr>
+							<td><?php echo $id++ ?></td>
+							<td href="#cekAnggota-<?php echo $anggota->id; ?>" class="view" data-toggle="modal">
+								<img class="gambar" src="<?php echo base_url('assets/profil/' . $anggota->gambar) ?>" alt="" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top" />
+							</td>
+							<td><?= $anggota->nama ?></td>
+							<td><?= $anggota->email ?></td>
+							<td><?= $anggota->alamat ?></td>
+							<td><?= $anggota->no_hp ?></td>
+							<td> <a href="#hapusAnggota-<?= $anggota->id ?>" data-toggle="modal" class="delete"><i class="material-icons" data-toggle="tooltip" title="Hapus">&#xE872;</i></a>
+							</td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+		</div>
 	</div>
+
 </div>
 <!-- Tambah Data Anggota Modal -->
 <div id="tambahAnggota" class="modal fade">
