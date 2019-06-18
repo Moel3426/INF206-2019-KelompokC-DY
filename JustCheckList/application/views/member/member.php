@@ -17,48 +17,50 @@
 				</div>
 			</div>
 		</div>
-		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
-					<th>No</th>
-					<th>Foto</th>
-					<th>Nama</th>
-					<th>Email</th>
-					<th>No.Hp/Telp</th>
-					<th>Aksi</th>
-				</tr>
-				<?php
-				$id = 1;
-				foreach ($tb_member as $mbr) : ?>
+		<div class="table-responsive">
+			<table class="table table-striped table-hover">
+				<thead>
 					<tr>
-						<td><?php echo $id++ ?></td>
-						<td data-target="#cekAnggota-<?php echo $mbr['id']; ?>" data-toggle="modal">
-							<img class="avatar border-gray rounded-circle" src="<?php echo base_url("assets/foto/" . $mbr['foto']); ?>" width="50px" height="50px" data-toggle="tooltip" title="Klik di  sini untuk melihat profil">
-						</td>
-						<td><?php echo $mbr['nama'];  ?></td>
-						<td><?php echo $mbr['email']; ?></td>
-						<td><?php echo $mbr['noHp']; ?></td>
-						<td>
-							<a href="#editAnggota-<?php echo $mbr['id']; ?>" data-toggle="modal" class="edit">
-								<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-							</a>
-							<a href="#hapusAnggota-<?php echo $mbr['id']; ?>" data-toggle="modal" class="delete">
-								<i class="material-icons" data-toggle="tooltip" title="Hapus">&#xE872;</i>
-							</a>
-						</td>
-						<!-- <td onclick="javascript: return confirm('Anda yakin ingin menghapus?')">
-																																						<?php echo anchor(
-																																							'member/hapus/' . $mbr['id'],
-																																							'<div  class="badge badge-danger">
+						<th>No</th>
+						<th>Foto</th>
+						<th>Nama</th>
+						<th>Email</th>
+						<th>No.Hp/Telp</th>
+						<th>Aksi</th>
+					</tr>
+					<?php
+					$id = 1;
+					foreach ($tb_member as $mbr) : ?>
+						<tr>
+							<td><?php echo $id++ ?></td>
+							<td data-target="#cekAnggota-<?php echo $mbr['id']; ?>" data-toggle="modal">
+								<img class="avatar border-gray rounded-circle" src="<?php echo base_url("assets/foto/" . $mbr['foto']); ?>" width="50px" height="50px" data-toggle="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top">
+							</td>
+							<td><?php echo $mbr['nama'];  ?></td>
+							<td><?php echo $mbr['email']; ?></td>
+							<td><?php echo $mbr['noHp']; ?></td>
+							<td>
+								<a href="#editAnggota-<?php echo $mbr['id']; ?>" data-toggle="modal" class="edit">
+									<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+								</a>
+								<a href="#hapusAnggota-<?php echo $mbr['id']; ?>" data-toggle="modal" class="delete">
+									<i class="material-icons" data-toggle="tooltip" title="Hapus">&#xE872;</i>
+								</a>
+							</td>
+							<!-- <td onclick="javascript: return confirm('Anda yakin ingin menghapus?')">
+																																												<?php echo anchor(
+																																													'member/hapus/' . $mbr['id'],
+																																													'<div  class="badge badge-danger">
                                     <i class="fa fa-trash"data-toggle="tooltip" 
                                     title="Hapus"></i>
 								</div>'
-																																						) ?>
-																																					</td> -->
-					</tr>
-				<?php endforeach; ?>
-			</thead>
-		</table>
+																																												) ?>
+																																											</td> -->
+						</tr>
+					<?php endforeach; ?>
+				</thead>
+			</table>
+		</div>
 	</div>
 </div>
 <!-- Tambah Data Anggota Modal -->
@@ -184,8 +186,8 @@
 							<div class="card-body">
 								<div class="author">
 									<div class="form-group shadow-none " data-placement="top">
-										<img class="avatar border-gray rounded-circle" src="<?php echo base_url('assets/profil/' . $user['gambar']) ?>" alt="...">
-										<h6 class="title text-primary mb-3"><?= $user['nama'] ?></h6>
+										<img class="avatar border-gray rounded-circle" src="<?php echo base_url('assets/profil/default-avatar.png') ?>" alt="...">
+										<h6 class="title text-primary mb-3">---</h6>
 									</div>
 									<button type="submit" class="btn btn-success">Simpan</button>
 									<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Batal</button>

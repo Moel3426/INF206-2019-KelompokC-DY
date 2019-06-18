@@ -31,36 +31,39 @@
 									<div class="form-group mt-4">
 										<h6 for="">ID Anggota</h6>
 										<div class="table-wrapper mt-0">
-											<table class="table table-striped table-hover">
-												<thead>
-													<tr>
-														<th>Nama</th>
-														<th>No Hp</th>
-														<th>Aksi</th>
-													</tr>
-												</thead>
-												<tbody>
-													<?php
-													foreach ($anggota as $item) {
-														?>
+											<div class="table-responsive">
+												<table class="table table-striped table-hover">
+													<thead>
 														<tr>
-															<td><?= $item->nama ?></td>
-															<td><?= $item->noHp ?></td>
-
-															<td>
-																<span class="custom-checkbox">
-																	<input type="checkbox" id="checkbox2" name="anggotaIkut[]" value="<?= $item->id ?>">
-																	<label for="checkbox2"></label>
-																</span>
-															</td>
+															<th>Nama</th>
+															<th>No Hp</th>
+															<th>Aksi</th>
 														</tr>
-													<?php
-												}
-												?>
+													</thead>
+													<tbody>
+														<?php
+														foreach ($anggota as $item) {
+															?>
+															<tr>
+																<td><?= $item->nama ?></td>
+																<td><?= $item->noHp ?></td>
 
-													<tr>
-												</tbody>
-											</table>
+																<td>
+																	<span class="custom-checkbox">
+																		<input type="checkbox" id="checkbox2" name="anggotaIkut[]" value="<?= $item->id ?>">
+																		<label for="checkbox2"></label>
+																	</span>
+																</td>
+															</tr>
+														<?php
+													}
+													?>
+
+														<tr>
+													</tbody>
+												</table>
+
+											</div>
 										</div>
 									</div>
 									<button type="submit" class="btn btn-primary btn-user btn-block btn-round">

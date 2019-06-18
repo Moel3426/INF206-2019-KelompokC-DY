@@ -62,7 +62,7 @@ class Home extends CI_Controller
 
 	public function hapustiba()
 	{
-		$this->db->where('id', $this->input->get('id'));
+		$this->db->where('id', $this->input->post('tolak'));
 		$this->db->delete('keberangkatan');
 		redirect('home/tiba');
 	}
