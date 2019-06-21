@@ -43,7 +43,11 @@ foreach ($data->result() as $d) {
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Jumlah Nelayan
 							</div>
-							<div class="h5 mb-0 font-weight-bold text-gray-800"><?= $this->db->count_all_results('users'); ?> <span>Orang</span> </div>
+							<?php $total = 0;
+							foreach ($this->db->get_where('anggota', ['admin_id' => $this->session->userdata('id')])->result() as $i) {
+								$total += 1 + $this->db->get_where('tb_member', ['id_member' => $i->member_id])->num_rows();
+							} ?>
+							<div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total ?> <span>Orang</span> </div>
 						</div>
 						<div class="col-auto">
 							<i class="fas fa-users" style="font-size:35px; color: gainsboro;"></i>
@@ -106,24 +110,26 @@ foreach ($data->result() as $d) {
 				</div>
 			</div>
 		</div>
-		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
-					<th>ID Kapal</th>
-					<th>Keberangkatan</th>
-					<th>Tiba</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php foreach ($keberangkatan->result() as $k) : ?>
+		<div class="table-responsive">
+			<table class="table table-striped table-hover">
+				<thead>
 					<tr>
-						<td><?= $k->id ?></td>
-						<td><?= date('d M Y', strtotime($k->keberangkatan)); ?></td>
-						<td><?= date('d M Y', strtotime($k->tiba)) ?></td>
+						<th width="10%">ID Keberangkatan</th>
+						<th width="45%">Keberangkatan</th>
+						<th width="45%">Tiba</th>
 					</tr>
-				<?php endforeach; ?>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<?php foreach ($keberangkatan->result() as $k) : ?>
+						<tr>
+							<td><?= $k->id ?></td>
+							<td><?= date('d M Y', strtotime($k->keberangkatan)); ?></td>
+							<td><?= date('d M Y', strtotime($k->tiba)) ?></td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+		</div>
 
 	</div>
 </div>

@@ -36,34 +36,36 @@
 									<div class="form-group">
 										<label for="">Daftar Anggota</label>
 										<div class="table-wrapper mt-4 pt-0">
-											<table class="table table-striped table-hover ">
-												<thead>
-													<tr>
-														<th>Nama</th>
-														<th>No HP</th>
+											<div class="table-responsive">
+												<table class="table table-striped table-hover ">
+													<thead>
+														<tr>
+															<th>Nama</th>
+															<th>No HP</th>
 
-													</tr>
-												</thead>
-												<tbody>
-													<?php
-													$data = json_decode($anggotaIkut[count($anggotaIkut) - 1]->anggota);
-													foreach ($data as $id) {
-														foreach ($anggota as $item) {
-															if ($item->id == $id) {
-																?>
-																<tr>
-																	<td><?= $item->nama ?></td>
+														</tr>
+													</thead>
+													<tbody>
+														<?php
+														$data = json_decode($anggotaIkut[count($anggotaIkut) - 1]->anggota);
+														foreach ($data as $id) {
+															foreach ($anggota as $item) {
+																if ($item->id == $id) {
+																	?>
+																	<tr>
+																		<td><?= $item->nama ?></td>
 
-																	<td><?= $item->noHp ?></td>
-																</tr>
-																<?php
-																break;
+																		<td><?= $item->noHp ?></td>
+																	</tr>
+																	<?php
+																	break;
+																}
 															}
 														}
-													}
-													?>
-												</tbody>
-											</table>
+														?>
+													</tbody>
+												</table>
+											</div>
 										</div>
 
 									</div>

@@ -11,54 +11,56 @@
 				</div>
 			</div>
 		</div>
-		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
-					<th>ID Kapal</th>
-					<th>Keberangkatan</th>
-					<th>Tiba</th>
-					<th>Anggota</th>
-					<th>Status</th>
-					<th>Waktu Konfirmasi</th>
-					<th>Keterangan</th>
-				</tr>
-			</thead>
-			<tbody>
+		<div class="table-responsive">
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th>ID Kapal</th>
+						<th>Keberangkatan</th>
+						<th>Tiba</th>
+						<th>Anggota</th>
+						<th>Status</th>
+						<th>Waktu Konfirmasi</th>
+						<th>Keterangan</th>
+					</tr>
+				</thead>
+				<tbody>
 
-				<?php $i = 0;
-				$id = 1;
-				foreach ($keberangkatan->result() as $k) : ?>
-					<?php if ($k->keterangan != '') : ?>
-						<tr>
-							<td><?= $id++ ?></td>
-							<td>
-								<?= date('d M Y', strtotime($k->keberangkatan)) ?>
-							</td>
-							<td>
-								<?= date('d M Y', strtotime($k->tiba)) ?>
-							</td>
-							<td>
-								<?php $data = json_decode($anggotaIkut[$i++]->anggota);
-								foreach ($data as $id) : $anggota = $this->db->get_where('tb_member', ['id' => $id])->row(); ?>
-									<img class="gambar" src="<?= base_url('assets/foto/' . $anggota->foto) ?>" alt="" />
-								<?php endforeach; ?>
-							</td>
-							<?php if ($k->status == 'diterima') { ?>
-								<td><a href="#" class="badge badge-success text-light"><?= $k->status ?></a></td>
-							<?php } else if ($k->status == 'ditolak') { ?>
-								<td><a href="#" class="badge badge-danger text-light"><?= $k->status ?></a></td>
-							<?php } else { ?>
-								<td><a href="#" class="badge badge-warning text-light"><?= $k->status ?></a></td>
-							<?php } ?>
-							<td>
-								<?= date('H:i:s, d M Y', strtotime($k->waktu_konfirmasi)) ?>
-							</td>
-							<td><?= $k->keterangan ?></td>
-						</tr>
-					<?php endif; ?>
-				<?php endforeach; ?> <tr>
-			</tbody>
-		</table>
+					<?php $i = 0;
+					$id = 1;
+					foreach ($keberangkatan->result() as $k) : ?>
+						<?php if ($k->keterangan != '') : ?>
+							<tr>
+								<td><?= $id++ ?></td>
+								<td>
+									<?= date('d M Y', strtotime($k->keberangkatan)) ?>
+								</td>
+								<td>
+									<?= date('d M Y', strtotime($k->tiba)) ?>
+								</td>
+								<td>
+									<?php $data = json_decode($anggotaIkut[$i++]->anggota);
+									foreach ($data as $id) : $anggota = $this->db->get_where('tb_member', ['id' => $id])->row(); ?>
+										<img class="gambar" src="<?= base_url('assets/foto/' . $anggota->foto) ?>" alt="" />
+									<?php endforeach; ?>
+								</td>
+								<?php if ($k->status == 'diterima') { ?>
+									<td><a href="#" class="badge badge-success text-light"><?= $k->status ?></a></td>
+								<?php } else if ($k->status == 'ditolak') { ?>
+									<td><a href="#" class="badge badge-danger text-light"><?= $k->status ?></a></td>
+								<?php } else { ?>
+									<td><a href="#" class="badge badge-warning text-light"><?= $k->status ?></a></td>
+								<?php } ?>
+								<td>
+									<?= date('H:i:s, d M Y', strtotime($k->waktu_konfirmasi)) ?>
+								</td>
+								<td><?= $k->keterangan ?></td>
+							</tr>
+						<?php endif; ?>
+					<?php endforeach; ?> <tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
 </div>

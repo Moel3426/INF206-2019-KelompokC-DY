@@ -11,33 +11,35 @@
 
 			</div>
 		</div>
-		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Foto</th>
-					<th>Nama</th>
-					<th>Email</th>
-					<th>Alamat</th>
-					<th>No.Hp/Telp</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php
-				$id = 1;
-				foreach ($lihatanggota->result() as $lihat) : ?>
+		<div class="table-responsive">
+			<table class="table table-striped table-hover">
+				<thead>
 					<tr>
-						<td><?php echo $id++ ?></td>
-						<td><a href="#cekAnggota-<?= $lihat->id ?>" class="view" data-toggle="modal" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top"><img class="gambar" src="<?php echo base_url('assets/foto/' . $lihat->foto) ?>" alt="" /></td>
-						</a>
-						<td><?= $lihat->nama ?></td>
-						<td><?= $lihat->email ?></td>
-						<td><?= $lihat->alamat ?></td>
-						<td><?= $lihat->noHp ?></td>
+						<th>ID</th>
+						<th>Foto</th>
+						<th>Nama</th>
+						<th>Email</th>
+						<th>Alamat</th>
+						<th>No.Hp/Telp</th>
 					</tr>
-				<?php endforeach; ?>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<?php
+					$id = 1;
+					foreach ($lihatanggota->result() as $lihat) : ?>
+						<tr>
+							<td><?php echo $id++ ?></td>
+							<td><a href="#cekAnggota-<?= $lihat->id ?>" class="view" data-toggle="modal" rel="tooltip" title="Klik di  sini untuk melihat profil" data-placement="top"><img class="gambar" src="<?php echo base_url('assets/foto/' . $lihat->foto) ?>" alt="" /></td>
+							</a>
+							<td><?= $lihat->nama ?></td>
+							<td><?= $lihat->email ?></td>
+							<td><?= $lihat->alamat ?></td>
+							<td><?= $lihat->noHp ?></td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
 <!-- Tambah Data Anggota Modal -->
